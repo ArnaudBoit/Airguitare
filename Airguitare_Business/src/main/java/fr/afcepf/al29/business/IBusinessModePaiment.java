@@ -5,6 +5,6 @@ import java.util.*;
 /**
  * 
  */
-public interface IBusinessUtilisateur {
+public interface IBusinessModePaiment {
 
 }
