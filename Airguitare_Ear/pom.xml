@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.afcepf.al29</groupId>
+  <artifactId>Airguitare_Ear</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>ear</packaging>
+  
+  <dependencies>
+  	<dependency>
+  		  <groupId>fr.afcepf.al29</groupId>
+		  <artifactId>Airguitare_Web</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>	
+		  <type>war</type>	  
+  	</dependency>
+  	<dependency>
+  		  <groupId>fr.afcepf.al29</groupId>
+		  <artifactId>Airguitare_Business</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+		  <type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		  <groupId>fr.afcepf.al29</groupId>
+		  <artifactId>Airguitare_Dao</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+		  <type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		  <groupId>fr.afcepf.al29</groupId>
+		  <artifactId>Airguitare_Entity</artifactId>
+		  <version>0.0.1-SNAPSHOT</version>
+		  <type>ejb</type>
+  	</dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+  		<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<generateApplicationXml>true</generateApplicationXml>
+					<includeJar>false</includeJar>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<groupId>fr.afcepf.al29</groupId>
+							<artifactId>Airguitare_Web</artifactId>
+							<contextRoot>Airguitare_Web</contextRoot>
+							<bundleFileName>Airguitare_Web.war</bundleFileName>
+						</webModule>
+						
+						<ejbModule>
+							<groupId>fr.afcepf.al29</groupId>
+							<artifactId>Airguitare_Dao</artifactId>
+							<bundleFileName>Airguitare_Dao.jar</bundleFileName>
+						</ejbModule>
+						
+						<ejbModule>
+							<groupId>fr.afcepf.al29</groupId>
+							<artifactId>Airguitare_Business</artifactId>
+							<bundleFileName>Airguitare_Business.jar</bundleFileName>
+						</ejbModule>
+						<ejbModule>
+							<groupId>fr.afcepf.al29</groupId>
+							<artifactId>Airguitare_Entity</artifactId>
+							<bundleFileName>Airguitare_Entity.jar</bundleFileName>
+						</ejbModule>
+					</modules>	
+					<version>7</version>	<!-- 1.4 , 5 , 6 , 7-->			
+				</configuration>
+			</plugin>		
+		
+  	</plugins>
+  </build>
+</project>
