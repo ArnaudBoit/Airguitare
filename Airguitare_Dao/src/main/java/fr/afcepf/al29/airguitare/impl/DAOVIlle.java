@@ -23,8 +23,8 @@ public class DAOVIlle implements IDAOVille {
 	
 	@Override
 	public List<Ville> getVilleByPays(int idPays) {
-		//return em.createQuery("SELECT v FROM Ville v WHERE v.pays.id = :pays_id",Ville.class).setParameter("pays_id", idPays).getResultList();
-		return null;
+		return em.createQuery("SELECT v FROM Ville v WHERE v.pays.id = :pays_id",Ville.class).setParameter("pays_id", idPays).getResultList();
+		
 	}
 
 	@Override
