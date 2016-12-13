@@ -1,12 +1,14 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -40,6 +42,8 @@ public class SpecialisationProduit implements Serializable{
     @ManyToOne
     private TypeProduit typeProduit;
     
+    @OneToMany(mappedBy="specialisationProduit")
+    private Set<Produit> produits;
 
     /**
      * Default constructor

@@ -81,7 +81,7 @@ public class Produit implements Serializable{
      * 
      */
     @ManyToOne
-    private TypeProduit typeProduit;
+    private SpecialisationProduit specialisationProduit;
 
     /**
      * 
@@ -108,7 +108,7 @@ public class Produit implements Serializable{
     }
 
 	public Produit(int id, String intitule, String description, Double prix, String photo, String reference,
-			Integer stock, Integer seuil, Integer nbVues, TypeProduit typeProduit, Marque marque,
+			Integer stock, Integer seuil, Integer nbVues, SpecialisationProduit specialisationProduit, Marque marque,
 			Set<LigneCommande> ligneCommandes, Set<AvisClient> avisClients) {
 		super();
 		this.id = id;
@@ -120,7 +120,7 @@ public class Produit implements Serializable{
 		this.stock = stock;
 		this.seuil = seuil;
 		this.nbVues = nbVues;
-		this.typeProduit = typeProduit;
+		this.specialisationProduit = specialisationProduit;
 		this.marque = marque;
 		this.ligneCommandes = ligneCommandes;
 		this.avisClients = avisClients;
@@ -198,12 +198,12 @@ public class Produit implements Serializable{
 		this.nbVues = nbVues;
 	}
 
-	public TypeProduit getTypeProduit() {
-		return typeProduit;
+	public SpecialisationProduit getSpecialisationProduit() {
+		return specialisationProduit;
 	}
 
-	public void setTypeProduit(TypeProduit typeProduit) {
-		this.typeProduit = typeProduit;
+	public void setSpecialisationProduit(SpecialisationProduit specialisationProduit) {
+		this.specialisationProduit = specialisationProduit;
 	}
 
 	public Marque getMarque() {
@@ -229,6 +229,12 @@ public class Produit implements Serializable{
 	public void setAvisClients(Set<AvisClient> avisClients) {
 		this.avisClients = avisClients;
 	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
     
     
 

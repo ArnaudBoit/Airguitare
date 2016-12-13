@@ -34,12 +34,7 @@ public class TypeProduit implements Serializable{
      * 
      */
     private String intitule;
-
-    /**
-     * 
-     */
-    @OneToMany(mappedBy="typeProduit")
-    private Set<Produit> produits;
+    
 
     /**
      * 
@@ -53,12 +48,10 @@ public class TypeProduit implements Serializable{
     public TypeProduit() {
     }
 
-	public TypeProduit(int id, String intitule, Set<Produit> produits,
-			Set<SpecialisationProduit> specialisationProduits) {
+	public TypeProduit(int id, String intitule, Set<SpecialisationProduit> specialisationProduits) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
-		this.produits = produits;
 		this.specialisationProduits = specialisationProduits;
 	}
 
@@ -78,14 +71,6 @@ public class TypeProduit implements Serializable{
 		this.intitule = intitule;
 	}
 
-	public Set<Produit> getProduits() {
-		return produits;
-	}
-
-	public void setProduits(Set<Produit> produits) {
-		this.produits = produits;
-	}
-
 	public Set<SpecialisationProduit> getSpecialisationProduits() {
 		return specialisationProduits;
 	}
@@ -94,6 +79,11 @@ public class TypeProduit implements Serializable{
 		this.specialisationProduits = specialisationProduits;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
     
 
 }
