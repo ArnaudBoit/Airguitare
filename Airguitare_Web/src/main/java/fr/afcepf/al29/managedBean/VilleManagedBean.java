@@ -12,12 +12,16 @@ import javax.faces.bean.ManagedBean;
 
 import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
+import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
+import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
 import fr.afcepf.al29.airguitare.api.IDAOVille;
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
 import fr.afcepf.al29.airguitare.entities.CommentaireBlog;
 import fr.afcepf.al29.airguitare.entities.Pays;
 import fr.afcepf.al29.airguitare.entities.Produit;
+import fr.afcepf.al29.airguitare.entities.SpecialisationProduit;
 import fr.afcepf.al29.airguitare.entities.ThemeArticle;
+import fr.afcepf.al29.airguitare.entities.TypeProduit;
 import fr.afcepf.al29.airguitare.entities.Ville;
 
 @ManagedBean(name="ville")
@@ -29,12 +33,19 @@ public class VilleManagedBean {
 	private IDAOProduit proxyProduit;
 	@EJB
 	private IDAOBlog proxyBlog;
+	@EJB
+	private IDAOTypeProduit proxyTypeProduit;
+	@EJB
+	private IDAOSpecialisationProduit proxySpecialisationProduit;
+	
 	
 	List<Pays> pays = new ArrayList<>();
 	List<Ville> villes = new ArrayList<>();
 	List<Produit> produits = new ArrayList<>();
 	List<ArticleBlog> articles = new ArrayList<>();
 	ArticleBlog article = new ArticleBlog();
+	TypeProduit typeProduit = new TypeProduit();
+	List<SpecialisationProduit> specialisationProduits = new ArrayList<>();
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
@@ -62,6 +73,15 @@ public class VilleManagedBean {
 		proxyBlog.createNewArticleBlog(article);
 		article.setDescription("modif");
 		proxyBlog.updateArticleBlog(article);
+		
+		typeProduit = proxyTypeProduit.getTypeProduitById(1);
+		
+		specialisationProduits= proxySpecialisationProduit.getSpecialisationProduitByTypeProduit(typeProduit);
+		for (SpecialisationProduit specialisationProduit : specialisationProduits) {
+			System.out.println(specialisationProduit.getIntitule());
+		}
+		
+		
 		
 	}
 	
