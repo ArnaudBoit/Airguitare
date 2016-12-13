@@ -8,8 +8,10 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
+import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOVille;
 import fr.afcepf.al29.airguitare.entities.Pays;
+import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.airguitare.entities.Ville;
 
 @ManagedBean(name="ville")
@@ -17,9 +19,12 @@ import fr.afcepf.al29.airguitare.entities.Ville;
 public class VilleManagedBean {
 	@EJB
 	private IDAOVille proxy;
+	@EJB
+	private IDAOProduit proxyProduit;
 	
 	List<Pays> pays = new ArrayList<>();
 	List<Ville> villes = new ArrayList<>();
+	List<Produit> produits = new ArrayList<>();
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
@@ -29,6 +34,11 @@ public class VilleManagedBean {
 		
 		villes= proxy.getVilleByPays(36);
 		System.out.println(villes.size());
+		
+		produits = proxyProduit.getArticlesByType(1);
+		for (Produit produit : produits) {
+			System.out.println(produit.getIntitule());
+		}
 	}
 
 	public IDAOVille getProxy() {
