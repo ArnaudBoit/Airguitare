@@ -12,7 +12,6 @@ import fr.afcepf.al29.ibusiness.IBusinessBlog;
  */
 public class BusinessBlog implements IBusinessBlog {
 
-
     /**
      * 
      */

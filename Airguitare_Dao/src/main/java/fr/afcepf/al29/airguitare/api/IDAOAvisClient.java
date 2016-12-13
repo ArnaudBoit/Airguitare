@@ -16,13 +16,13 @@ public interface IDAOAvisClient {
      * @param int idProduit 
      * @return
      */
-    public void createNewAvisClient(Personne client, AvisClient avis, int idProduit);
+    public void createNewAvisClient(AvisClient avis);
 
     /**
      * @param int idAvisClient 
      * @return
      */
-    public void removeAvisClient(int idAvisClient);
+    public void removeAvisClient(AvisClient avisClient);
 
     /**
      * @param int idClient 
