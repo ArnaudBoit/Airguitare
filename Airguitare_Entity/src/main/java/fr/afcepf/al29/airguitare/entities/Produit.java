@@ -3,6 +3,7 @@ package fr.afcepf.al29.airguitare.entities;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -40,11 +41,13 @@ public class Produit implements Serializable{
     /**
      * 
      */
+	@Column(length=2500)
     private String intitule;
 
     /**
      * 
      */
+    @Column(length=25000)
     private String description;
 
     /**
