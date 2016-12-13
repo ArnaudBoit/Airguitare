@@ -8,6 +8,7 @@ import fr.afcepf.al29.airguitare.entities.ThemeArticle;
 /**
  * 
  */
+
 public interface IDAOBlog {
 
     /**
@@ -38,7 +39,7 @@ public interface IDAOBlog {
      * @param int idArticle 
      * @return
      */
-    public void removeArticleBlog(int idArticle);
+    public void removeArticleBlog(ArticleBlog article);
 
     /**
      * @return

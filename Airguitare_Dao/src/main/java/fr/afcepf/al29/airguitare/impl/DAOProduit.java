@@ -23,7 +23,7 @@ public class DAOProduit implements IDAOProduit {
 	
 	@Override
 	public List<Produit> getArticlesByType(int idType) {
-		Query query = em.createQuery("SELECT p FROM Produit p WHERE p.typeProduit.id = :idType").setParameter("idType", idType);
+		Query query = em.createQuery("SELECT p FROM Produit p WHERE p.specialisationProduit.id = :idType").setParameter("idType", idType);
 		return query.getResultList();
 	}
 

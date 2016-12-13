@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -47,7 +47,7 @@ public class Ville implements Serializable{
     private Pays pays;
     
     @OneToMany(mappedBy="ville")
-    private Set<Adresse> adresses;
+    private List<Adresse> adresses;
     
     /**
      * Default constructor
@@ -57,7 +57,7 @@ public class Ville implements Serializable{
 
 	
 
-	public Ville(int id, String nom, String codePostal, Pays pays, Set<Adresse> adresses) {
+	public Ville(int id, String nom, String codePostal, Pays pays, List<Adresse> adresses) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -102,13 +102,13 @@ public class Ville implements Serializable{
 
 
 
-	public Set<Adresse> getAdresses() {
+	public List<Adresse> getAdresses() {
 		return adresses;
 	}
 
 
 
-	public void setAdresses(Set<Adresse> adresses) {
+	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
 	}
     

@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,7 +43,7 @@ public class ModePaiement implements Serializable{
      * 
      */
     @OneToMany(mappedBy="modePaiement")
-    private Set<Commande> commandes;
+    private List<Commande> commandes;
 
     /**
      * 
@@ -55,7 +55,7 @@ public class ModePaiement implements Serializable{
      * 
      */
     @OneToMany(mappedBy="modePaiement")
-    private Set<CB> cbs;
+    private List<CB> cbs;
     
     /**
      * Default constructor
@@ -63,7 +63,7 @@ public class ModePaiement implements Serializable{
     public ModePaiement() {
     }
 
-	public ModePaiement(int id, Personne personne, Set<Commande> commandes, Paypal paypal, Set<CB> cbs) {
+	public ModePaiement(int id, Personne personne, List<Commande> commandes, Paypal paypal, List<CB> cbs) {
 		super();
 		this.id = id;
 		this.personne = personne;
@@ -88,11 +88,11 @@ public class ModePaiement implements Serializable{
 		this.personne = personne;
 	}
 
-	public Set<Commande> getCommandes() {
+	public List<Commande> getCommandes() {
 		return commandes;
 	}
 
-	public void setCommandes(Set<Commande> commandes) {
+	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
 
@@ -104,11 +104,11 @@ public class ModePaiement implements Serializable{
 		this.paypal = paypal;
 	}
 
-	public Set<CB> getCbs() {
+	public List<CB> getCbs() {
 		return cbs;
 	}
 
-	public void setCbs(Set<CB> cbs) {
+	public void setCbs(List<CB> cbs) {
 		this.cbs = cbs;
 	}
     

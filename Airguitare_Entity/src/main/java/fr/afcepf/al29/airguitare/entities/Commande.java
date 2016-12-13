@@ -2,7 +2,7 @@ package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,7 +59,7 @@ public class Commande implements Serializable{
      * 
      */
     @OneToMany(mappedBy="commande")
-    private Set<LigneCommande> ligneCommandes;
+    private List<LigneCommande> ligneCommandes;
 
     /**
      * 
@@ -80,7 +80,7 @@ public class Commande implements Serializable{
     }
 
 	public Commande(int id, String numero, Date date, String statut, Personne personne,
-			Set<LigneCommande> ligneCommandes, ModeLivraison modeLivraison, ModePaiement modePaiement) {
+			List<LigneCommande> ligneCommandes, ModeLivraison modeLivraison, ModePaiement modePaiement) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -132,11 +132,11 @@ public class Commande implements Serializable{
 		this.personne = personne;
 	}
 
-	public Set<LigneCommande> getLigneCommandes() {
+	public List<LigneCommande> getLigneCommandes() {
 		return ligneCommandes;
 	}
 
-	public void setLigneCommandes(Set<LigneCommande> ligneCommandes) {
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
 

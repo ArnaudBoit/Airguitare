@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +40,7 @@ public class TypeProduit implements Serializable{
      * 
      */
     @OneToMany(mappedBy="typeProduit")
-    private Set<SpecialisationProduit> specialisationProduits;
+    private List<SpecialisationProduit> specialisationProduits;
     
     /**
      * Default constructor
@@ -48,7 +48,7 @@ public class TypeProduit implements Serializable{
     public TypeProduit() {
     }
 
-	public TypeProduit(int id, String intitule, Set<SpecialisationProduit> specialisationProduits) {
+	public TypeProduit(int id, String intitule, List<SpecialisationProduit> specialisationProduits) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -71,11 +71,11 @@ public class TypeProduit implements Serializable{
 		this.intitule = intitule;
 	}
 
-	public Set<SpecialisationProduit> getSpecialisationProduits() {
+	public List<SpecialisationProduit> getSpecialisationProduits() {
 		return specialisationProduits;
 	}
 
-	public void setSpecialisationProduits(Set<SpecialisationProduit> specialisationProduits) {
+	public void setSpecialisationProduits(List<SpecialisationProduit> specialisationProduits) {
 		this.specialisationProduits = specialisationProduits;
 	}
 

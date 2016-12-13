@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -96,13 +96,13 @@ public class Produit implements Serializable{
      * 
      */
     @OneToMany(mappedBy="produit")
-    private Set<LigneCommande> ligneCommandes;
+    private List<LigneCommande> ligneCommandes;
 
     /**
      * 
      */
     @OneToMany(mappedBy="produit")
-    private Set<AvisClient> avisClients;
+    private List<AvisClient> avisClients;
     
     /**
      * Default constructor
@@ -112,7 +112,7 @@ public class Produit implements Serializable{
 
 	public Produit(int id, String intitule, String description, Double prix, String photo, String reference,
 			Integer stock, Integer seuil, Integer nbVues, SpecialisationProduit specialisationProduit, Marque marque,
-			Set<LigneCommande> ligneCommandes, Set<AvisClient> avisClients) {
+			List<LigneCommande> ligneCommandes, List<AvisClient> avisClients) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -217,19 +217,19 @@ public class Produit implements Serializable{
 		this.marque = marque;
 	}
 
-	public Set<LigneCommande> getLigneCommandes() {
+	public List<LigneCommande> getLigneCommandes() {
 		return ligneCommandes;
 	}
 
-	public void setLigneCommandes(Set<LigneCommande> ligneCommandes) {
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
 
-	public Set<AvisClient> getAvisClients() {
+	public List<AvisClient> getAvisClients() {
 		return avisClients;
 	}
 
-	public void setAvisClients(Set<AvisClient> avisClients) {
+	public void setAvisClients(List<AvisClient> avisClients) {
 		this.avisClients = avisClients;
 	}
 

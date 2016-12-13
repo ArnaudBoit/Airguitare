@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,7 +52,7 @@ public class Adresse implements Serializable{
      */
     @ManyToMany(mappedBy="adresses")
     @Column(nullable = true)
-    private Set<Personne> personnes;
+    private List<Personne> personnes;
 
     /**
      * 
@@ -68,7 +68,7 @@ public class Adresse implements Serializable{
     
     
 
-    public Adresse(int id, int numero, String rue, String complement, Set<Personne> personnes, Ville ville) {
+    public Adresse(int id, int numero, String rue, String complement, List<Personne> personnes, Ville ville) {
 		super();
 		this.id = id;
 		this.numero = numero;
@@ -110,11 +110,11 @@ public class Adresse implements Serializable{
 		this.complement = complement;
 	}
 
-	public Set<Personne> getPersonnes() {
+	public List<Personne> getPersonnes() {
 		return personnes;
 	}
 
-	public void setPersonnes(Set<Personne> personnes) {
+	public void setPersonnes(List<Personne> personnes) {
 		this.personnes = personnes;
 	}
 

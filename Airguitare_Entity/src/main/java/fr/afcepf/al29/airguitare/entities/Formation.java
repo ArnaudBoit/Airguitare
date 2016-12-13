@@ -2,7 +2,7 @@ package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
@@ -38,7 +38,7 @@ public class Formation extends Produit implements Serializable{
 	 */
 	@ManyToMany(mappedBy="formations")
 	@Column(nullable=true)
-	private Set<Formule> formules;
+	private List<Formule> formules;
 
 
 
@@ -53,7 +53,7 @@ public class Formation extends Produit implements Serializable{
 	
 
 
-	public Formation(String refFormation, Date dateDebut, Set<Formule> formules) {
+	public Formation(String refFormation, Date dateDebut, List<Formule> formules) {
 		super();
 		this.refFormation = refFormation;
 		this.dateDebut = dateDebut;
@@ -87,12 +87,12 @@ public class Formation extends Produit implements Serializable{
 		this.dateDebut = dateDebut;
 	}
 
-	public Set<Formule> getFormules() {
+	public List<Formule> getFormules() {
 		return formules;
 	}
 
 
-	public void setFormules(Set<Formule> formules) {
+	public void setFormules(List<Formule> formules) {
 		this.formules = formules;
 	}
 

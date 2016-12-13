@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +40,7 @@ public class ThemeArticle implements Serializable{
      * 
      */
     @ManyToMany
-    private Set<ArticleBlog> articles;
+    private List<ArticleBlog> articles;
     
     /**
      * Default constructor
@@ -48,7 +48,7 @@ public class ThemeArticle implements Serializable{
     public ThemeArticle() {
     }
 
-	public ThemeArticle(int id, String intitule, Set<ArticleBlog> articles) {
+	public ThemeArticle(int id, String intitule, List<ArticleBlog> articles) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -71,11 +71,11 @@ public class ThemeArticle implements Serializable{
 		this.intitule = intitule;
 	}
 
-	public Set<ArticleBlog> getArticle() {
+	public List<ArticleBlog> getArticle() {
 		return articles;
 	}
 
-	public void setArticle(Set<ArticleBlog> articles) {
+	public void setArticle(List<ArticleBlog> articles) {
 		this.articles = articles;
 	}
     

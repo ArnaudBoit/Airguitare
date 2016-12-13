@@ -1,7 +1,8 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,19 +41,21 @@ public class ArticleBlog implements Serializable {
      * 
      */
     private String description;
+    
+    private Date dateAjout;
 
     /**
      * 
      */
     @ManyToMany(mappedBy="articles")
-    private Set<ThemeArticle> themes;
+    private List<ThemeArticle> themes;
     
     /**
      * 
      */
     @OneToMany(mappedBy="article")
     @Column(nullable=true)
-    private Set<CommentaireBlog> commentaires;
+    private List<CommentaireBlog> commentaires;
     
     /**
      * Default constructor
@@ -61,14 +64,25 @@ public class ArticleBlog implements Serializable {
     public ArticleBlog() {
     }
     
-    
+	public ArticleBlog(String intitule, String description, Date dateAjout, List<ThemeArticle> themes,
+			List<CommentaireBlog> commentaires) {
+		super();
+		this.intitule = intitule;
+		this.description = description;
+		this.dateAjout = dateAjout;
+		this.themes = themes;
+		this.commentaires = commentaires;
+	}
 
-    public ArticleBlog(int id, String intitule, String description, Set<ThemeArticle> themes,
-			Set<CommentaireBlog> commentaires) {
+	
+
+	public ArticleBlog(int id, String intitule, String description, Date dateAjout, List<ThemeArticle> themes,
+			List<CommentaireBlog> commentaires) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
 		this.description = description;
+		this.dateAjout = dateAjout;
 		this.themes = themes;
 		this.commentaires = commentaires;
 	}
@@ -109,26 +123,63 @@ public class ArticleBlog implements Serializable {
 
 
 
-	public Set<ThemeArticle> getThemes() {
+
+
+	public Date getDateAjout() {
+		return dateAjout;
+	}
+
+
+
+
+
+	public void setDateAjout(Date dateAjout) {
+		this.dateAjout = dateAjout;
+	}
+
+
+
+
+
+	public List<ThemeArticle> getThemes() {
 		return themes;
 	}
 
 
 
-	public void setThemes(Set<ThemeArticle> themes) {
+
+
+	public void setThemes(List<ThemeArticle> themes) {
 		this.themes = themes;
 	}
 
 
 
-	public Set<CommentaireBlog> getCommentaires() {
+
+
+	public List<CommentaireBlog> getCommentaires() {
 		return commentaires;
 	}
 
 
 
-	public void setCommentaires(Set<CommentaireBlog> commentaires) {
+
+
+	public void setCommentaires(List<CommentaireBlog> commentaires) {
 		this.commentaires = commentaires;
 	}
 
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+	
+
+	
 }

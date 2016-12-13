@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +45,7 @@ public class Formule implements Serializable{
      * 
      */
     @ManyToMany
-    private Set<Formation> formations;
+    private List<Formation> formations;
     
     /**
      * Default constructor
@@ -53,7 +53,7 @@ public class Formule implements Serializable{
     public Formule() {
     }
 
-	public Formule(int id, String intitule, Integer nbHeures, Set<Formation> formations) {
+	public Formule(int id, String intitule, Integer nbHeures, List<Formation> formations) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -85,11 +85,11 @@ public class Formule implements Serializable{
 		this.nbHeures = nbHeures;
 	}
 
-	public Set<Formation> getFormations() {
+	public List<Formation> getFormations() {
 		return formations;
 	}
 
-	public void setFormations(Set<Formation> formations) {
+	public void setFormations(List<Formation> formations) {
 		this.formations = formations;
 	}
     

@@ -5,7 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
-<body> 
+<h:body> 
+<h:form>
 <h:dataTable value="#{ville.pays}" var="p">
 <h:column>
 <h:outputText value="#{p.nom}" />
@@ -13,5 +14,7 @@
 	
 
 </h:dataTable>
-</body> 
+<h:commandButton action="#{ville.removeArticle()}" value="REmove" />
+</h:form>
+</h:body> 
 </html>

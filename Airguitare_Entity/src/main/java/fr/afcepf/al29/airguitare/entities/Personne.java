@@ -2,7 +2,7 @@ package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -73,31 +73,31 @@ public class Personne implements Serializable{
      * 
      */
     @OneToMany(mappedBy="personne")
-    private Set<AvisClient> avisClients;
+    private List<AvisClient> avisClients;
 
     /**
      * 
      */
     @ManyToMany
-    private Set<Adresse> adresses;
+    private List<Adresse> adresses;
 
     /**
      * 
      */
     @OneToMany(mappedBy="personne")
-    private Set<Commande> commandes;
+    private List<Commande> commandes;
 
     /**
      * 
      */
     @OneToMany(mappedBy="personne")
-    private Set<ModePaiement> modePaiements;
+    private List<ModePaiement> modePaiements;
 
     /**
      * 
      */
     @OneToMany(mappedBy="personne")
-    private Set<CommentaireBlog> commentaires;
+    private List<CommentaireBlog> commentaires;
     
     /**
      * Default constructor
@@ -106,8 +106,8 @@ public class Personne implements Serializable{
     }
 
 	public Personne(int id, String nom, String prenom, Date dateNaissance, String adresseMail, String telephone,
-			String password, String statut, Set<AvisClient> avisClients, Set<Adresse> adresses, Set<Commande> commandes,
-			Set<ModePaiement> modePaiements, Set<CommentaireBlog> commentaires) {
+			String password, String statut, List<AvisClient> avisClients, List<Adresse> adresses, List<Commande> commandes,
+			List<ModePaiement> modePaiements, List<CommentaireBlog> commentaires) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -188,43 +188,43 @@ public class Personne implements Serializable{
 		this.statut = statut;
 	}
 
-	public Set<AvisClient> getAvisClients() {
+	public List<AvisClient> getAvisClients() {
 		return avisClients;
 	}
 
-	public void setAvisClients(Set<AvisClient> avisClients) {
+	public void setAvisClients(List<AvisClient> avisClients) {
 		this.avisClients = avisClients;
 	}
 
-	public Set<Adresse> getAdresses() {
+	public List<Adresse> getAdresses() {
 		return adresses;
 	}
 
-	public void setAdresses(Set<Adresse> adresses) {
+	public void setAdresses(List<Adresse> adresses) {
 		this.adresses = adresses;
 	}
 
-	public Set<Commande> getCommandes() {
+	public List<Commande> getCommandes() {
 		return commandes;
 	}
 
-	public void setCommandes(Set<Commande> commandes) {
+	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
 
-	public Set<ModePaiement> getModePaiements() {
+	public List<ModePaiement> getModePaiements() {
 		return modePaiements;
 	}
 
-	public void setModePaiements(Set<ModePaiement> modePaiements) {
+	public void setModePaiements(List<ModePaiement> modePaiements) {
 		this.modePaiements = modePaiements;
 	}
 
-	public Set<CommentaireBlog> getCommentaires() {
+	public List<CommentaireBlog> getCommentaires() {
 		return commentaires;
 	}
 
-	public void setCommentaires(Set<CommentaireBlog> commentaires) {
+	public void setCommentaires(List<CommentaireBlog> commentaires) {
 		this.commentaires = commentaires;
 	}
     

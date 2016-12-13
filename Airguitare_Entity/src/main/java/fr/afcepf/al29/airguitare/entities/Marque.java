@@ -1,7 +1,7 @@
 package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +45,7 @@ public class Marque implements Serializable{
      * 
      */
     @OneToMany(mappedBy="marque")
-    private Set<Produit> produits;
+    private List<Produit> produits;
     
     /**
      * Default constructor
@@ -53,7 +53,7 @@ public class Marque implements Serializable{
     public Marque() {
     }
 
-	public Marque(int id, String intitule, String logo, Set<Produit> produits) {
+	public Marque(int id, String intitule, String logo, List<Produit> produits) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
@@ -85,11 +85,11 @@ public class Marque implements Serializable{
 		this.logo = logo;
 	}
 
-	public Set<Produit> getProduits() {
+	public List<Produit> getProduits() {
 		return produits;
 	}
 
-	public void setProduits(Set<Produit> produits) {
+	public void setProduits(List<Produit> produits) {
 		this.produits = produits;
 	}
     
