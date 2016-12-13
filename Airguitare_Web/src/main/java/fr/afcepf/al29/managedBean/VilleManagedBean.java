@@ -76,11 +76,14 @@ public class VilleManagedBean {
 		
 		typeProduit = proxyTypeProduit.getTypeProduitById(1);
 		
-		specialisationProduits= proxySpecialisationProduit.getSpecialisationProduitByTypeProduit(typeProduit);
+		specialisationProduits= proxySpecialisationProduit.getSpecialisationProduitByTypeProduit("guitare");
 		for (SpecialisationProduit specialisationProduit : specialisationProduits) {
 			System.out.println(specialisationProduit.getIntitule());
 		}
-		
+		specialisationProduits= proxySpecialisationProduit.getSpecialisationProduitByTypeProduit("Formation");
+		for (SpecialisationProduit specialisationProduit : specialisationProduits) {
+			System.out.println(specialisationProduit.getIntitule());
+		}
 		
 		
 	}

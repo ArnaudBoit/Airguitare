@@ -7,6 +7,6 @@ import fr.afcepf.al29.airguitare.entities.TypeProduit;
 
 public interface IDAOSpecialisationProduit {
 	
-	List<SpecialisationProduit> getSpecialisationProduitByTypeProduit(TypeProduit typeProduit);
+	List<SpecialisationProduit> getSpecialisationProduitByTypeProduit(String typeProduit);
 
 }

@@ -16,8 +16,8 @@ public class DAOSpecialisationProduit implements IDAOSpecialisationProduit {
 	@PersistenceContext(unitName="Airguitare_Dao")
 	EntityManager em;
 	@Override
-	public List<SpecialisationProduit> getSpecialisationProduitByTypeProduit(TypeProduit typeProduit) {
-		Query query = em.createQuery("SELECT s FROM SpecialisationProduit s WHERE s.typeProduit = :typeProduit").setParameter("typeProduit", typeProduit);
+	public List<SpecialisationProduit> getSpecialisationProduitByTypeProduit(String typeProduit) {
+		Query query = em.createQuery("SELECT s FROM SpecialisationProduit s WHERE s.typeProduit.intitule = :typeProduit").setParameter("typeProduit", typeProduit);
 		return query.getResultList();
 	}
 
