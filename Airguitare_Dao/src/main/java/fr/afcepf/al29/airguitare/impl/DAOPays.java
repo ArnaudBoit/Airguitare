@@ -12,7 +12,11 @@ import fr.afcepf.al29.airguitare.entities.Pays;
 @Stateless
 public class DAOPays implements IDAOPays {
 
+<<<<<<< HEAD
+	@PersistenceContext(unitName = "AirGuitare_Dao")
+=======
 	@PersistenceContext(unitName = "Airguitare_Dao")
+>>>>>>> branch 'master' of https://github.com/ArnaudBoit/Airguitare
 	EntityManager em;
 	
 	public List<Pays> getAll(){
