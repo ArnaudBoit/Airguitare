@@ -52,12 +52,17 @@ public class SpecialisationProduit implements Serializable{
     }
 
 
-	public SpecialisationProduit(int id, String intitule, TypeProduit typeProduit) {
+	
+
+	public SpecialisationProduit(int id, String intitule, TypeProduit typeProduit, Set<Produit> produits) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
 		this.typeProduit = typeProduit;
+		this.produits = produits;
 	}
+
+
 
 
 	public int getId() {
@@ -87,6 +92,27 @@ public class SpecialisationProduit implements Serializable{
 
 	public void setTypeProduit(TypeProduit typeProduit) {
 		this.typeProduit = typeProduit;
+	}
+
+
+
+
+	public Set<Produit> getProduits() {
+		return produits;
+	}
+
+
+
+
+	public void setProduits(Set<Produit> produits) {
+		this.produits = produits;
+	}
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
     
     
