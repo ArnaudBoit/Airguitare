@@ -2,6 +2,7 @@ package fr.afcepf.al29.airguitare.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,7 @@ public class CommentaireBlog implements Serializable{
     /**
      * 
      */
+    @Column(length=25000)
     private String description;
 
     /**

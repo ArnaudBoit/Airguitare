@@ -311,9 +311,12 @@ INSERT INTO  `bdd_airguitare`.`articleblog` (`description`,`intitule`) VALUES ("
 INSERT INTO  `bdd_airguitare`.`typeproduit` (`intitule`) VALUES ("guitare");
 INSERT INTO  `bdd_airguitare`.`typeproduit` (`intitule`) VALUES ("housses et étui");
 INSERT INTO  `bdd_airguitare`.`typeproduit` (`intitule`) VALUES ("pupitres");
+INSERT INTO  `bdd_airguitare`.`typeproduit` (`intitule`) VALUES ("Formation");
 
 INSERT INTO  `bdd_airguitare`.`specialisationproduit` (`intitule`,`typeProduit_id`) VALUES ("guitares électriques",1);
 INSERT INTO  `bdd_airguitare`.`specialisationproduit` (`intitule`,`typeProduit_id`) VALUES ("guitares classiques",1);
+INSERT INTO  `bdd_airguitare`.`specialisationproduit` (`intitule`,`typeProduit_id`) VALUES ("Cours de guitare",4);
+INSERT INTO  `bdd_airguitare`.`specialisationproduit` (`intitule`,`typeProduit_id`) VALUES ("Cours de Fabrication",4);
 
 INSERT INTO  `bdd_airguitare`.`themearticle` (`intitule`) VALUES ("compétition");
 INSERT INTO  `bdd_airguitare`.`themearticle` (`intitule`) VALUES ("nouveaux produits");
@@ -368,3 +371,56 @@ La CG171 arbore d’autres caractéristiques de haut niveau : rosace mosaique, biin
 ","CG171C TABLE CEDRE MASSIF",55,"/images/image3.jpg",2300,"30266",50,250,1,2);
 INSERT INTO  `bdd_airguitare`.`produit` (`discriminant`,`description`,`intitule`,`nbVues`,`photo`,`prix`,`reference`,`seuil`,`stock`,`marque_id`,`specialisationProduit_id`) VALUES ("Produit","La guitare classique électro Andorinha EQ allie le savoir-faire portugais à des essences de qualité pour une guitare d'étude aux finitions impeccables. Table massive en cèdre, touche en ébène, finition mate, timbre rond et chaud, préampli avec accordeur intégré et EQ 3 bandes, Andorinha EQ est une guitare d'étude comme on en trouve peu. Idéale pour commencer, vous aurez du mal à la quitter.","ANDORINHA EQ",80,"/images/image1.jpg",2800,"185551",50,25,3,2);
 INSERT INTO  `bdd_airguitare`.`produit` (`discriminant`,`description`,`intitule`,`nbVues`,`photo`,`prix`,`reference`,`seuil`,`stock`,`marque_id`,`specialisationProduit_id`) VALUES ("Produit","Fiables et peu onéreuses, les guitares classiques Brighton sont idéales pour appréhender l'instrument. A chacun sa guitare ! La gamme est déclinée en plusieurs tailles pour s'adapter à tous les âges.","CG1 1/4 NATURELLE",80,"/images/image2.jpg",1800,"91184",50,230,2,2);
+INSERT INTO  `bdd_airguitare`.`produit` (`discriminant`,`description`,`intitule`,`photo`,`prix`,`seuil`,`stock`,`specialisationProduit_id`,`dateDebut`,`refFormation`) VALUES ("Formation","Formation avec le double champion du monde en titre","AIR GUITARE POUR LES NULS","/images/image2.jpg",60,2,50,3,'2017-01-10 18:00:00',"FORM001");
+INSERT INTO  `bdd_airguitare`.`produit` (`discriminant`,`description`,`intitule`,`photo`,`prix`,`seuil`,`stock`,`specialisationProduit_id`,`dateDebut`,`refFormation`) VALUES ("Formation","Formation avec le double champion du monde en titre","AIR GUITARE POUR LES NULS","/images/image2.jpg",60,2,50,4,'2017-01-12 18:00:00',"FORM002");
+
+
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",4,4,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",2,5,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",3,6,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",5,7,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",1,8,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",1,9,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",2,10,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",3,11,1);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",4,5,2);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",2,6,2);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",5,7,2);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",2,5,3);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",3,6,3);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",4,7,3);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",4,8,3);
+INSERT INTO  `bdd_airguitare`.`avisclient` (`commentaire`,`note`,`personne_id`,`produit_id`) VALUES ("Très bonne tenus en main",5,9,3);
+
+INSERT INTO  `bdd_airguitare`.`formule` (`intitule`,`nbHeures`) VALUES ("Cours",4);
+
+INSERT INTO  `bdd_airguitare`.`formule_produit` (`formules_id`,`formations_id`) VALUES (1,4);
+INSERT INTO  `bdd_airguitare`.`formule_produit` (`formules_id`,`formations_id`) VALUES (1,5);
+
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (4);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (5);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (6);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (7);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (8);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (9);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (10);
+INSERT INTO  `bdd_airguitare`.`modepaiement` (`personne_id`) VALUES (11);
+
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (900,"2019/01/16","Cameron Randolph","Visa",6181287866551430,1);
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (235,"2019/05/30","Gary Gamble","Visa",6598284909036011,2);
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (996,"2018/03/14","Kaitlin Henderson","MasterCard,",9438740785699339,3);
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (885,"2019/08/19","Lysandra Wade","MasterCard,",5392358962446451,4);
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (101,"2018/09/14","Oren Curry","MasterCard",1298225315287709,5);
+INSERT INTO `bdd_airguitare`.`cb` (`cle`,`dateExpiration`,`identite`,`intitule`,`numero`,`modePaiement_id`) VALUES (700,"2017/11/30","Blaze Fuentes","Visa",4903594782575965,6);
+
+INSERT INTO `bdd_airguitare`.`paypal` (`intitule`,`mail`,`modePaiement_id`) VALUES ("Paypal","Sed@pedeet.com",7);
+INSERT INTO `bdd_airguitare`.`paypal` (`intitule`,`mail`,`modePaiement_id`) VALUES ("Paypal","Sed@gmail.com",8);
+
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim magna a tortor. Nunc commodo auctor velit. Aliquam nisl. Nulla eu neque pellentesque massa lobortis ultrices. Vivamus rhoncus. Donec est. Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac","lorem tristique aliquet. Phasellus",3,4);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("venenatis vel, faucibus id, libero. Donec consectetuer mauris id sapien. Cras dolor dolor, tempus non, lacinia at, iaculis quis, pede. Praesent eu dui. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum lorem, sit amet ultricies sem magna nec quam. Curabitur vel lectus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec dignissim","adipiscing non, luctus sit amet,",4,5);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam lobortis quam a felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac, eleifend vitae, erat. Vivamus nisi. Mauris nulla. Integer urna. Vivamus molestie dapibus ligula. Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est. Mauris eu turpis. Nulla aliquet. Proin velit. Sed malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo","non massa non ante",3,6);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("Phasellus nulla. Integer vulputate, risus a ultricies adipiscing, enim mi tempor lorem, eget mollis lectus pede et risus. Quisque libero lacus, varius et, euismod et, commodo at, libero. Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut dolor dapibus gravida. Aliquam tincidunt, nunc ac mattis ornare, lectus ante dictum mi, ac mattis velit justo nec ante. Maecenas mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus.","blandit at, nisi. Cum",6,7);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("sagittis augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus. Nullam scelerisque neque sed sem egestas blandit. Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit","ac, feugiat non, lobortis",6,8);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non lorem vitae odio sagittis semper. Nam tempor diam dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet,","at lacus. Quisque purus sapien, gravida non, sollicitudin a,",6,9);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("dapibus quam quis diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce aliquet magna a neque. Nullam ut nisi a odio semper cursus. Integer mollis. Integer tincidunt aliquam arcu. Aliquam ultrices iaculis odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros.","Morbi accumsan laoreet ipsum. Curabitur consequat, lectus sit amet luctus",4,10);
+INSERT INTO `bdd_airguitare`.`commentaireblog` (`description`,`intitule`,`article_id`,`personne_id`) VALUES ("lorem, luctus ut, pellentesque eget, dictum placerat, augue. Sed molestie. Sed id risus quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris ut quam vel sapien imperdiet ornare. In faucibus. Morbi vehicula. Pellentesque tincidunt tempus risus. Donec egestas. Duis ac arcu. Nunc mauris. Morbi non sapien molestie orci tincidunt adipiscing. Mauris molestie pharetra nibh.","sagittis. Duis gravida. Praesent eu nulla at sem molestie",3,11);
