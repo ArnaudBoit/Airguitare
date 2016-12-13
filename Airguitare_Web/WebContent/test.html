@@ -1,10 +1,11 @@
-<html>
+<html ng-app="businessProduit">
 
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="js/jquery-1.11.0.min.js"></script>
+<script src="src/main/webapp/script/produit.js"></script>
 <!--Custom-Theme-files-->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -29,6 +30,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $("#new-header").load("header.html");
         </script>
     </div>
+    
+    <table ng-controller="BPlist" border="1">
+    <tr ng-repeat="x in produits">
+        <td>{{x.intitule}}</td>
+        <td>{{x.prix}}</td>
+    </tr>
+</table>
+    
+    
+    
+    
+    
+    
+    
 	
 	<div id="new-footer">
         <script>
