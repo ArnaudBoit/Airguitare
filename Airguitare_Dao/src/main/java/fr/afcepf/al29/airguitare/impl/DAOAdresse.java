@@ -13,7 +13,7 @@ public class DAOAdresse implements IDAOAdresse {
 
 	@Override
 	public List<Adresse> getAllAdresseByClient(int idClient) {
-		// TODO Auto-generated method stub
+		//Query
 		return null;
 	}
 

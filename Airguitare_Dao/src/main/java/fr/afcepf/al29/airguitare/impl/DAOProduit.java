@@ -2,6 +2,11 @@ package fr.afcepf.al29.airguitare.impl;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.airguitare.entities.SpecialisationProduit;
@@ -10,12 +15,16 @@ import fr.afcepf.al29.airguitare.entities.TypeProduit;
 /**
  * 
  */
+@Stateless
 public class DAOProduit implements IDAOProduit {
 
+	@PersistenceContext(unitName="Airguitare_Dao")
+	EntityManager em;
+	
 	@Override
-	public List<Produit> getArticlesByType(TypeProduit type) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getArticlesByType(int idType) {
+		Query query = em.createQuery("SELECT p FROM Produit p WHERE p.typeProduit.id = :idType").setParameter("idType", idType);
+		return query.getResultList();
 	}
 
 	@Override

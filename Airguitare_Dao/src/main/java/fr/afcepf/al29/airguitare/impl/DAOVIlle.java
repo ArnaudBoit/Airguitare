@@ -2,7 +2,6 @@ package fr.afcepf.al29.airguitare.impl;
 
 import java.util.List;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,8 +35,8 @@ public class DAOVIlle implements IDAOVille {
 
 	@Override
 	public Ville addVille(Ville ville) {
-		// TODO Auto-generated method stub
-		return null;
+		 em.persist(ville);
+		 return ville;
 	}
 
    
