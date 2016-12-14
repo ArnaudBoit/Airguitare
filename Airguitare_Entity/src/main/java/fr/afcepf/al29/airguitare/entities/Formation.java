@@ -14,7 +14,6 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name="formation")
 @DiscriminatorValue(value="Formation")
 public class Formation extends Produit implements Serializable{
 

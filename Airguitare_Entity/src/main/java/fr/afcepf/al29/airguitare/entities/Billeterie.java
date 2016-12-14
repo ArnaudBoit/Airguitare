@@ -11,7 +11,6 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name="billeterie")
 @DiscriminatorValue(value="Billeterie")
 public class Billeterie extends Produit implements Serializable {
 
