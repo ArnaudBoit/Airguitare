@@ -1,11 +1,11 @@
 package fr.afcepf.al29.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.mail.search.MessageIDTerm;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,6 +18,7 @@ import fr.afcepf.al29.airguitare.api.IDAOMarque;
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
+import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
@@ -27,14 +28,36 @@ import fr.afcepf.al29.ibusiness.IBusinessProduit;
 @Stateless
 @Path("businessProduit")
 public class BusinessProduit implements IBusinessProduit {
-
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    /**
-     * 
-     */
+   
     private IDAOProduit DAOProduit;
+	public BusinessProduit(){
+		try {
+			InitialContext initialContext = new InitialContext();
+			DAOProduit = (IDAOProduit) initialContext.lookup("java:global/Airguitare_Ear-0.0.1-SNAPSHOT/Airguitare_Dao/DAOProduit!fr.afcepf.al29.airguitare.api.IDAOProduit");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@GET
+    @Path("listeProduits")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOProduit> getAllProduits() {   
+    	System.out.println("size : " + DAOProduit.getArticlesByType(2).size());
+    	
+    	List<DTOProduit> liste = new ArrayList<>();
+    	for (Produit produit : DAOProduit.getArticlesByType(2)) {
+			DTOProduit dto = new DTOProduit(produit, true);
+			liste.add(dto);
+		}
+    	
+		return liste;
+    }
+
+    
+    
+    
 
     /**
      * 
@@ -58,27 +81,10 @@ public class BusinessProduit implements IBusinessProduit {
     private IDAOTypeProduit DAOTypeProduit;
     
     
-    @SuppressWarnings("unchecked")
-	@GET
-    @Path("listeProduits")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Produit> getAllProduits() {    	
-    	
-		return entityManager.createQuery("SELECT p FROM Produit").getResultList();
-    	
-    }
 
     
     
-	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
-
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
-	}
-
+    
 
 	public IDAOProduit getDAOProduit() {
 		return DAOProduit;
