@@ -3,7 +3,6 @@ package fr.afcepf.al29.airguitare.api;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
-import fr.afcepf.al29.airguitare.entities.ThemeArticle;
 
 /**
  * 
@@ -41,9 +40,5 @@ public interface IDAOBlog {
      */
     public void removeArticleBlog(ArticleBlog article);
 
-    /**
-     * @return
-     */
-    public List<ThemeArticle> getTheme();
 
 }

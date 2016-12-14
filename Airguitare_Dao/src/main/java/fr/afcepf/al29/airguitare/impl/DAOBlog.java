@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
-import fr.afcepf.al29.airguitare.entities.ThemeArticle;
 
 /**
  * 
@@ -50,10 +49,5 @@ public class DAOBlog implements IDAOBlog {
 		return query.getResultList();
 	}
 
-	@Override
-	public List<ThemeArticle> getTheme() {
-		Query query = em.createQuery("SELECT t FROM ThemeArticle t", ThemeArticle.class);
-		return query.getResultList();
-	}
-
+	
 }

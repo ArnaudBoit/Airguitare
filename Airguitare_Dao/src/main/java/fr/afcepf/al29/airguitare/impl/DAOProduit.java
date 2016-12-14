@@ -22,15 +22,15 @@ public class DAOProduit implements IDAOProduit {
 	EntityManager em;
 	
 	@Override
-	public List<Produit> getArticlesByType(int idType) {
-		Query query = em.createQuery("SELECT p FROM Produit p WHERE p.specialisationProduit.id = :idType").setParameter("idType", idType);
+	public List<Produit> getArticlesByType(String typeProduit) {
+		Query query = em.createQuery("FROM Produit WHERE specialisationProduit.typeProduit.intitule = :typeProduit").setParameter("typeProduit", typeProduit);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Produit> getAllArticleBySpecialisation(SpecialisationProduit specialisation) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Produit> getAllArticleBySpecialisation(String specialisation) {
+		Query query = em.createQuery("FROM Produit  WHERE specialisationProduit.intitule = :specialisation").setParameter("specialisation", specialisation);
+		return query.getResultList();
 	}
 
 	@Override
@@ -63,6 +63,10 @@ public class DAOProduit implements IDAOProduit {
 		return null;
 	}
 
-   
+	@Override
+	public List<Produit> getProduitByPrix(double prix) {
+		Query query = em.createQuery("FROM Produit WHERE prix < :prix").setParameter("prix", prix);
+		return query.getResultList();
+	}
 
 }

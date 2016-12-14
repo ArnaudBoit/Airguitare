@@ -70,16 +70,6 @@ public class BusinessProduit implements IBusinessProduit {
 
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}

@@ -91,6 +91,52 @@ public class Paypal implements Serializable{
 	public void setModePaiement(ModePaiement modePaiement) {
 		this.modePaiement = modePaiement;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((intitule == null) ? 0 : intitule.hashCode());
+		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+		result = prime * result + ((modePaiement == null) ? 0 : modePaiement.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Paypal other = (Paypal) obj;
+		if (id != other.id)
+			return false;
+		if (intitule == null) {
+			if (other.intitule != null)
+				return false;
+		} else if (!intitule.equals(other.intitule))
+			return false;
+		if (mail == null) {
+			if (other.mail != null)
+				return false;
+		} else if (!mail.equals(other.mail))
+			return false;
+		if (modePaiement == null) {
+			if (other.modePaiement != null)
+				return false;
+		} else if (!modePaiement.equals(other.modePaiement))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Paypal [id=" + id + ", intitule=" + intitule + ", mail=" + mail + ", modePaiement=" + modePaiement
+				+ "]";
+	}
     
     
 

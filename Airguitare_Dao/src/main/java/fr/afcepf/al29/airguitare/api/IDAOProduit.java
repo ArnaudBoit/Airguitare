@@ -18,13 +18,13 @@ public interface IDAOProduit {
      * @param TypeProduit type 
      * @return
      */
-    public List<Produit> getArticlesByType(int idType);
+    public List<Produit> getArticlesByType(String typeProduit);
 
     /**
      * @param SpecialisationProduit 
      * @return
      */
-    public List<Produit> getAllArticleBySpecialisation(SpecialisationProduit specialisation);
+    public List<Produit> getAllArticleBySpecialisation(String specialisationProduit);
 
     /**
      * @param Produit produit 
@@ -56,5 +56,7 @@ public interface IDAOProduit {
      * @return
      */
     public Produit getArticleById(int idProduit);
+
+	List<Produit> getProduitByPrix(double prix);
 
 }

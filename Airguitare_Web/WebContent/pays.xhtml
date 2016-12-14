@@ -6,6 +6,7 @@
 
 <h:head></h:head> 
 <body> 
+<h:form>
 <h:dataTable value="#{ville.pays}" var="p">
 <h:column>
 <h:outputText value="#{p.nom}" />
@@ -13,5 +14,11 @@
 	
 
 </h:dataTable>
+<h:inputText value="#{ville.login}" />
+<h:inputText value="#{ville.password}" />
+<h:commandButton action="#{ville.connection()}" value="connect" />
+<h:outputText value="#{ville.pers.nom}" />
+
+</h:form>
 </body> 
 </html>
