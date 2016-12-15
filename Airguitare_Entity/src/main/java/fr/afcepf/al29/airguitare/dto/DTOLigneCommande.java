@@ -7,20 +7,23 @@ public class DTOLigneCommande {
 
 	private int quantite;
 
-	private DTOProduit produit;
+	private DTOProduit produit = new DTOProduit();
 
-	private DTOCommande commande;
+	private DTOCommande commande = new DTOCommande();
 
 	public DTOLigneCommande() {
 	}
 	public DTOLigneCommande(LigneCommande ligneCommande, boolean dependencies){
-		
+
 		this.setId(ligneCommande.getId());
 		this.setQuantite(ligneCommande.getQuantite());
 		if(dependencies){
-		this.setCommande(new DTOCommande(ligneCommande.getCommande(),false));
-		this.setProduit(new DTOProduit(ligneCommande.getProduit(), true) );
-		
+			if(ligneCommande.getCommande() != null){
+				this.setCommande(new DTOCommande(ligneCommande.getCommande(),false));
+			}
+			if(ligneCommande.getProduit() != null){
+				this.setProduit(new DTOProduit(ligneCommande.getProduit(), false) );
+			}
 		}
 	}
 	public int getId() {

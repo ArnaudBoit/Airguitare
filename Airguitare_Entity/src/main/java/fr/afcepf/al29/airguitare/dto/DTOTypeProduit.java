@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.SpecialisationProduit;
@@ -11,11 +12,11 @@ public class DTOTypeProduit {
 
 	private String intitule;
 
-
-	private List<DTOSpecialisationProduit> specialisationProduits;
+	private List<DTOSpecialisationProduit> specialisationProduits  = new ArrayList<>();
 
 	public DTOTypeProduit() {
 	}
+	
 	public DTOTypeProduit(TypeProduit typeProduit, boolean dependencies){
 
 		this.setId(typeProduit.getId());

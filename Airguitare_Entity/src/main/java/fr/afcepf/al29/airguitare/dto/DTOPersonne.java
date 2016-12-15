@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,41 +12,41 @@ import fr.afcepf.al29.airguitare.entities.ModePaiement;
 import fr.afcepf.al29.airguitare.entities.Personne;
 
 public class DTOPersonne{
-	 private int id;
+	private int id;
 
-	   
-	    private String nom;
 
-	    private String prenom;
+	private String nom;
 
-	    private Date dateNaissance;
+	private String prenom;
 
-	    private String adresseMail;
+	private Date dateNaissance;
 
-	    private String telephone;
+	private String adresseMail;
 
-	    private String password;
+	private String telephone;
 
-	    private String statut;
+	private String password;
 
-	    private List<DTOAvisClient> avisClients;
+	private String statut;
 
-	    private List<DTOAdresse> adresses;
+	private List<DTOAvisClient> avisClients = new ArrayList<>();
 
-	    private List<DTOCommande> commandes;
+	private List<DTOAdresse> adresses = new ArrayList<>();
 
-	    private List<DTOModePaiement> modePaiements;
+	private List<DTOCommande> commandes = new ArrayList<>();
 
-	    private List<DTOCommentaireBlog> commentaires;
-	    
-	   
-	    public DTOPersonne() {
-	    }
-	
+	private List<DTOModePaiement> modePaiements = new ArrayList<>();
+
+	private List<DTOCommentaireBlog> commentaires = new ArrayList<>();
+
+
+	public DTOPersonne() {
+	}
+
 	public DTOPersonne(Personne personne, boolean dependencies){
 		this.setAdresseMail(personne.getAdresseMail());
-		
-		
+
+
 		this.setDateNaissance(personne.getDateNaissance());
 		this.setId(personne.getId());
 		this.setNom(personne.getNom());
@@ -53,31 +54,31 @@ public class DTOPersonne{
 		this.setPrenom(personne.getPrenom());
 		this.setStatut(personne.getStatut());
 		this.setTelephone(personne.getTelephone());
-		
+
 		if(dependencies){
-		for (Adresse adresse : personne.getAdresses()) {
-			this.getAdresses().add(new DTOAdresse(adresse,false));
-		}
-		for (ModePaiement mdepaiement : personne.getModePaiements()) {
-			this.getModePaiements().add(new DTOModePaiement(mdepaiement,false));
-		}
-		
-		for (CommentaireBlog com : personne.getCommentaires()) {
-			this.getCommentaires().add(new DTOCommentaireBlog(com, false));
-		}
-		
-		for (Commande com : personne.getCommandes()) {
-			this.getCommandes().add(new DTOCommande(com,false));
-		}
-		
-		for (AvisClient avis : personne.getAvisClients()) {
-			this.getAvisClients().add(new DTOAvisClient(avis,false));
-		}
-		
-		for (Commande commande : personne.getCommandes()) {
-			this.getCommandes().add(new DTOCommande(commande,false));
-		}
-		
+			for (Adresse adresse : personne.getAdresses()) {
+				this.getAdresses().add(new DTOAdresse(adresse,false));
+			}
+			for (ModePaiement mdepaiement : personne.getModePaiements()) {
+				this.getModePaiements().add(new DTOModePaiement(mdepaiement,false));
+			}
+
+			for (CommentaireBlog com : personne.getCommentaires()) {
+				this.getCommentaires().add(new DTOCommentaireBlog(com, false));
+			}
+
+			for (Commande com : personne.getCommandes()) {
+				this.getCommandes().add(new DTOCommande(com,false));
+			}
+
+			for (AvisClient avis : personne.getAvisClients()) {
+				this.getAvisClients().add(new DTOAvisClient(avis,false));
+			}
+
+			for (Commande commande : personne.getCommandes()) {
+				this.getCommandes().add(new DTOCommande(commande,false));
+			}
+
 		}
 	}
 
@@ -184,6 +185,6 @@ public class DTOPersonne{
 	public void setCommentaires(List<DTOCommentaireBlog> commentaires) {
 		this.commentaires = commentaires;
 	}
-	
-	
+
+
 }

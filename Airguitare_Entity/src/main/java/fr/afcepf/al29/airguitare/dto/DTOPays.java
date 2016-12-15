@@ -1,31 +1,30 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.Pays;
 import fr.afcepf.al29.airguitare.entities.Ville;
 
 public class DTOPays {
-	
+
 	private int id;
 
-    private String nom;
+	private String nom;
 
-   
-    private List<DTOVille> villes;
-    
-    public DTOPays() {
-    }
-	
-	
+	private List<DTOVille> villes = new ArrayList<>();
+
+	public DTOPays() {
+	}
+
 	public DTOPays(Pays pays, boolean dependencies){
 		this.setId(pays.getId());
 		this.setNom(pays.getNom());
-		
+
 		if(dependencies){
-		for (Ville ville : pays.getVilles()) {
-			this.getVilles().add(new DTOVille(ville,false));
-		}
+			for (Ville ville : pays.getVilles()) {
+				this.getVilles().add(new DTOVille(ville,false));
+			}
 		}
 	}
 
@@ -59,6 +58,6 @@ public class DTOPays {
 		this.villes = villes;
 	}
 
-	
-	
+
+
 }

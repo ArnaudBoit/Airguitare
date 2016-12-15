@@ -14,7 +14,7 @@ public class DTOMarque {
 
 	private String logo;
 
-	private List<DTOProduit> produits;
+	private List<DTOProduit> produits= new ArrayList<>();;
 
 	public DTOMarque() {
 
@@ -25,7 +25,7 @@ public class DTOMarque {
 		this.setIntitule(marque.getIntitule());
 		this.setLogo(marque.getLogo());
 
-		List<DTOProduit> produits = new ArrayList<>();
+
 		if (dependencies) {
 			for (Produit produit : marque.getProduits()) {
 				DTOProduit dto = new DTOProduit(produit,true);
@@ -69,17 +69,4 @@ public class DTOMarque {
 
 }
 
-/*
- * public class DTOMarque extends Marque{
- * 
- * private static final long serialVersionUID = 1L;
- * 
- * public DTOMarque(Marque marque){ this.setId(marque.getId());
- * this.setIntitule(marque.getIntitule()); this.setLogo(marque.getLogo());
- * 
- * List<Produit> produits = new ArrayList<>(); for (Produit produit :
- * marque.getProduits()) { DTOProduit dto = new DTOProduit(produit);
- * produits.add(dto); } this.setProduits(produits); }
- * 
- * }
- */
+

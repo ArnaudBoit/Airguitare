@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.Adresse;
@@ -8,23 +9,23 @@ import fr.afcepf.al29.airguitare.entities.Ville;
 
 public class DTOVille {
 
-	 private int id;
+	private int id;
 
-	    
-	    private String nom;
 
-	    private String codePostal;
+	private String nom;
 
-	    private Pays pays;
-	   
-	    private List<DTOAdresse> adresses;
-	    
-	    public DTOVille() {
-	    }
+	private String codePostal;
+
+	private Pays pays;
+
+	private List<DTOAdresse> adresses= new ArrayList<>();
+
+	public DTOVille() {
+	}
 
 	public DTOVille(Ville ville, boolean dependencies){
 
-		
+
 		this.setCodePostal(ville.getCodePostal());
 		this.setId(ville.getId());
 		this.setNom(ville.getNom());
@@ -33,9 +34,9 @@ public class DTOVille {
 			for (Adresse adresse : ville.getAdresses()) {
 				this.getAdresses().add(new DTOAdresse(adresse,false));
 			}
-			
+
 		}
-		
+
 	}
 
 	public int getId() {
@@ -77,5 +78,5 @@ public class DTOVille {
 	public void setAdresses(List<DTOAdresse> adresses) {
 		this.adresses = adresses;
 	}
-	
+
 }

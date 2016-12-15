@@ -1,170 +1,177 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.AvisClient;
 import fr.afcepf.al29.airguitare.entities.LigneCommande;
 import fr.afcepf.al29.airguitare.entities.Produit;
 
-public class DTOProduit{
-	
-	 private int id;
+public class DTOProduit {
 
-	    private String intitule;
+	private int id;
 
-	    private String description;
+	private String intitule;
 
-	    private Double prix;
+	private String description;
 
-	    private String photo;
+	private Double prix;
 
-	    private String reference;
+	private String photo;
 
-	    private Integer stock;
+	private String reference;
 
-	    private Integer seuil;
+	private Integer stock;
 
-	    private Integer nbVues;
+	private Integer seuil;
 
-	    private DTOSpecialisationProduit specialisationProduit;
+	private Integer nbVues;
 
-	    private DTOMarque marque;
+	private DTOSpecialisationProduit specialisationProduit = new DTOSpecialisationProduit();
 
-	    private List<DTOLigneCommande> ligneCommandes;
+	private DTOMarque marque = new DTOMarque();
 
-	    private List<DTOAvisClient> avisClients;
-	    
-	    public DTOProduit() {
-	    }
-	    
-		public DTOProduit(Produit produit, boolean dependencies){
-			
-			this.setId(produit.getId());
-			this.setDescription(produit.getDescription());
-			this.setReference(produit.getReference());
-			this.setIntitule(produit.getIntitule());
-			this.setNbVues(produit.getNbVues());
-			this.setPhoto(produit.getPhoto());
-			this.setSeuil(produit.getSeuil());
-			this.setStock(produit.getStock());
-			this.setPrix(produit.getPrix());
+	private List<DTOLigneCommande> ligneCommandes = new ArrayList<>();
 
-						
-			if (dependencies) {
-			this.setMarque(new DTOMarque(produit.getMarque(),false));
-			this.setSpecialisationProduit(new DTOSpecialisationProduit(produit.getSpecialisationProduit(), false));
+	private List<DTOAvisClient> avisClients = new ArrayList<>();
+
+	public DTOProduit() {
+	}
+
+	public DTOProduit(Produit produit, boolean dependencies) {
+
+		this.setId(produit.getId());
+		this.setDescription(produit.getDescription());
+		this.setReference(produit.getReference());
+		this.setIntitule(produit.getIntitule());
+		this.setNbVues(produit.getNbVues());
+		this.setPhoto(produit.getPhoto());
+		this.setSeuil(produit.getSeuil());
+		this.setStock(produit.getStock());
+		this.setPrix(produit.getPrix());
+
+		if (dependencies) {
+			if (produit.getMarque() != null) {
+				this.setMarque(new DTOMarque(produit.getMarque(), false));
+			}
+
+			if(produit.getSpecialisationProduit() != null){
+				this.setSpecialisationProduit(new DTOSpecialisationProduit(produit.getSpecialisationProduit(), false));
+			}
+
 			for (AvisClient avisClient : produit.getAvisClients()) {
-				this.getAvisClients().add(new DTOAvisClient(avisClient,false));
+				this.getAvisClients().add(new DTOAvisClient(avisClient, false));
 			}
+
 			for (LigneCommande ligneCommande : produit.getLigneCommandes()) {
-				this.getLigneCommandes().add(new DTOLigneCommande(ligneCommande,false));
+				this.getLigneCommandes().add(new DTOLigneCommande(ligneCommande, false));
 			}
-			
-		}
-			}
-		
-		public int getId() {
-			return id;
-		}
 
-		public void setId(int id) {
-			this.id = id;
 		}
+	}
 
-		public String getIntitule() {
-			return intitule;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public void setIntitule(String intitule) {
-			this.intitule = intitule;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public String getDescription() {
-			return description;
-		}
+	public String getIntitule() {
+		return intitule;
+	}
 
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
 
-		public Double getPrix() {
-			return prix;
-		}
+	public String getDescription() {
+		return description;
+	}
 
-		public void setPrix(Double prix) {
-			this.prix = prix;
-		}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-		public String getPhoto() {
-			return photo;
-		}
+	public Double getPrix() {
+		return prix;
+	}
 
-		public void setPhoto(String photo) {
-			this.photo = photo;
-		}
+	public void setPrix(Double prix) {
+		this.prix = prix;
+	}
 
-		public String getReference() {
-			return reference;
-		}
+	public String getPhoto() {
+		return photo;
+	}
 
-		public void setReference(String reference) {
-			this.reference = reference;
-		}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
-		public Integer getStock() {
-			return stock;
-		}
+	public String getReference() {
+		return reference;
+	}
 
-		public void setStock(Integer stock) {
-			this.stock = stock;
-		}
+	public void setReference(String reference) {
+		this.reference = reference;
+	}
 
-		public Integer getSeuil() {
-			return seuil;
-		}
+	public Integer getStock() {
+		return stock;
+	}
 
-		public void setSeuil(Integer seuil) {
-			this.seuil = seuil;
-		}
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
 
-		public Integer getNbVues() {
-			return nbVues;
-		}
+	public Integer getSeuil() {
+		return seuil;
+	}
 
-		public void setNbVues(Integer nbVues) {
-			this.nbVues = nbVues;
-		}
+	public void setSeuil(Integer seuil) {
+		this.seuil = seuil;
+	}
 
-		public DTOMarque getMarque() {
-			return marque;
-		}
+	public Integer getNbVues() {
+		return nbVues;
+	}
 
-		public void setMarque(DTOMarque marque) {
-			this.marque = marque;
-		}
+	public void setNbVues(Integer nbVues) {
+		this.nbVues = nbVues;
+	}
 
-		public DTOSpecialisationProduit getSpecialisationProduit() {
-			return specialisationProduit;
-		}
+	public DTOMarque getMarque() {
+		return marque;
+	}
 
-		public void setSpecialisationProduit(DTOSpecialisationProduit dtoSpecialisationProduit) {
-			this.specialisationProduit = dtoSpecialisationProduit;
-		}
+	public void setMarque(DTOMarque marque) {
+		this.marque = marque;
+	}
 
-		public List<DTOLigneCommande> getLigneCommandes() {
-			return ligneCommandes;
-		}
+	public DTOSpecialisationProduit getSpecialisationProduit() {
+		return specialisationProduit;
+	}
 
-		public void setLigneCommandes(List<DTOLigneCommande> ligneCommandes) {
-			this.ligneCommandes = ligneCommandes;
-		}
+	public void setSpecialisationProduit(DTOSpecialisationProduit dtoSpecialisationProduit) {
+		this.specialisationProduit = dtoSpecialisationProduit;
+	}
 
-		public List<DTOAvisClient> getAvisClients() {
-			return avisClients;
-		}
+	public List<DTOLigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
 
-		public void setAvisClients(List<DTOAvisClient> avisClients) {
-			this.avisClients = avisClients;
-		}
+	public void setLigneCommandes(List<DTOLigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+
+	public List<DTOAvisClient> getAvisClients() {
+		return avisClients;
+	}
+
+	public void setAvisClients(List<DTOAvisClient> avisClients) {
+		this.avisClients = avisClients;
+	}
 
 }

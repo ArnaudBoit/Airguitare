@@ -9,9 +9,8 @@ public class DTOPaypal {
 	    private String intitule;
 
 	    private String mail;
-
 	    
-	    private DTOModePaiement modePaiement;
+	    private DTOModePaiement modePaiement = new DTOModePaiement();
 	   
 	    public DTOPaypal() {
 	    }

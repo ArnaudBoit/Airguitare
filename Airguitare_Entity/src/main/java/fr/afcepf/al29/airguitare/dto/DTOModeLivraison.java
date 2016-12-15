@@ -5,24 +5,26 @@ import fr.afcepf.al29.airguitare.entities.ModeLivraison;
 public class DTOModeLivraison {
 	private int id;
 
-    private String nom;
+	private String nom;
 
-    private Float tarif;
+	private Float tarif;
 
-    private int delai;
+	private int delai;
 
-    private DTOCommande commande;
-    
-    public DTOModeLivraison() {
-    }
+	private DTOCommande commande= new DTOCommande();
+
+	public DTOModeLivraison() {
+	}
 	public DTOModeLivraison(ModeLivraison modeLivraison, boolean dependencies){
-		
+
 		this.setDelai(modeLivraison.getDelai());
 		this.setId(modeLivraison.getId());
 		this.setNom(modeLivraison.getNom());
 		this.setTarif(modeLivraison.getTarif());
 		if(dependencies){
-		this.setCommande(new DTOCommande(modeLivraison.getCommande(),false) );
+			if(modeLivraison.getCommande() != null){
+				this.setCommande(new DTOCommande(modeLivraison.getCommande(),false) );
+			}
 		}
 	}
 	public int getId() {
@@ -55,7 +57,7 @@ public class DTOModeLivraison {
 	public void setCommande(DTOCommande commande) {
 		this.commande = commande;
 	}
-	
-	
-	
+
+
+
 }

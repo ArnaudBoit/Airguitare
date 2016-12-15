@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.CB;
@@ -9,20 +10,20 @@ import fr.afcepf.al29.airguitare.entities.ModePaiement;
 public class DTOModePaiement {
 	private int id;
 
-    private DTOPersonne personne;
+	private DTOPersonne personne = new DTOPersonne();
 
-    private List<DTOCommande> commandes;
+	private List<DTOCommande> commandes = new ArrayList<>();
 
-    private DTOPaypal paypal;
+	private DTOPaypal paypal = new DTOPaypal();
 
-    private List<DTOCB> cbs;
-    
-    public DTOModePaiement() {
-    }
+	private List<DTOCB> cbs = new ArrayList<>();
+
+	public DTOModePaiement() {
+	}
 	public DTOModePaiement(ModePaiement modePaiement, boolean dependencies){
-		
+
 		this.setId(modePaiement.getId());
-		
+
 		if(dependencies){
 			for (CB cb : modePaiement.getCbs()) {
 				this.getCbs().add(new DTOCB(cb, false));
@@ -30,12 +31,18 @@ public class DTOModePaiement {
 			for (Commande com : modePaiement.getCommandes()) {
 				this.getCommandes().add(new DTOCommande(com, false));
 			}
-			this.setPaypal(new DTOPaypal(modePaiement.getPaypal(),false));
-		this.setPersonne(new DTOPersonne(modePaiement.getPersonne(), false) );
+
+			if(modePaiement.getPaypal() != null){
+				this.setPaypal(new DTOPaypal(modePaiement.getPaypal(),false));
+			}
+
+			if(modePaiement.getPersonne() != null){
+				this.setPersonne(new DTOPersonne(modePaiement.getPersonne(), false) );
+			}
 		}
-		
+
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -66,7 +73,7 @@ public class DTOModePaiement {
 	public void setCbs(List<DTOCB> cbs) {
 		this.cbs = cbs;
 	}
-	
-	
-	
+
+
+
 }
