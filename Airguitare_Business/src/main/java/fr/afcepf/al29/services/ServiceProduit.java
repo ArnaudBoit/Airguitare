@@ -43,8 +43,7 @@ public class ServiceProduit {
     @Path("listeProduits")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getAllProduits() {
-		//return BUProduit.getAllProduits();
-		return null;
+		return BUProduit.getAllProduits();
     }
 
     

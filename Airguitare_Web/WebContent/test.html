@@ -5,7 +5,6 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="js/jquery-1.11.0.min.js"></script>
-<script src="src/main/webapp/script/produit.js"></script>
 <!--Custom-Theme-files-->
 <!--theme-style-->
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
@@ -21,35 +20,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>
-<script src="js/jquery-3.1.1.js"></script>		
+<script src="js/jquery.easydropdown.js"></script>	
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+<script src="js/angular.min.js"></script>
+<script src="script/produit.js"></script>	
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">	
 </head>
 <body> 
-    <div id="new-header">
-        <script>
-            $("#new-header").load("header.html");
-        </script>
-    </div>
-    
-    <table ng-controller="BPlist" border="1">
-    <tr ng-repeat="x in produits">
-        <td>{{x.intitule}}</td>
-        <td>{{x.prix}}</td>
-    </tr>
-</table>
-    
-    
-    
-    
-    
+
+<div ng-controller="BPlist" ng-init="getListe()">
+
+<div class="product-one" style="background-color:grey">
+
+      <div  ng-repeat="x in liste">
+		<div class="col-md-4 product-left p-left"  style="background-color:yellow">
+			<div class="product-main simpleCart_shelfItem">
+				<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+				<div class="product-bottom">
+					<h3>{{x.intitule}}</h3>
+					<p>{{x.marque}}</p>
+					<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
+				</div>
+				<div class="srch srch1">
+					<span>{{x.specialisationProduit.id}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
     
     
 	
-	<div id="new-footer">
-        <script>
-            $("#new-footer").load("footer.html");
-        </script>
-    </div>
+</div> 
+ 
+    
+
 </body>
 
 </html>
