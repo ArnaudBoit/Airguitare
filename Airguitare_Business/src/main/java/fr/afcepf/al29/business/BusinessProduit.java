@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Path;
 
 import fr.afcepf.al29.airguitare.api.IDAOAvisClient;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
@@ -26,18 +25,28 @@ public class BusinessProduit implements IBusinessProduit {
    
 	@EJB
     private IDAOProduit DAOProduit;
+	public BusinessProduit(){
+	/*	try {
+			InitialContext initialContext = new InitialContext();
+			DAOProduit = (IDAOProduit) initialContext.lookup("java:global/Airguitare_Ear-0.0.1-SNAPSHOT/Airguitare_Dao/DAOProduit!fr.afcepf.al29.airguitare.api.IDAOProduit");
+		} catch (NamingException e) {
+			e.printStackTrace();
+		}
+	 */
+	}
 	
-    public List<DTOProduit> getAllProduits() { 
+	
+    public List<DTOProduit> getAllProduits() {   
+    	System.out.println("size : " + DAOProduit.getArticlesByType("guitare").size());
+    	
     	List<DTOProduit> liste = new ArrayList<>();
     	for (Produit produit : DAOProduit.getArticlesByType("guitare")) {
-			DTOProduit dto = new DTOProduit(produit, true);
+			DTOProduit dto = new DTOProduit(produit, false);
 			liste.add(dto);
 		}
-    	System.out.println("taille de la liste des produits" + liste.size());
+    	
 		return liste;
     }
-	
-	
 
     
     

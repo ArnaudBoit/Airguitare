@@ -44,7 +44,6 @@ public class ServiceProduit {
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getAllProduits() {
 		return BUProduit.getAllProduits();
-		//return null;
     }
 
     
