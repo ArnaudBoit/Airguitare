@@ -73,28 +73,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								</div>
 							</div>
 						</section>
-						<section  class="sky-form">
+						<section  class="sky-form"  ng-controller="BPlist" ng-init="getlisteAllMarque()">
 							<h4>Marques</h4>
 							<div class="row1 row2 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-								</div>
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>									
-								</div>
+									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Toutes les marques</label>
+							</div>
+							<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
+								
+									<label class="checkbox" >
+										<input type="checkbox" name="checkbox">
+										<i></i>{{m.intitule}}
+									</label>
+																	
 							</div>
 						</section>
+						</div>
 						<section class="sky-form">
 							<h4>Prix</h4>
 								<div class="row1 row2 scroll-pane">
@@ -106,16 +100,34 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<label class="radio"><input type="radio" name="radio"><i></i>De 250€ à 299€</label>
 									</div>
 								</div>						
-						
+						</section>
 						
 					</div>
 				</div>
 				
 					<div class="col-md-9 prdt-right">
 					
-					<div class="product-one"  ng-controller="BPlist" ng-init="getListe()">					
+					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteAllProduit()">					
 					      
-							<div class="col-md-4 product-left p-left" ng-repeat="x in liste">
+							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
+								<div class="product-main simpleCart_shelfItem" >
+									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+									<div class="product-bottom">
+										<h3>{{x.intitule}}</h3>
+										<p>{{x.marque.intitule}}</p>
+										<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
+									</div>
+									<div class="srch srch1">
+										<span>{{x.specialisationProduit.id}}</span>
+									</div>
+								</div>
+							</div>
+						
+					</div>	
+					
+					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteProduitParSpec()">					
+					      
+							<div class="col-md-4 product-left p-left" ng-repeat="x in listeProduitParSpec">
 								<div class="product-main simpleCart_shelfItem" >
 									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
 									<div class="product-bottom">
