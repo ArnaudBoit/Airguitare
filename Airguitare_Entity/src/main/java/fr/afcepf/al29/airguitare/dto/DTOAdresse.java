@@ -1,9 +1,11 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.Adresse;
 import fr.afcepf.al29.airguitare.entities.Personne;
+import fr.afcepf.al29.airguitare.entities.Ville;
 
 public class DTOAdresse {
 	
@@ -15,7 +17,7 @@ public class DTOAdresse {
 
     private String complement;
 
-    private List<DTOPersonne> personnes;
+    private List<DTOPersonne> personnes = new ArrayList<>();
 
     private DTOVille ville;
    
@@ -30,7 +32,9 @@ public class DTOAdresse {
 		this.setRue(adresse.getRue());
 		this.setComplement(adresse.getComplement());
 		if(dependencies){
+			if (adresse.getVille()!=null){
 		this.setVille(new DTOVille(adresse.getVille(),false));
+			}
 		for (Personne personne : adresse.getPersonnes()) {
 			this.getPersonnes().add(new DTOPersonne(personne,false));
 		}
