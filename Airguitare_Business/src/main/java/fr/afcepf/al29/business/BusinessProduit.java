@@ -3,13 +3,8 @@ package fr.afcepf.al29.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 import fr.afcepf.al29.airguitare.api.IDAOAvisClient;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
@@ -26,23 +21,21 @@ import fr.afcepf.al29.ibusiness.IBusinessProduit;
  * 
  */
 @Stateless
-@Path("businessProduit")
 public class BusinessProduit implements IBusinessProduit {
    
+	@EJB
     private IDAOProduit DAOProduit;
 	public BusinessProduit(){
-		try {
+	/*	try {
 			InitialContext initialContext = new InitialContext();
 			DAOProduit = (IDAOProduit) initialContext.lookup("java:global/Airguitare_Ear-0.0.1-SNAPSHOT/Airguitare_Dao/DAOProduit!fr.afcepf.al29.airguitare.api.IDAOProduit");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		
+	 */
 	}
 	
-	@GET
-    @Path("listeProduits")
-    @Produces(MediaType.APPLICATION_JSON)
+	
     public List<DTOProduit> getAllProduits() {   
     	System.out.println("size : " + DAOProduit.getArticlesByType("guitare").size());
     	
