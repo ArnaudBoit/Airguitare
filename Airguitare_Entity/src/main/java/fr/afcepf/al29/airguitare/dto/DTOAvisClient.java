@@ -22,8 +22,13 @@ public class DTOAvisClient {
 		this.setNote(avisClient.getNote());
 		this.setCommentaire(avisClient.getCommentaire());
 		if(dependencies){
-		this.setPersonne(new DTOPersonne(avisClient.getPersonne(),false));
-		this.setProduit(new DTOProduit(avisClient.getProduit(),false));
+			if(avisClient.getPersonne() != null){
+				this.setPersonne(new DTOPersonne(avisClient.getPersonne(),false));
+			}
+			if(avisClient.getProduit() != null) {
+				this.setProduit(new DTOProduit(avisClient.getProduit(),false));
+			}
+		
 		
 		}
 	}
