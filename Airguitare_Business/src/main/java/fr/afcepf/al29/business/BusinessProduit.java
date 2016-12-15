@@ -44,11 +44,11 @@ public class BusinessProduit implements IBusinessProduit {
     @Path("listeProduits")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getAllProduits() {   
-    	System.out.println("size : " + DAOProduit.getArticlesByType(2).size());
+    	System.out.println("size : " + DAOProduit.getArticlesByType("guitare").size());
     	
     	List<DTOProduit> liste = new ArrayList<>();
-    	for (Produit produit : DAOProduit.getArticlesByType(2)) {
-			DTOProduit dto = new DTOProduit(produit, true);
+    	for (Produit produit : DAOProduit.getArticlesByType("guitare")) {
+			DTOProduit dto = new DTOProduit(produit, false);
 			liste.add(dto);
 		}
     	
