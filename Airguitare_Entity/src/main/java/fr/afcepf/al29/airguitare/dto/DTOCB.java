@@ -17,7 +17,7 @@ public class DTOCB {
 
 	private int cle;
 
-	private DTOModePaiement modePaiement;
+	private DTOModePaiement modePaiement = new DTOModePaiement();
 
 	public DTOCB() {
 	}
@@ -31,7 +31,9 @@ public class DTOCB {
 		this.setDateExpiration(cb.getDateExpiration());		
 		this.setNumero(cb.getNumero());
 		if(dependencies){
+			if(cb.getModePaiement() != null){
 			this.setModePaiement(new DTOModePaiement(cb.getModePaiement(),false));
+			}
 		}
 	}
 

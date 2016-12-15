@@ -9,9 +9,9 @@ public class DTOCommentaireBlog {
 
 	    private String description;
 
-	    private DTOPersonne personne;
+	    private DTOPersonne personne = new DTOPersonne();
 
-	    private DTOArticleBlog article;
+	    private DTOArticleBlog article = new DTOArticleBlog();
 	    
 	    public DTOCommentaireBlog() {
 	    }
@@ -23,8 +23,12 @@ public class DTOCommentaireBlog {
 		this.setId(commentaireBlog.getId());
 		this.setIntitule(commentaireBlog.getIntitule());
 		if(dependencies){
-		this.setPersonne(new DTOPersonne(commentaireBlog.getPersonne(),false));
+		if(commentaireBlog.getPersonne()!= null){
+			this.setPersonne(new DTOPersonne(commentaireBlog.getPersonne(),false));
+		}
+		if(commentaireBlog.getArticle()!= null){
 		this.setArticle(new DTOArticleBlog( commentaireBlog.getArticle(),false));
+		}
 		}
 	}
 

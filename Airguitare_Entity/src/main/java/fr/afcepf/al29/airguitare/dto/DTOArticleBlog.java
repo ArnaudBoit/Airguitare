@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,9 +18,9 @@ public class DTOArticleBlog {
 
 	private Date dateAjout;
 
-	private List<DTOThemeArticle> themes;
+	private List<DTOThemeArticle> themes = new ArrayList<>();
 
-	private List<DTOCommentaireBlog> commentaires;
+	private List<DTOCommentaireBlog> commentaires = new ArrayList<>();
 
 
 	public DTOArticleBlog() {

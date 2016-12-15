@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class DTOFormation extends DTOProduit{
 
 	private Date dateDebut;
 
-	private List<DTOFormule> formules ;
+	private List<DTOFormule> formules = new ArrayList<>();
 
 	public DTOFormation(Formation formation, boolean dependencies){
 		this.setId(formation.getId());
@@ -35,8 +36,12 @@ public class DTOFormation extends DTOProduit{
 				this.getFormules().add(new DTOFormule(formule,false));
 			}
 
-			this.setMarque(new DTOMarque(formation.getMarque(),false));
-			this.setSpecialisationProduit(new DTOSpecialisationProduit(formation.getSpecialisationProduit(), false));
+			if(formation.getMarque() != null){
+				this.setMarque(new DTOMarque(formation.getMarque(),false));
+			}
+			if(formation.getSpecialisationProduit()!=null){
+				this.setSpecialisationProduit(new DTOSpecialisationProduit(formation.getSpecialisationProduit(), false));
+			}
 			for (AvisClient avisClient : formation.getAvisClients()) {
 				this.getAvisClients().add(new DTOAvisClient(avisClient,false));
 			}

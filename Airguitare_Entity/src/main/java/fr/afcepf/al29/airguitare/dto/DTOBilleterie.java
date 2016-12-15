@@ -32,8 +32,12 @@ public class DTOBilleterie extends DTOProduit {
 		this.setDate(billeterie.getDate());
 		this.setRefBilleterie(billeterie.getRefBilleterie());
 		if (dependencies) {
+			if(billeterie.getMarque()!= null){
 			this.setMarque(new DTOMarque(billeterie.getMarque(),false));
+			}
+			if(billeterie.getSpecialisationProduit()!= null){
 			this.setSpecialisationProduit(new DTOSpecialisationProduit(billeterie.getSpecialisationProduit(), false));
+			}
 			for (AvisClient avisClient : billeterie.getAvisClients()) {
 				this.getAvisClients().add(new DTOAvisClient(avisClient,false));
 			}

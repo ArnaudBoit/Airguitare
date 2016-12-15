@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,13 +17,13 @@ public class DTOCommande {
 
     private String statut;
 
-    private DTOPersonne personne;
+    private DTOPersonne personne = new DTOPersonne();
 
-    private List<DTOLigneCommande> ligneCommandes;
+    private List<DTOLigneCommande> ligneCommandes = new ArrayList<>();
 
-    private DTOModeLivraison modeLivraison;
+    private DTOModeLivraison modeLivraison = new DTOModeLivraison();
 
-    private DTOModePaiement modePaiement;
+    private DTOModePaiement modePaiement = new DTOModePaiement();
     
     public DTOCommande() {
     }
@@ -33,14 +34,18 @@ public class DTOCommande {
 		this.setStatut(commande.getStatut());
 		this.setNumero(commande.getNumero());
 		if(dependencies){
+			if(commande.getPersonne() != null){
 		this.setPersonne(new DTOPersonne(commande.getPersonne(), true) );
+			}
 		for (LigneCommande ligneCommande : commande.getLigneCommandes()) {
 			this.getLigneCommandes().add(new DTOLigneCommande(ligneCommande,false));
 		}
-		
+		if(commande.getModeLivraison() != null){
 		this.setModeLivraison(new DTOModeLivraison(commande.getModeLivraison(),false));
+		}
+		if(commande.getModePaiement() != null){
 		this.setModePaiement(new DTOModePaiement( commande.getModePaiement(),false));
-		
+		}
 		}
 	}
 

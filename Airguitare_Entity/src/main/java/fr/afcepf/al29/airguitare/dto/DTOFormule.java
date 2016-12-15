@@ -1,33 +1,34 @@
 package fr.afcepf.al29.airguitare.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.Formation;
 import fr.afcepf.al29.airguitare.entities.Formule;
 
 public class DTOFormule {
-	  	private int id;
+	private int id;
 
-	    private String intitule;
+	private String intitule;
 
-	    private Integer nbHeures;
+	private Integer nbHeures;
 
-	    private List<DTOFormation> formations;
-	    
-	    public DTOFormule() {
-	    }
-	
+	private List<DTOFormation> formations = new ArrayList<>();
+
+	public DTOFormule() {
+	}
+
 	public DTOFormule(Formule formule, boolean dependencies){
-		
+
 		this.setId(formule.getId());
 		this.setIntitule(formule.getIntitule());
 		this.setNbHeures(formule.getNbHeures());
-		
+
 		if(dependencies){
 			for (Formation formation : formule.getFormations()) {
 				this.getFormations().add(new DTOFormation(formation, false));
 			}
-			
+
 		}
 	}
 
@@ -62,7 +63,7 @@ public class DTOFormule {
 	public void setFormations(List<DTOFormation> formations) {
 		this.formations = formations;
 	}
-	
-	
-	
+
+
+
 }
