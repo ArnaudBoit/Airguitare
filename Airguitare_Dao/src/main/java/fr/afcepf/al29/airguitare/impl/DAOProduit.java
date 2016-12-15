@@ -24,7 +24,11 @@ public class DAOProduit implements IDAOProduit {
 	@Override
 	public List<Produit> getArticlesByType(String typeProduit) {
 		Query query = em.createQuery("FROM Produit WHERE specialisationProduit.typeProduit.intitule = :typeProduit").setParameter("typeProduit", typeProduit);
-		return query.getResultList();
+		List<Produit> liste = query.getResultList();
+		System.out.println("dao" + liste.size());
+		
+		
+		return liste;
 	}
 
 	@Override
