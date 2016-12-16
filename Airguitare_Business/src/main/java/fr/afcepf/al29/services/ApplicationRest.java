@@ -15,6 +15,7 @@ public Set<Class<?>> getClasses() {
 	Set<Class<?>> classes = new HashSet<>();
 	
 	classes.add(ServiceProduit.class);
+	classes.add(ServiceUtilisateur.class);
 	return classes;
 }
 }
