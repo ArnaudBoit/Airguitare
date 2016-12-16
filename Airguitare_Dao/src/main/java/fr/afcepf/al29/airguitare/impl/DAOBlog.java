@@ -55,4 +55,12 @@ public class DAOBlog implements IDAOBlog {
 		
 		return (Long) query.getSingleResult();
 	}
+	
+	@Override
+	public ArticleBlog getArticleByID(int idArticle){
+		
+		Query query = em.createQuery("SELECT a FROM ArticleBlog a WHERE a.id = :idArticle").setParameter("idArticle", idArticle);
+		return (ArticleBlog) query.getSingleResult();
+		
+	}
 }
