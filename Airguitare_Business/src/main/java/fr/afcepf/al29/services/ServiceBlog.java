@@ -6,6 +6,7 @@ import javax.ejb.Stateless;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.websocket.server.PathParam;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -34,7 +35,6 @@ public class ServiceBlog {
     @Path("listeArticles")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOArticleBlog> getAllProduits() {
-		System.out.println("nb articles =" + buBlog.getAllArticle().size());
 		return buBlog.getAllArticle();
     }
 	
@@ -48,9 +48,9 @@ public class ServiceBlog {
 	@GET
     @Path("singleArticle/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-	public ArticleBlog getArticleById(@PathParam("id") int idArticle){
-		System.out.println("coucou");
-		return buBlog.getArticleById(idArticle);
+	public DTOArticleBlog getArticleById(int idArticle){
+		System.out.println(idArticle);
+		return buBlog.getArticleByID(idArticle);
 	}
 
 }

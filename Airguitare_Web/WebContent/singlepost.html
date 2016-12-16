@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="businessBlog">
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -48,8 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="container">
     <div class="row">
         <div class="col-md-10">
-<article>
-            <h2><a href="singlepost.html">Guit'air un festival tout feu tout flamme!</a></h2>
+<article ng-controller="BlogList">
+            <h2><a href="singlepost.html"></a> {{$storage.article.intitule}}</h2>
  
                 <div class="row">
                     <div class="group1 col-sm-6 col-md-6">

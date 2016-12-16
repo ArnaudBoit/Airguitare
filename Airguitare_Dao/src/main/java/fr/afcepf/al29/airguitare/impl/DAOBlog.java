@@ -52,7 +52,6 @@ public class DAOBlog implements IDAOBlog {
 	@Override
 	public Long nombreCommentaireByArticle(int idArticle){
 		Query query = em.createQuery("SELECT COUNT(c) FROM CommentaireBlog c WHERE c.article.id = :idArticle").setParameter("idArticle", idArticle);
-		
 		return (Long) query.getSingleResult();
 	}
 	
@@ -60,7 +59,10 @@ public class DAOBlog implements IDAOBlog {
 	public ArticleBlog getArticleByID(int idArticle){
 		
 		Query query = em.createQuery("SELECT a FROM ArticleBlog a WHERE a.id = :idArticle").setParameter("idArticle", idArticle);
+		System.out.println( query.getSingleResult().toString());
 		return (ArticleBlog) query.getSingleResult();
 		
 	}
+
+	
 }
