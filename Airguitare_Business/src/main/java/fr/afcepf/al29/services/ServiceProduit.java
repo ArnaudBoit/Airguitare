@@ -7,6 +7,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -16,6 +17,7 @@ import fr.afcepf.al29.airguitare.api.IDAOCommande;
 import fr.afcepf.al29.airguitare.api.IDAOMarque;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
+import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
@@ -25,6 +27,7 @@ import fr.afcepf.al29.ibusiness.IBusinessProduit;
 public class ServiceProduit {
 	
     private IBusinessProduit BUProduit;
+    
 	public ServiceProduit(){
 		try {
 			InitialContext initialContext = new InitialContext();
@@ -36,15 +39,36 @@ public class ServiceProduit {
 	}
 	
 	@GET
-    @Path("listeProduits")
+    @Path("listeAllProduits")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getAllProduits() {
 		return BUProduit.getAllProduits();
     }
 
+	@GET
+    @Path("listeProduitsParSpecialisation/{specs}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOProduit> getAllArticleBySpecialisation(@PathParam("specs") String specialisation) {
+		
+		//specialisation.split(',')
+		return BUProduit.getAllArticleBySpecialisation(specialisation);
+    }
     
-    
-    
+	@GET
+    @Path("listeAllMarques")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOMarque> getAllMarques() {
+		return BUProduit.getAllMarque();
+    }
+	
+	@GET
+    @Path("listeMarqueParSpecialisation/{specs}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOMarque> getMarqueBySpecialisation(@PathParam("specs") String specialisation) {
+		
+		//specialisation.split(',')
+		return BUProduit.getMarqueBySpecialisationProduit(specialisation);
+    }
 
     /**
      * 

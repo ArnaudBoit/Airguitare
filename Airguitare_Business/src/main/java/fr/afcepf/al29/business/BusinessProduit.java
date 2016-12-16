@@ -13,7 +13,9 @@ import fr.afcepf.al29.airguitare.api.IDAOMarque;
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
+import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
+import fr.afcepf.al29.airguitare.entities.Marque;
 import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
@@ -25,6 +27,9 @@ public class BusinessProduit implements IBusinessProduit {
    
 	@EJB
     private IDAOProduit DAOProduit;
+	@EJB
+    private IDAOMarque DAOMarque;
+	
 	public BusinessProduit(){
 	/*	try {
 			InitialContext initialContext = new InitialContext();
@@ -33,21 +38,46 @@ public class BusinessProduit implements IBusinessProduit {
 			e.printStackTrace();
 		}
 	 */
-	}
-	
+	}	
 	
     public List<DTOProduit> getAllProduits() {   
-    	System.out.println("size : " + DAOProduit.getArticlesByType("guitare").size());
-    	
     	List<DTOProduit> liste = new ArrayList<>();
     	for (Produit produit : DAOProduit.getArticlesByType("guitare")) {
 			DTOProduit dto = new DTOProduit(produit, false);
 			liste.add(dto);
-		}
-    	
+		}    	
 		return liste;
     }
 
+
+	public List<DTOProduit> getAllArticleBySpecialisation(String specialisationProduit) {
+    	List<DTOProduit> liste = new ArrayList<>();
+    	for (Produit produit : DAOProduit.getAllArticleBySpecialisation(specialisationProduit)) {
+			DTOProduit dto = new DTOProduit(produit, false);
+			liste.add(dto);
+		} 
+		return liste;
+	}
+
+	public List<DTOMarque> getAllMarque() {
+		List<DTOMarque> liste = new ArrayList<>();
+	for (Marque marque : DAOMarque.getAll()) {
+		DTOMarque dto = new DTOMarque(marque, false);
+		liste.add(dto);
+	}
+	return liste;
+	}
+	
+	public List<DTOMarque> getMarqueBySpecialisationProduit(String specialisationProduit) {
+		List<DTOMarque> liste = new ArrayList<>();
+		for (Marque marque : DAOMarque.getMarqueBySpecialisationProduit(specialisationProduit)) {
+			DTOMarque dto = new DTOMarque(marque, false);
+			liste.add(dto);
+		}
+		return liste;
+	}
+
+    
     
     
     
@@ -67,88 +97,14 @@ public class BusinessProduit implements IBusinessProduit {
      */
     private IDAOClient DAOClient;
     
-    private IDAOMarque DAOMarque;
     
     private IDAOSpecialisationProduit DAOSpecialisationProduit;
     
     private IDAOTypeProduit DAOTypeProduit;
+
+
     
     
 
-    
-    
-    
-
-	public IDAOProduit getDAOProduit() {
-		return DAOProduit;
-	}
-
-
-	public void setDAOProduit(IDAOProduit dAOProduit) {
-		DAOProduit = dAOProduit;
-	}
-
-
-	public IDAOCommande getDAOCommande() {
-		return DAOCommande;
-	}
-
-
-	public void setDAOCommande(IDAOCommande dAOCommande) {
-		DAOCommande = dAOCommande;
-	}
-
-
-	public IDAOAvisClient getDAOAvisClient() {
-		return DAOAvisClient;
-	}
-
-
-	public void setDAOAvisClient(IDAOAvisClient dAOAvisClient) {
-		DAOAvisClient = dAOAvisClient;
-	}
-
-
-	public IDAOClient getDAOClient() {
-		return DAOClient;
-	}
-
-
-	public void setDAOClient(IDAOClient dAOClient) {
-		DAOClient = dAOClient;
-	}
-
-
-	public IDAOMarque getDAOMarque() {
-		return DAOMarque;
-	}
-
-
-	public void setDAOMarque(IDAOMarque dAOMarque) {
-		DAOMarque = dAOMarque;
-	}
-
-
-	public IDAOSpecialisationProduit getDAOSpecialisationProduit() {
-		return DAOSpecialisationProduit;
-	}
-
-
-	public void setDAOSpecialisationProduit(IDAOSpecialisationProduit dAOSpecialisationProduit) {
-		DAOSpecialisationProduit = dAOSpecialisationProduit;
-	}
-
-
-	public IDAOTypeProduit getDAOTypeProduit() {
-		return DAOTypeProduit;
-	}
-
-
-	public void setDAOTypeProduit(IDAOTypeProduit dAOTypeProduit) {
-		DAOTypeProduit = dAOTypeProduit;
-	}
-    
-    
-    
 
 }

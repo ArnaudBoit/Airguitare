@@ -6,31 +6,33 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
+<html ng-app="businessProduit">
 <head>
-<title>AirBrass : Vos Meilleures Air Guitares</title>
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-<script src="js/jquery-1.11.0.min.js"></script>
-<!--Custom-Theme-files-->
-<!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--start-menu-->
-<script src="js/simpleCart.min.js"> </script>
-<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/memenu.js"></script>
-<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
-<!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>	
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
+	<title>AirBrass : Vos Meilleures Air Guitares</title>
+	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+	<script src="js/jquery-1.11.0.min.js"></script>
+	<!--Custom-Theme-files-->
+	<!--theme-style-->
+	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+	<!--//theme-style-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<!--start-menu-->
+	<script src="js/simpleCart.min.js"> </script>
+	<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+	<script type="text/javascript" src="js/memenu.js"></script>
+	<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+	<!--dropdown-->
+	<script src="js/jquery.easydropdown.js"></script>	
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	    
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script src="js/angular.min.js"></script>
+	<script src="script/produit.js"></script>		
 </head>
 <body> 
 	<!--top-header-->
@@ -71,28 +73,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 						</section>
-						<section  class="sky-form">
+						<section  class="sky-form"  ng-controller="BPlist" ng-init="getlisteAllMarque()">
 							<h4>Marques</h4>
 							<div class="row1 row2 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
-								</div>
-								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sonata</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Titan</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Casio</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Omax</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>shree</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fastrack</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Sports</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Fossil</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Maxima</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Yepme</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Citizen</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Diesel</label>									
-								</div>
+									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Toutes les marques</label>
+							</div>
+							<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
+								
+									<label class="checkbox" >
+										<input type="checkbox" name="checkbox">
+										<i></i>{{m.intitule}}
+									</label>
+																	
 							</div>
 						</section>
+						</div>
 						<section class="sky-form">
 							<h4>Prix</h4>
 								<div class="row1 row2 scroll-pane">
@@ -102,99 +98,53 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<label class="radio"><input type="radio" name="radio"><i></i>De 150€ à 199€</label>									
 										<label class="radio"><input type="radio" name="radio"><i></i>De 200€ à 249€</label>
 										<label class="radio"><input type="radio" name="radio"><i></i>De 250€ à 299€</label>
-										<label class="radio"><input type="radio" name="radio"><i></i>Plus de 300€</label>
 									</div>
 								</div>						
-						
+						</section>
 						
 					</div>
 				</div>
-				<div class="col-md-9 prdt-right">
-					<div class="product-one">
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 250</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-2.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
+				
+					<div class="col-md-9 prdt-right">
+					
+					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteAllProduit()">					
+					      
+							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
+								<div class="product-main simpleCart_shelfItem" >
+									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+									<div class="product-bottom">
+										<h3>{{x.intitule}}</h3>
+										<p>{{x.marque.intitule}}</p>
+										<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
+									</div>
+									<div class="srch srch1">
+										<span>{{x.specialisationProduit.id}}</span>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-3.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="product-one">
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-4.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4 ><a class="item_add" data-toggle="tooltip" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-5.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-4 product-left p-left">
-							<div class="product-main simpleCart_shelfItem">
-								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-6.png" alt="" /></a>
-								<div class="product-bottom">
-									<h3>Smart Watches</h3>
-									<p>Explore Now</p>
-									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
-								</div>
-								<div class="srch srch1">
-									<span>-50%</span>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"></div>
+						
 					</div>	
-				</div>	
+					
+					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteProduitParSpec()">					
+					      
+							<div class="col-md-4 product-left p-left" ng-repeat="x in listeProduitParSpec">
+								<div class="product-main simpleCart_shelfItem" >
+									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+									<div class="product-bottom">
+										<h3>{{x.intitule}}</h3>
+										<p>{{x.marque.intitule}}</p>
+										<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
+									</div>
+									<div class="srch srch1">
+										<span>{{x.specialisationProduit.id}}</span>
+									</div>
+								</div>
+							</div>
+						
+					</div>	
+
+				<div class="clearfix"></div>
+			</div>
 
 				<div class="clearfix"></div>
 			</div>
