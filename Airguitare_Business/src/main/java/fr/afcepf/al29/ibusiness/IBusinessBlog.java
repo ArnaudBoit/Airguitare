@@ -14,5 +14,5 @@ public interface IBusinessBlog {
 
 	Long nombreCommentaireByArticle(int idArticle);
 
-	ArticleBlog getArticleById(int idArticle);
+	DTOArticleBlog getArticleByID(int idArticle);
 }
