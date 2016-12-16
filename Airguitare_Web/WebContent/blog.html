@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="businessBlog">
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -24,6 +24,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="script/blog.js"></script>
 </head>
 <body> 
 	<!--top-header-->
@@ -52,20 +54,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
             <!-- heading -->
             <h1>Articles Récents</h1>
- 
+ 			<div ng-controller="Bloglist" ng-init="getListe()">
+ 			<div ></div>
             <!-- list of posts -->
-            <article>
-                <h2><a href="singlepost.html">Guit'air un festival tout feu tout flamme!</a></h2>
- 
+            <article ng-repeat="x in liste">
+                <h2><a href="singlepost.html"> </a></h2>
+                {{x.intitule}} 
                 <div class="row">
                     <div class="group1 col-sm-6 col-md-6">
                           <span class="glyphicon glyphicon-bookmark"></span> <a href="#">Guitare</a>,
                         <a href="#">Air-guitare</a>, <a href="#">Evènement</a>
                     </div>
                     <div class="group2 col-sm-6 col-md-6">
-                        <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments">20 Commentaires</a>
+                        <span class="glyphicon glyphicon-pencil"></span> <a href="singlepost.html#comments"></a>{{nbComment}}
 						&nbsp;
-                          <span class="glyphicon glyphicon-time"></span> 27 Novembre 2016 : 18:46
+                          <span class="glyphicon glyphicon-time"></span> 
+    						<span>{{x.dateAjout | date:'mediumDate'}}</span><br>
                     </div>
                 </div>
  
@@ -75,7 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  
                 <br />
  
-                <p class="lead">Le mois dernier s'est déroulé le festival Guit'air</p>
+                <p class="lead">{{x.description}}</p>
  
                 <p>...</p>
  
@@ -88,9 +92,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <hr>
  
             </article>
-            <article>
-            ...
-            </article>
+            
+            </div>
+           
  
             <!-- pager -->
             <ul class="pager">

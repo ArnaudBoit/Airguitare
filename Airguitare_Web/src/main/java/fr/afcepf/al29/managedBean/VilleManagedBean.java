@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
+import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.api.IDAOCB;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
 import fr.afcepf.al29.airguitare.api.IDAOMarque;
@@ -40,6 +41,9 @@ public class VilleManagedBean {
 	private IDAOMarque proxyMarque;
 	@EJB
 	private IDAOClient proxyClient;
+	@EJB
+	IDAOBlog proxyBlog;
+	
 	String login;
 	String password;
 	List<Pays> pays = new ArrayList<>();
@@ -48,7 +52,7 @@ public class VilleManagedBean {
 	List<Marque> marques = new ArrayList<>();
 	Paypal paypal;
 	List<CB> cb = new ArrayList<>();
-	Personne pers;
+	Personne pers = new Personne();
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
@@ -87,21 +91,24 @@ public class VilleManagedBean {
 		produits = proxyProduit.getProduitByPrix(2000);
 		for (Produit produit : produits) {
 			
-			System.out.println(produit.getIntitule() + " à " + produit.getPrix() + "€");
+			System.out.println(produit.getIntitule() + " ï¿½ " + produit.getPrix() + "ï¿½");
 			
 		}
 		
 		marques = proxyMarque.getMarqueBySpecialisationProduit("guitares classiques");
-		System.out.println("les marques triées");
+		System.out.println("les marques triï¿½es");
 		for (Marque marque : marques) {
 			System.out.println(marque.getIntitule());
 		}
+		
+		System.out.println("nb de commentaires"+proxyBlog.nombreCommentaireByArticle(6));
+		
+		//proxyClient.connectClient("dfgfdg", "sfddsf");
 	}
 	
 	public String connection(){
 		
 		pers = proxyClient.connectClient(login, password);
-		System.out.println(pers.getAdresseMail());
 		return null;
 	}
 

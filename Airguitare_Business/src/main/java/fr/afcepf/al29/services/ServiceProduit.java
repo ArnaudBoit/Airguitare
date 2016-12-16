@@ -1,6 +1,5 @@
 package fr.afcepf.al29.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +7,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -15,12 +15,10 @@ import fr.afcepf.al29.airguitare.api.IDAOAvisClient;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
 import fr.afcepf.al29.airguitare.api.IDAOCommande;
 import fr.afcepf.al29.airguitare.api.IDAOMarque;
-import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
+import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
-import fr.afcepf.al29.airguitare.entities.Produit;
-import fr.afcepf.al29.business.BusinessProduit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
 
@@ -29,6 +27,7 @@ import fr.afcepf.al29.ibusiness.IBusinessProduit;
 public class ServiceProduit {
 	
     private IBusinessProduit BUProduit;
+    
 	public ServiceProduit(){
 		try {
 			InitialContext initialContext = new InitialContext();
@@ -40,15 +39,29 @@ public class ServiceProduit {
 	}
 	
 	@GET
-    @Path("listeProduits")
+    @Path("listeAllProduits")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getAllProduits() {
 		return BUProduit.getAllProduits();
     }
 
-    
-    
-    
+	@GET
+    @Path("listeAllMarques")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOMarque> getAllMarques() {
+		return BUProduit.getAllMarque();
+    }
+
+	
+	@GET
+    @Path("listeProduitParOptions/{specs}/{marques}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOProduit> getProduitParOptions(@PathParam("specs") String specialisations, @PathParam("marques") String marques) {
+		
+		System.out.println(specialisations + " / " + marques);
+		
+		return BUProduit.getProduitParOptions(specialisations, marques);
+    }
 
     /**
      * 

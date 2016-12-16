@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -46,11 +45,11 @@ public class DAOClient implements IDAOClient {
 	@Override
 	public Personne connectClient(String login, String password) {
 		Query query = em.createQuery("FROM Personne WHERE adresseMail = :login and password = :password",Personne.class).setParameter("login", login).setParameter("password", password);
-		try{
-		return (Personne) query.getSingleResult();
-		}catch(NoResultException ex){
-			return null;
+		List<Personne> personnes = query.getResultList();
+		if(!personnes.isEmpty()) {
+			return personnes.get(0);
 		}
+		return null;
 	}
 
     

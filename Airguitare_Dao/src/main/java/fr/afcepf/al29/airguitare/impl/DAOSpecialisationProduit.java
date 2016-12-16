@@ -20,5 +20,10 @@ public class DAOSpecialisationProduit implements IDAOSpecialisationProduit {
 		Query query = em.createQuery("SELECT s FROM SpecialisationProduit s WHERE s.typeProduit.intitule = :typeProduit").setParameter("typeProduit", typeProduit);
 		return query.getResultList();
 	}
+	@Override
+	public List<SpecialisationProduit> getAll() {
+		Query query = em.createQuery("FROM SpecialisationProduit s");
+		return query.getResultList();
+	}
 
 }
