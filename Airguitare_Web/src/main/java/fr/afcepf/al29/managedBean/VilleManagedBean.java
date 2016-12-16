@@ -52,7 +52,7 @@ public class VilleManagedBean {
 	List<Marque> marques = new ArrayList<>();
 	Paypal paypal;
 	List<CB> cb = new ArrayList<>();
-	Personne pers;
+	Personne pers = new Personne();
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
@@ -109,7 +109,6 @@ public class VilleManagedBean {
 	public String connection(){
 		
 		pers = proxyClient.connectClient(login, password);
-		System.out.println(pers.getAdresseMail());
 		return null;
 	}
 
