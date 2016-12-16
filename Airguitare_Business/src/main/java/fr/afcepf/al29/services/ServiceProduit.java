@@ -46,28 +46,21 @@ public class ServiceProduit {
     }
 
 	@GET
-    @Path("listeProduitsParSpecialisation/{specs}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<DTOProduit> getAllArticleBySpecialisation(@PathParam("specs") String specialisation) {
-		
-		//specialisation.split(',')
-		return BUProduit.getAllArticleBySpecialisation(specialisation);
-    }
-    
-	@GET
     @Path("listeAllMarques")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOMarque> getAllMarques() {
 		return BUProduit.getAllMarque();
     }
+
 	
 	@GET
-    @Path("listeMarqueParSpecialisation/{specs}")
+    @Path("listeProduitParOptions/{specs}/{marques}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<DTOMarque> getMarqueBySpecialisation(@PathParam("specs") String specialisation) {
+    public List<DTOProduit> getProduitParOptions(@PathParam("specs") String specialisations, @PathParam("marques") String marques) {
 		
-		//specialisation.split(',')
-		return BUProduit.getMarqueBySpecialisationProduit(specialisation);
+		System.out.println(specialisations + " / " + marques);
+		
+		return BUProduit.getProduitParOptions(specialisations, marques);
     }
 
     /**

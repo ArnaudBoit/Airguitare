@@ -70,4 +70,10 @@ public class DAOProduit implements IDAOProduit {
 		return query.getResultList();
 	}
 
+	@Override
+	public List<Produit> getAll() {
+		Query query = em.createQuery("FROM Produit");
+		return query.getResultList();
+	}
+
 }
