@@ -57,10 +57,10 @@ public class BusinessBlog implements IBusinessBlog {
 	}
 	
 	@Override
-	public DTOArticleBlog getArticleByIntitule(String intituleArticle) {
+	public DTOArticleBlog getArticleByID(int idArticle) {
 		
 		ArticleBlog article = new ArticleBlog();
-		article= DAOBlog.getArticleByIntitule(intituleArticle);
+		article= DAOBlog.getArticleByID(idArticle);
 		if(article != null){
 			DTOArticleBlog dto = new DTOArticleBlog(article,false);
 			return dto;

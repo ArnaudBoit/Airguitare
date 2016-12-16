@@ -35,7 +35,6 @@ public class ServiceBlog {
     @Path("listeArticles")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOArticleBlog> getAllProduits() {
-		System.out.println("nb articles =" + buBlog.getAllArticle().size());
 		return buBlog.getAllArticle();
     }
 	
@@ -49,9 +48,9 @@ public class ServiceBlog {
 	@GET
     @Path("singleArticle/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-	public DTOArticleBlog getArticleById(ArticleBlogParam paramArticle){
-		System.out.println(paramArticle.param);
-		return buBlog.getArticleByIntitule(paramArticle.param);
+	public DTOArticleBlog getArticleById(int idArticle){
+		System.out.println(idArticle);
+		return buBlog.getArticleByID(idArticle);
 	}
 
 }

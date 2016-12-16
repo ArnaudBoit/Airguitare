@@ -56,9 +56,9 @@ public class DAOBlog implements IDAOBlog {
 	}
 	
 	@Override
-	public ArticleBlog getArticleByIntitule(String intituleArticle){
+	public ArticleBlog getArticleByID(int idArticle){
 		
-		Query query = em.createQuery("SELECT a FROM ArticleBlog a WHERE a.intitule = :intituleArticle").setParameter("intituleArticle", intituleArticle);
+		Query query = em.createQuery("SELECT a FROM ArticleBlog a WHERE a.id = :idArticle").setParameter("idArticle", idArticle);
 		System.out.println( query.getSingleResult().toString());
 		return (ArticleBlog) query.getSingleResult();
 		

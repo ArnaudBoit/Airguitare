@@ -42,7 +42,7 @@ public interface IDAOBlog {
 
 	Long nombreCommentaireByArticle(int idArticle);
 
-	ArticleBlog getArticleByIntitule(String intituleArticle);
+	ArticleBlog getArticleByID(int idArticle);
 
 
 }
