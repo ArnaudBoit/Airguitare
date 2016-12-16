@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.persistence.AttributeOverrides;
 
 import fr.afcepf.al29.airguitare.api.IDAOArticleBlog;
 import fr.afcepf.al29.airguitare.api.IDAOBlog;
@@ -53,6 +54,12 @@ public class BusinessBlog implements IBusinessBlog {
 	public Long nombreCommentaireByArticle(int idArticle){
 		System.out.println("bu " + DAOBlog.nombreCommentaireByArticle(idArticle));
 		return DAOBlog.nombreCommentaireByArticle(idArticle);
+	}
+	
+	@Override
+	public ArticleBlog getArticleById(int idArticle) {
+		return DAOBlog.getArticleByID(idArticle);
+		
 	}
 
 }
