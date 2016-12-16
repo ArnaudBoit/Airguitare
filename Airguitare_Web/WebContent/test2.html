@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="businessUtilisateur">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur.js"></script>
+</head>
+<body>
+	<div ng-controller="BUConnect">
+
+		<input placeholder="Email" type="text" tabindex="3"  ng-model="login"> 
+		<br>
+			<input placeholder="mot de passe"type="password" tabindex="4" ng-model="password">
+	<br>
+
+			<input type="submit" value="GROS BOUTON" ng-click="connect()"></input>
+
+		</div>
+</body>
+</html>

@@ -6,8 +6,8 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html>
-<head>
+<html ng-app="businessUtilisateur">
+<head >
 <title>AirBrass : Vos Meilleures Air Guitares </title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery (necessary for Bootstrap's JavaScript plugins)-->
@@ -27,9 +27,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script src="js/jquery.easydropdown.js"></script>		
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur.js"></script>	
 </head>
 <body> 
+<form>
 	<!--top-header-->
 	<div id="new-header">
         <script>
@@ -50,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--end-breadcrumbs-->
 	<!--account-starts-->
-	<div class="account">
+	<div class="account" ng-controller="BUConnect">
 		<div class="container">
 		<div class="account-top heading">
 				<h2>COMPTE</h2>
@@ -59,11 +62,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-md-6 account-left">
 					<h3>Utilisateur existant</h3>
 					<div class="account-bottom">
-						<input placeholder="Email" type="text" tabindex="3" required>
-						<input placeholder="mot de passe" type="password" tabindex="4" required>
+						<input placeholder="Email" type="text" tabindex="3"  ng-model="login">
+						<input placeholder="mot de passe" type="password" tabindex="4" ng-model="password">
 						<div class="address">
 							<a class="forgot" href="forgotten-password.html">Mot-de-passe oublié?</a>
-							<input type="submit" value="Login">
+							<input type="submit" value="Login" onclick="#" ng-click="connect()" />
 						</div>
 					</div>
 				</div>
@@ -83,6 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             $("#new-footer").load("footer.html");
         </script>
     </div>
+    </form>
 	<!--footer-end-->	
 </body>
 </html>
