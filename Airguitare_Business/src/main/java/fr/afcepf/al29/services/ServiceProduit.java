@@ -19,6 +19,7 @@ import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
 import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
+import fr.afcepf.al29.airguitare.dto.DTOSpecialisationProduit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
 
@@ -52,14 +53,17 @@ public class ServiceProduit {
 		return BUProduit.getAllMarque();
     }
 
+	@GET
+    @Path("listeAllSpecs")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DTOSpecialisationProduit> getAllSpecs() {
+		return BUProduit.getAllSpecs();
+    }
 	
 	@GET
     @Path("listeProduitParOptions/{specs}/{marques}")
     @Produces(MediaType.APPLICATION_JSON)
     public List<DTOProduit> getProduitParOptions(@PathParam("specs") String specialisations, @PathParam("marques") String marques) {
-		
-		System.out.println(specialisations + " / " + marques);
-		
 		return BUProduit.getProduitParOptions(specialisations, marques);
     }
 

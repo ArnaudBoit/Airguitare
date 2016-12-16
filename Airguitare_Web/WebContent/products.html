@@ -56,35 +56,40 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--end-breadcrumbs-->
 	<!--prdt-starts-->
 	<div class="prdt"> 
-		<div class="container">
+		<div class="container"  ng-controller="BPlist">
 			<div class="prdt-top">
 				<div class="col-md-3 prdt-left">
 					<div class="w_sidebar">
-						<section  class="sky-form">
+						<section  class="sky-form"  ng-init="getlisteAllSpecs()">
 							<h4>Catégories</h4>
 							<div class="row1 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>All Accessories</label>
+									<label class="checkbox"><input type="checkbox"
+										   ng-model="cbxSpecAll" ng-change="changeAllCbxSpec()"/>
+									<i></i>Tous les types</label>
 								</div>
-								<div class="col col-4">								
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Women Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Kids Watches</label>
-									<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Men Watches</label>			
+								<div class="col col-4"  ng-repeat="s in listeAllSpecs| orderBy:'-intitule':true">
+								
+									<label class="checkbox" >
+										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCbxSpec()" />
+										<i></i>{{s.intitule}}
+									</label>
+																	
 								</div>
 							</div>
 						</section>
-						<section  class="sky-form"  ng-controller="BPlist" ng-init="getlisteAllMarque()">
+						<section  class="sky-form"  ng-init="getlisteAllMarque()">
 							<h4>Marques</h4>
 							<div class="row1 row2 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" checked="true" 
-										   ng-model="cbxMarque.marque" ng-change="updateCbxMarque()">
+									<label class="checkbox"><input type="checkbox" 
+										   ng-model="cbxMarqueAll" ng-change="changeAllCbxMarque()"/>
 									<i></i>Toutes les marques</label>
 								</div>
 								<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" value="{{m.id}}" ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" >
+										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" />
 										<i></i>{{m.intitule}}
 									</label>
 																	
@@ -92,7 +97,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</div>
 						</section>
 						</div>
-						<section class="sky-form">
+					<!--<section class="sky-form">
 							<h4>Prix</h4>
 								<div class="row1 row2 scroll-pane">
 									<div class="col col-4">
@@ -104,13 +109,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</div>						
 						</section>
+						  -->	
 						
 					</div>
 				</div>
 				
 					<div class="col-md-9 prdt-right">
 					
-					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteAllProduit()">					
+					<div class="product-one"  ng-init="getlisteAllProduit()">					
 					      
 							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
 								<div class="product-main simpleCart_shelfItem" >

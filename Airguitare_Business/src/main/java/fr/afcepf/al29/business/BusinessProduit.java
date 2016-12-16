@@ -86,15 +86,12 @@ public class BusinessProduit implements IBusinessProduit {
 	    	    	//Trier par marques sélectionnées
 	    	    	for (String marque : listeMarques) {
 	    				if(marque.equals(dto.getMarque().getIntitule())) {
-	    					System.out.println(dto.getIntitule()+" ajouté");
 	    					liste.add(dto);
 	    				}
 	    			}
 	    		}
-	    	}
-			
+	    	}			
 		}  
-    	
 		return liste;
 	}
 
