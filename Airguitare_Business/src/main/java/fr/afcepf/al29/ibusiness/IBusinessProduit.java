@@ -7,6 +7,7 @@ import fr.afcepf.al29.airguitare.dto.DTOProduit;
 /**
  * 
  */
+
 public interface IBusinessProduit {
 
 	List<DTOProduit> getAllProduits();

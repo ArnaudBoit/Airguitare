@@ -1,6 +1,5 @@
 package fr.afcepf.al29.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -15,12 +14,9 @@ import fr.afcepf.al29.airguitare.api.IDAOAvisClient;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
 import fr.afcepf.al29.airguitare.api.IDAOCommande;
 import fr.afcepf.al29.airguitare.api.IDAOMarque;
-import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
-import fr.afcepf.al29.airguitare.entities.Produit;
-import fr.afcepf.al29.business.BusinessProduit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
 
