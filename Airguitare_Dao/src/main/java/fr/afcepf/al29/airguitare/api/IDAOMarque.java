@@ -8,6 +8,8 @@ import fr.afcepf.al29.airguitare.entities.Produit;
 public interface IDAOMarque {
 	
 	List<Marque> getAll();
+	
+	List<Marque> getMarqueById(int id);
 
 	List<Marque> getMarqueBySpecialisationProduit(String specialisationProduit);
 

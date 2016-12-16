@@ -26,6 +26,13 @@ public class DAOMarque implements IDAOMarque {
 		Query query = em.createQuery("SELECT m FROM Marque m INNER JOIN m.produits p WHERE p.specialisationProduit.intitule = :specialisationProduit").setParameter("specialisationProduit", specialisationProduit);
 		return query.getResultList();
 	}
+
+	@Override
+	public List<Marque> getMarqueById(int id) {
+
+		Query query = em.createQuery("SELECT m FROM Marque m WHERE m.id = :mid").setParameter("mid", id);
+		return query.getResultList();
+	}
 	
 	
 

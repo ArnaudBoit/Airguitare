@@ -15,8 +15,10 @@ import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOTypeProduit;
 import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
+import fr.afcepf.al29.airguitare.dto.DTOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.entities.Marque;
 import fr.afcepf.al29.airguitare.entities.Produit;
+import fr.afcepf.al29.airguitare.entities.SpecialisationProduit;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
 
 /**
@@ -29,6 +31,8 @@ public class BusinessProduit implements IBusinessProduit {
     private IDAOProduit DAOProduit;
 	@EJB
     private IDAOMarque DAOMarque;
+	@EJB
+    private IDAOSpecialisationProduit DAOSpecialisationProduit;
 	
 	public BusinessProduit(){
 	/*	try {
@@ -43,39 +47,57 @@ public class BusinessProduit implements IBusinessProduit {
     public List<DTOProduit> getAllProduits() {   
     	List<DTOProduit> liste = new ArrayList<>();
     	for (Produit produit : DAOProduit.getArticlesByType("guitare")) {
-			DTOProduit dto = new DTOProduit(produit, false);
+			DTOProduit dto = new DTOProduit(produit, true);
 			liste.add(dto);
 		}    	
 		return liste;
     }
 
-
-	public List<DTOProduit> getAllArticleBySpecialisation(String specialisationProduit) {
-    	List<DTOProduit> liste = new ArrayList<>();
-    	for (Produit produit : DAOProduit.getAllArticleBySpecialisation(specialisationProduit)) {
-			DTOProduit dto = new DTOProduit(produit, false);
-			liste.add(dto);
-		} 
-		return liste;
-	}
-
 	public List<DTOMarque> getAllMarque() {
 		List<DTOMarque> liste = new ArrayList<>();
-	for (Marque marque : DAOMarque.getAll()) {
-		DTOMarque dto = new DTOMarque(marque, false);
-		liste.add(dto);
-	}
-	return liste;
-	}
-	
-	public List<DTOMarque> getMarqueBySpecialisationProduit(String specialisationProduit) {
-		List<DTOMarque> liste = new ArrayList<>();
-		for (Marque marque : DAOMarque.getMarqueBySpecialisationProduit(specialisationProduit)) {
+		for (Marque marque : DAOMarque.getAll()) {
 			DTOMarque dto = new DTOMarque(marque, false);
 			liste.add(dto);
 		}
 		return liste;
 	}
+
+	public List<DTOSpecialisationProduit> getAllSpecs() {
+		List<DTOSpecialisationProduit> liste = new ArrayList<>();
+		for (SpecialisationProduit specialisationProduit : DAOSpecialisationProduit.getAll()) {
+			DTOSpecialisationProduit dto = new DTOSpecialisationProduit(specialisationProduit, false);
+			liste.add(dto);
+		}
+		return liste;
+	}
+
+	public List<DTOProduit> getProduitParOptions(String specialisations, String marques) {
+    	List<DTOProduit> liste = new ArrayList<>();
+    	String listeSpecialisation[] = specialisations.split(",");
+    	String listeMarques[] = marques.split(",");
+    	
+    	//Récupère la liste de tous les produits
+    	for (Produit produit : DAOProduit.getAll()) {
+			DTOProduit dto = new DTOProduit(produit, true);
+
+	    	//Trier par spécialisations sélectionnées
+	    	for (String spec : listeSpecialisation) {
+	    		if(spec.equals(dto.getSpecialisationProduit().getIntitule())) {
+	    	    	//Trier par marques sélectionnées
+	    	    	for (String marque : listeMarques) {
+	    				if(marque.equals(dto.getMarque().getIntitule())) {
+	    					System.out.println(dto.getIntitule()+" ajouté");
+	    					liste.add(dto);
+	    				}
+	    			}
+	    		}
+	    	}
+			
+		}  
+    	
+		return liste;
+	}
+
 
     
     
@@ -98,12 +120,10 @@ public class BusinessProduit implements IBusinessProduit {
     private IDAOClient DAOClient;
     
     
-    private IDAOSpecialisationProduit DAOSpecialisationProduit;
     
     private IDAOTypeProduit DAOTypeProduit;
 
 
-    
     
 
 

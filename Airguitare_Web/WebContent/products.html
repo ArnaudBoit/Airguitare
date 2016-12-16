@@ -77,15 +77,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<h4>Marques</h4>
 							<div class="row1 row2 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Toutes les marques</label>
-							</div>
-							<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
+									<label class="checkbox"><input type="checkbox" checked="true" 
+										   ng-model="cbxMarque.marque" ng-change="updateCbxMarque()">
+									<i></i>Toutes les marques</label>
+								</div>
+								<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" name="checkbox">
+										<input type="checkbox" value="{{m.id}}" ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" >
 										<i></i>{{m.intitule}}
 									</label>
 																	
+								</div>
 							</div>
 						</section>
 						</div>
@@ -125,26 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						
 					</div>	
 					
-					<div class="product-one"  ng-controller="BPlist" ng-init="getlisteProduitParSpec()">					
-					      
-							<div class="col-md-4 product-left p-left" ng-repeat="x in listeProduitParSpec">
-								<div class="product-main simpleCart_shelfItem" >
-									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
-									<div class="product-bottom">
-										<h3>{{x.intitule}}</h3>
-										<p>{{x.marque.intitule}}</p>
-										<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
-									</div>
-									<div class="srch srch1">
-										<span>{{x.specialisationProduit.id}}</span>
-									</div>
-								</div>
-							</div>
-						
-					</div>	
-
-				<div class="clearfix"></div>
-			</div>
+					</div>
 
 				<div class="clearfix"></div>
 			</div>

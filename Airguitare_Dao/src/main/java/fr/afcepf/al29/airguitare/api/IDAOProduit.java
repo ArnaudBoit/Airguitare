@@ -20,6 +20,8 @@ public interface IDAOProduit {
      */
     public List<Produit> getArticlesByType(String typeProduit);
 
+    public List<Produit> getAll();
+
     /**
      * @param SpecialisationProduit 
      * @return
