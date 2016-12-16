@@ -49,5 +49,10 @@ public class DAOBlog implements IDAOBlog {
 		return query.getResultList();
 	}
 
-	
+	@Override
+	public Long nombreCommentaireByArticle(int idArticle){
+		Query query = em.createQuery("SELECT COUNT(c) FROM CommentaireBlog c WHERE c.article.id = :idArticle").setParameter("idArticle", idArticle);
+		
+		return (Long) query.getSingleResult();
+	}
 }

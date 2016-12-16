@@ -40,5 +40,7 @@ public interface IDAOBlog {
      */
     public void removeArticleBlog(ArticleBlog article);
 
+	Long nombreCommentaireByArticle(int idArticle);
+
 
 }
