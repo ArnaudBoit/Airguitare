@@ -34,11 +34,12 @@ app.controller('Bloglist', function ($scope, $http) {
 
 		})
 	}
-	$scope.getArticle = function(id) {
+	$scope.getArticle = function(id,$scope,$localStorage) {
 
-		$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessBlog/singleArticle'})
+		$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessBlog/singleArticle/'+id})
 		.success(function(data){
 			$scope.article = data;
+			$scope.$storage= $localStorage.$default({article:$scope.article});
 		})
 		.error(function(data){
 			alert("Error");
