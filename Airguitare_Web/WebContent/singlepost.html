@@ -49,7 +49,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="row">
         <div class="col-md-10">
 <article ng-controller="BlogList">
-            <h2><a href="singlepost.html"></a> {{$storage.article.intitule}}</h2>
+	<div ng-init="{{getArticle()}}" ng-model="divArticle[article]">
+            <h2> {{article.intitule}}</h2>
  
                 <div class="row">
                     <div class="group1 col-sm-6 col-md-6">
@@ -80,7 +81,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </p>
  
     <hr>
+    </div>
 </article>
+</div>
 </div>
           <!-- TODO: Sidebar -->
 <div class="col-md-2">

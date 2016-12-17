@@ -4,6 +4,7 @@ var app = angular.module('businessBlog', []).config(function($locationProvider){
 app.controller('Bloglist', function ($scope, $http, $location) {
 	$scope.liste =[]
 	$scope.article = {}
+	$scope.divArticle={}
 	$scope.nbComment = 0;
 console.log($location.search().id);
 	$scope.getListe = function (){
@@ -13,8 +14,7 @@ console.log($location.search().id);
 
 			$scope.liste = data;
 			for(article in $scope.liste){
-
-				var id = article.id;
+				localStorage['maCle'] = article;
 				
 			}	
 
@@ -38,10 +38,10 @@ console.log($location.search().id);
 	}
 	$scope.getArticle = function(id,$scope) {
 
-		$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessBlog/singleArticle/'+id})
+		$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessBlog/singleArticle/',id : localeStorage['maCle']})
 		.success(function(data){
-			$scope.article = data;
-			localeStorage.setItem('art',Json.stringify(data));
+			divArticle = data;
+			//localeStorage.setItem('art',Json.stringify(data));
 		})
 		.error(function(data){
 			alert("Error");
