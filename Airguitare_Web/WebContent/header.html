@@ -87,13 +87,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="col-md-9" style="color : white;"></div>
 		
 		<div class="col-md-2" style="color : black;">
-		<h4 style="text-align: center; margin: auto">
+		<h4 style="text-align: center; margin: auto" onmouseleave="unDeco()">
 			<a href="account.html" id="btnConnect" >
-			<span class="label label-default" >Identifiez-vous</span>
+			<span class="label label-default" style="color:white;" >Identifiez-vous</span>
 			</a>
-			<a href="index.html" id="btnCompte" style="color:white;display:none" >testttttttt
-			</a>
+			<ul>
+			<li><a href="index.html" id="btnCompte" style="color:white;display:none;" onmouseover="deco()">ddddddd</a></li>
+			<li>sss</li>
+			<li><div><a href=""><span id="btnDeco"class="label label-default" style="display:none;" >déconnexion</span></a></div></li>
+			</ul>
 			</h4>
+			<script type="text/javascript">
+				function deco(){
+					
+					document.getElementById('btnDeco').style.display="inherit";
+				}
+			function unDeco(){
+					
+					document.getElementById('btnDeco').style.display="none";
+				}
+			</script>
 		</div>
 		<div class="col-md-1" style="color : black;">
 			

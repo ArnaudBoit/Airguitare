@@ -15,7 +15,7 @@ app.controller('BUConnect', function ($scope, $http) {
 				var utilisateur = JSON.stringify(data);
 				localStorage.setItem('user', utilisateur);
 				localStorage.setItem('IsConnected', 'true')
-				$scope.switchBtn();
+				
 			}
 		})
 		.error(function(data){
@@ -27,13 +27,16 @@ app.controller('BUConnect', function ($scope, $http) {
 		$scope.switchBtn = function myFunction() {
 		    var x = document.getElementById('btnConnect');
 		    var y = document.getElementById('btnCompte');
-		    if (x.style.display != 'none') {
+		    var isConnected =  localStorage.getItem('isConnected');
+		    
+		    if (isConnected === 'true') {
 		        x.style.display = 'none';
 		        y.style.display= 'inline';
-		       var user =  JSON.parse(localStorage.getItem('user'));
+		     var user = JSON.parse( localStorage.getItem('user')); 
 		       y.innerHTML = "bonjour " + user.prenom;
 		    } else {
 		        x.style.display= 'initial';
+		        y.style.display= 'initial';
 		    }
 		}
 });
