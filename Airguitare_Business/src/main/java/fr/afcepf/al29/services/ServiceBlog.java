@@ -48,7 +48,7 @@ public class ServiceBlog {
 	@GET
     @Path("singleArticle/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-	public DTOArticleBlog getArticleById(int idArticle){
+	public DTOArticleBlog getArticleById(@PathParam("id")int idArticle){
 		System.out.println(idArticle);
 		return buBlog.getArticleByID(idArticle);
 	}
