@@ -27,11 +27,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script src="js/jquery.easydropdown.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>
+<script src="script/cart.js"></script>		
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>
@@ -50,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--end-breadcrumbs-->
 	<!--start-ckeckout-->
-	<div class="ckeckout">
+	<div id="panier" class="ckeckout" ng-app="businessCart" ng-controller="BUCart">
 		<div class="container">
 			<div class="ckeck-top heading">
 				<h2>Gestion Panier</h2>
@@ -124,9 +127,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 			</div>  
+			<input type="submit" value="test" ng-click="addOne()" >
+			<span id="prix">118</span>
+			<input type="submit" value="reset" ng-click="flush()" >
 		 </div>
 		</div>
+		
 	</div>
+	<script> angular.bootstrap(panier, ['businessCart']);</script>
 	<!--end-ckeckout-->
 	<!--information-starts-->
 	<div id="new-footer">

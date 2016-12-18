@@ -1,4 +1,4 @@
-<html >
+<html ng-app="commandes">
 
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
@@ -43,21 +43,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<table class="table">
 			<tr class="tr">
 				<th class="th">Numéro de commande</th>
-				<th class="th">Date</th>
+				<th class="th">Date de commande</th>
 				<th class="th">Prix</th>
 			
 			</tr>
-			<tr>
-				<td>{{message}}</td>
-				<td> </td>
-				<td> </td>
-			</tr>
 			<tr ng-repeat="commande in listCommand">
-				<td>{{commande.numero}}</td>
-				<td>{{commande.date}} </td>
-				<td>commande.prix </td>
+				<td>{{commande.numero}} {{message}}</td>
+				<td>{{commande.date | date:'mediumDate'}} </td>
+				<td ng-model="prix">   {{prix | currency:"€"}}</td>
 			</tr>
-			
 		</table>
 	</div>
 	<script> angular.bootstrap(compteClient, ['businessCommande']);</script>
