@@ -6,7 +6,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html ng-app="businessProduit">
+<html>
 <head>
 	<title>AirBrass : Vos Meilleures Air Guitares</title>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -32,11 +32,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	    
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 	<script src="js/angular.min.js"></script>
+	<script src="script/utilisateur2.js"></script>
 	<script src="script/produit.js"></script>		
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>
@@ -55,8 +56,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!--end-breadcrumbs-->
 	<!--prdt-starts-->
-	<div class="prdt"> 
-		<div class="container"  ng-controller="BPlist">
+	<div class="prdt" > 
+		<div id="produits" class="container" ng-app="businessProduit" ng-controller="BPlist">
 			<div class="prdt-top">
 				<div class="col-md-3 prdt-left">
 					<div class="w_sidebar">
@@ -139,7 +140,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="clearfix"></div>
 			</div>
 		</div>
-	</div>
+		
+	<script> angular.bootstrap(produits, ['businessProduit']);</script>
 	<!--product-end-->
 	<!--information-starts-->
 	<div id="new-footer">

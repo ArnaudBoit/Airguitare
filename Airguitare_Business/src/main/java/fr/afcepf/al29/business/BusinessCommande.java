@@ -52,19 +52,16 @@ import fr.afcepf.al29.ibusiness.IBusinessCommande;
 	  @Override
 	  public double getPrixByCommande(int idCommande) {
 		  double prix =0;
-		  List<LigneCommande>	ligne =	DAOCommande.getPrixByCommande(idCommande);
+		  List<LigneCommande>lignes  =	DAOCommande.getLignesByCommande(idCommande);
+		  
 		  List<DTOLigneCommande> dtolignes = new ArrayList<>();
-		  if(ligne !=null) {
-			  for (LigneCommande ligneCommande : ligne) {
+		  if(lignes !=null) {
+			  for (LigneCommande ligneCommande : lignes) {
 				  DTOLigneCommande dto = new DTOLigneCommande(ligneCommande, false);
-				  DTOProduit prod = new DTOProduit(ligneCommande.getProduit(),false);
-				  dto.setProduit(prod);
-				  dtolignes.add(dto);
-				  
+				 LigneCommande ligne =  DAOCommande.getLigneById(dto.getId());
+				 prix += ligne.getQuantite() * ligne.getProduit().getPrix();
 			  }
-			  for (DTOLigneCommande dtoLigneCommande : dtolignes) {
-				prix += dtoLigneCommande.getQuantite()* dtoLigneCommande.getProduit().getPrix();
-			}
+			
 		  }
 		  return prix;
 	  }

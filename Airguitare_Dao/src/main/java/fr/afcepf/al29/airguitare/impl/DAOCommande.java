@@ -49,11 +49,21 @@ public class DAOCommande implements IDAOCommande {
 	}
 
 	@Override
-	public List<LigneCommande> getPrixByCommande(int idCommande){
+	public List<LigneCommande> getLignesByCommande(int idCommande){
 		Query query = em.createQuery("SELECT l FROM LigneCommande l WHERE l.commande.id = :idCommande").setParameter("idCommande", idCommande);
 		return query.getResultList();
 		
 	}
-
+	
+	public LigneCommande getLigneById(int idLigne){
+		Query query = em.createQuery("SELECT l FROM LigneCommande l WHERE l.id = :idLigne").setParameter("idLigne", idLigne);
+		List<LigneCommande> lignes =  query.getResultList();
+		if(!lignes.isEmpty()){
+			return lignes.get(0);
+		}
+		return null;
+		
+	}
+	
 
 }

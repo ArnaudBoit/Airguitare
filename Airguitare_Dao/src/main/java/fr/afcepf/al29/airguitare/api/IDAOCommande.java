@@ -31,6 +31,7 @@ public interface IDAOCommande {
      */
     public Commande addCommande(Commande commande);
 
-	List<LigneCommande> getPrixByCommande(int idCommande);
+	List<LigneCommande> getLignesByCommande(int idCommande);
+	public LigneCommande getLigneById(int idLigne);
 
 }

@@ -14,7 +14,7 @@ app.controller('BUCommand', function ($scope, $http, $window) {
 
 
 	$scope.displayCommand = function myFunction(){
-
+		console.log('premiere methode')
 		var user = JSON.parse( localStorage.getItem('user'));
 
 		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byUserID',
@@ -29,10 +29,16 @@ app.controller('BUCommand', function ($scope, $http, $window) {
 				})
 				
 		
-		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:2})
+	
+	}
+	$scope.getPrice = function myfunction(idCommande){
+		console.log(idCommande);
+		alert('dans la methode');
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:idCommande})
 		.success(function(data){
 			$scope.prix=data;
 			console.log(data);
+			return data;
 		})
 	}
 	

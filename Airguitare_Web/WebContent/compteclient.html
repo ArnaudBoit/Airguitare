@@ -51,10 +51,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<td> </td>
 				<td> </td>
 			</tr>
-			<tr ng-repeat="commande in listCommand">
+			<tr ng-repeat="commande in listCommand ">
 				<td>{{commande.numero}}</td>
 				<td>{{commande.date | date:'mediumDate'}} </td>
-				<td ng-model="prix">   {{prix | currency:"€"}}</td>
+				<td ng-init="getPrice(commande.id)">   {{prix | currency:"€"}}</td>
 			</tr>
 		</table>
 	</div>
