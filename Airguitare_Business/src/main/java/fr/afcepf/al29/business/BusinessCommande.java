@@ -63,7 +63,7 @@ import fr.afcepf.al29.ibusiness.IBusinessCommande;
 				  
 			  }
 			  for (DTOLigneCommande dtoLigneCommande : dtolignes) {
-				prix += dtoLigneCommande.getProduit().getPrix();
+				prix += dtoLigneCommande.getQuantite()* dtoLigneCommande.getProduit().getPrix();
 			}
 		  }
 		  return prix;
