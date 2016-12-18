@@ -35,7 +35,7 @@ public class DTOCommande {
 		this.setNumero(commande.getNumero());
 		if(dependencies){
 			if(commande.getPersonne() != null){
-		this.setPersonne(new DTOPersonne(commande.getPersonne(), true) );
+		this.setPersonne(new DTOPersonne(commande.getPersonne(), false) );
 			}
 		for (LigneCommande ligneCommande : commande.getLigneCommandes()) {
 			this.getLigneCommandes().add(new DTOLigneCommande(ligneCommande,false));

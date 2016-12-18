@@ -10,7 +10,7 @@ public class DTOPaypal {
 
 	private String mail;
 
-	private DTOModePaiement modePaiement = new DTOModePaiement();
+//	private DTOModePaiement modePaiement = new DTOModePaiement();
 
 	public DTOPaypal() {
 	}
@@ -20,9 +20,9 @@ public class DTOPaypal {
 		this.setId(paypal.getId());
 		this.setIntitule(paypal.getIntitule());
 		this.setMail(paypal.getMail());
-		if(paypal.getModePaiement() != null) {
-			this.setModePaiement(new DTOModePaiement(paypal.getModePaiement(),false));
-		}
+//		if(paypal.getModePaiement() != null) {
+//			this.setModePaiement(new DTOModePaiement(paypal.getModePaiement(),false));
+//		}
 	}
 
 
@@ -56,14 +56,14 @@ public class DTOPaypal {
 	}
 
 
-	public DTOModePaiement getModePaiement() {
-		return modePaiement;
-	}
-
-
-	public void setModePaiement(DTOModePaiement modePaiement) {
-		this.modePaiement = modePaiement;
-	}
+//	public DTOModePaiement getModePaiement() {
+//		return modePaiement;
+//	}
+//
+//
+//	public void setModePaiement(DTOModePaiement modePaiement) {
+//		this.modePaiement = modePaiement;
+//	}
 
 
 }

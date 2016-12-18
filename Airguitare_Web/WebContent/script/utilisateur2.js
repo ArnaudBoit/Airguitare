@@ -11,11 +11,12 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 		.success(function(data){
 			
 			if (data != null){
+				
 				var utilisateur = JSON.stringify(data);
 				localStorage.setItem('user', utilisateur);
 				localStorage.setItem('IsConnected', 'true')
 				$scope.switchBtn();
-				$window.location.href = 'compteclient.html'
+				$window.location.href = 'compteclient.html';
 			}
 		})
 		.error(function(data){
@@ -37,7 +38,7 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 		        y.style.display= 'inline';
 		     var user = JSON.parse( localStorage.getItem('user')); 
 		       y.innerHTML = "bonjour " + user.prenom;
-		       
+		      
 		    } else {
 		    	console.log('isDisConnected');
 		        x.style.display= 'initial';
@@ -65,3 +66,4 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 			document.getElementById('btnDeco').style.display="none";
 		}
 });
+angular.bootstrap(document.getElementById("new-header"), ['businessUtilisateur']);

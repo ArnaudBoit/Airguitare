@@ -17,6 +17,7 @@ public Set<Class<?>> getClasses() {
 	classes.add(ServiceProduit.class);
 	classes.add(ServiceBlog.class);
 	classes.add(ServiceUtilisateur.class);
+	classes.add(ServiceCommande.class);
 	return classes;
 }
 }

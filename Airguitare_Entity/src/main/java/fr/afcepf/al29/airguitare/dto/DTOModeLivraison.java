@@ -11,7 +11,7 @@ public class DTOModeLivraison {
 
 	private int delai;
 
-	private DTOCommande commande= new DTOCommande();
+//	private DTOCommande commande= new DTOCommande();
 
 	public DTOModeLivraison() {
 	}
@@ -21,11 +21,11 @@ public class DTOModeLivraison {
 		this.setId(modeLivraison.getId());
 		this.setNom(modeLivraison.getNom());
 		this.setTarif(modeLivraison.getTarif());
-		if(dependencies){
-			if(modeLivraison.getCommande() != null){
-				this.setCommande(new DTOCommande(modeLivraison.getCommande(),false) );
-			}
-		}
+//		if(dependencies){
+//			if(modeLivraison.getCommande() != null){
+//				this.setCommande(new DTOCommande(modeLivraison.getCommande(),false) );
+//			}
+//		}
 	}
 	public int getId() {
 		return id;
@@ -51,12 +51,12 @@ public class DTOModeLivraison {
 	public void setDelai(int delai) {
 		this.delai = delai;
 	}
-	public DTOCommande getCommande() {
-		return commande;
-	}
-	public void setCommande(DTOCommande commande) {
-		this.commande = commande;
-	}
+//	public DTOCommande getCommande() {
+//		return commande;
+//	}
+//	public void setCommande(DTOCommande commande) {
+//		this.commande = commande;
+//	}
 
 
 
