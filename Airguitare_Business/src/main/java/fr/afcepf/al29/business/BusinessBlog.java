@@ -12,7 +12,10 @@ import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.api.IDAOCommentaireBlog;
 import fr.afcepf.al29.airguitare.api.IDAOThemeArticle;
 import fr.afcepf.al29.airguitare.dto.DTOArticleBlog;
+import fr.afcepf.al29.airguitare.dto.DTOCommentaireBlog;
+import fr.afcepf.al29.airguitare.dto.DTOPersonne;
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
+import fr.afcepf.al29.airguitare.entities.CommentaireBlog;
 import fr.afcepf.al29.ibusiness.IBusinessBlog;
 
 
@@ -51,9 +54,22 @@ public class BusinessBlog implements IBusinessBlog {
 	}
 	
 	@Override
-	public Long nombreCommentaireByArticle(int idArticle){
-		System.out.println("bu " + DAOBlog.nombreCommentaireByArticle(idArticle));
-		return DAOBlog.nombreCommentaireByArticle(idArticle);
+	public int nombreCommentaireByArticle(int idArticle){
+		List<CommentaireBlog> coms = DAOBlog.nombreCommentaireByArticle(idArticle);
+		List<DTOCommentaireBlog> dtocoms = new ArrayList<>();
+		int result =0;
+		for (CommentaireBlog commentaireBlog : coms) {
+			DTOCommentaireBlog dto = new DTOCommentaireBlog(commentaireBlog, false);
+			DTOArticleBlog dtoarticle = new DTOArticleBlog(commentaireBlog.getArticle(),false);
+			DTOPersonne dtopers = new DTOPersonne(commentaireBlog.getPersonne(), false);
+			dto.setArticle(dtoarticle);
+			dto.setPersonne(dtopers);
+			dtocoms.add(dto);
+		}
+		for (DTOCommentaireBlog dtoCommentaireBlog : dtocoms) {
+			result+=1;
+		}
+		return result ;
 	}
 	
 	@Override

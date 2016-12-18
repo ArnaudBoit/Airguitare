@@ -39,11 +39,11 @@ public class ServiceBlog {
     }
 	
 	@GET
-    @Path("nbComment/{nb}")
+    @Path("nbComment")
     @Produces(MediaType.APPLICATION_JSON)
-	public Long nombreCommentaireByArticle(@PathParam("nb") int idArticle){
-		System.out.println("coucou");
-		return buBlog.nombreCommentaireByArticle(idArticle);
+	@Consumes(MediaType.APPLICATION_JSON)
+	public int nombreCommentaireByArticle(IdParam idArticle){
+		return buBlog.nombreCommentaireByArticle(Integer.parseInt(idArticle.id));
 	}
 	@GET
     @Path("singleArticle/{id}")

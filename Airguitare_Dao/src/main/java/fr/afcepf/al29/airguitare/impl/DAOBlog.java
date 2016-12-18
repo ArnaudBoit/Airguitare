@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
+import fr.afcepf.al29.airguitare.entities.CommentaireBlog;
 
 /**
  * 
@@ -45,21 +46,21 @@ public class DAOBlog implements IDAOBlog {
 
 	@Override
 	public List<ArticleBlog> GetAllArticleSortedByDate() {
-		Query query = em.createQuery("SELECT a FROM ArticleBlog a ORDER BY a.dateAjout");
+		Query query = em.createQuery("SELECT a FROM ArticleBlog a ORDER BY a.dateAjout DESC");
 		return query.getResultList();
 	}
 
 	@Override
-	public Long nombreCommentaireByArticle(int idArticle){
-		Query query = em.createQuery("SELECT COUNT(c) FROM CommentaireBlog c WHERE c.article.id = :idArticle").setParameter("idArticle", idArticle);
-		return (Long) query.getSingleResult();
+	public List<CommentaireBlog> nombreCommentaireByArticle(int idArticle){
+		Query query = em.createQuery("Select c FROM CommentaireBlog c  WHERE c.article.id = :idArticle").setParameter("idArticle", idArticle);
+		
+		return   query.getResultList();
 	}
 	
 	@Override
 	public ArticleBlog getArticleByID(int idArticle){
 		
 		Query query = em.createQuery("SELECT a FROM ArticleBlog a WHERE a.id = :idArticle").setParameter("idArticle", idArticle);
-		System.out.println( query.getSingleResult().toString());
 		return (ArticleBlog) query.getSingleResult();
 		
 	}

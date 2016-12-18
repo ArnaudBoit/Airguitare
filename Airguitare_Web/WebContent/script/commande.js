@@ -6,6 +6,7 @@ app.controller('BUCommand', function ($scope, $http, $window) {
 	$scope.prix = '';
 	$scope.listLigne= [];
 	$scope.command= {};
+	
 	var isConnected = localStorage.getItem('IsConnected');
 
 	if(isConnected != 'true'){
@@ -14,26 +15,25 @@ app.controller('BUCommand', function ($scope, $http, $window) {
 
 
 	$scope.displayCommand = function myFunction(){
-
+		var valeur;
 		var user = JSON.parse( localStorage.getItem('user'));
 
 		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byUserID',
 				{id: user.id })
 				.success(function(data){
-					console.log(data);
 					$scope.listCommand = data;
-					
+					 
 				})
 				.error(function(data){
 					$scope.message=data;
 				})
-				
 		
-		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:2})
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:1})
 		.success(function(data){
+			
 			$scope.prix=data;
-			console.log(data);
 		})
+		
 	}
 	
 	

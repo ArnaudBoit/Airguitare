@@ -1,7 +1,7 @@
-<html ng-app="commandes">
+<html>
 
 <head>
-<title>AirBrass : Vos Meilleures Air Guitares</title>
+<title>AirBrass : Vos Meilleures Air Guitar</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
 <script src="js/jquery-1.11.0.min.js"></script>
@@ -50,7 +50,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<tr ng-repeat="commande in listCommand">
 				<td>{{commande.numero}} {{message}}</td>
 				<td>{{commande.date | date:'mediumDate'}} </td>
-				<td ng-model="prix">   {{prix | currency:"€"}}</td>
+				<td id="prix">{{prix | currency:'€'}}</td>
+				
 			</tr>
 		</table>
 	</div>

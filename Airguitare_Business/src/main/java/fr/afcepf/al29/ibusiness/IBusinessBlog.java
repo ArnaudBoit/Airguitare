@@ -12,7 +12,7 @@ public interface IBusinessBlog {
 
 	List<DTOArticleBlog> getAllArticle();
 
-	Long nombreCommentaireByArticle(int idArticle);
+	int nombreCommentaireByArticle(int idArticle);
 
 	DTOArticleBlog getArticleByID(int idArticle);
 }

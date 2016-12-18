@@ -3,6 +3,7 @@ package fr.afcepf.al29.airguitare.api;
 import java.util.List;
 
 import fr.afcepf.al29.airguitare.entities.ArticleBlog;
+import fr.afcepf.al29.airguitare.entities.CommentaireBlog;
 
 /**
  * 
@@ -40,7 +41,7 @@ public interface IDAOBlog {
      */
     public void removeArticleBlog(ArticleBlog article);
 
-	Long nombreCommentaireByArticle(int idArticle);
+	List<CommentaireBlog> nombreCommentaireByArticle(int idArticle);
 
 	ArticleBlog getArticleByID(int idArticle);
 
