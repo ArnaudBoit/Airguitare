@@ -26,7 +26,6 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 		
 		
 		$scope.switchBtn = function myFunction() {
-			console.log("dans la fonction");
 			
 		    var x = document.getElementById('btnConnect');
 		    var y = document.getElementById('btnCompte');
@@ -49,6 +48,7 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 		$scope.disconnect = function myFunction() {
 			localStorage.setItem('IsConnected', 'false');
 			localStorage.removeItem('user');
+			console.log(localStorage);
 			$scope.switchBtn();
 			var y = document.getElementById('btnDeco');
 			y.style.display= 'none';

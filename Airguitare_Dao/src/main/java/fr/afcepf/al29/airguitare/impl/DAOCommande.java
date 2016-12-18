@@ -28,6 +28,7 @@ public class DAOCommande implements IDAOCommande {
 	public List<Commande> getCommandeByClient(int idClient) {
 		Query query = em.createQuery("FROM Commande WHERE personne.id = :idClient", Commande.class).setParameter("idClient", idClient);
 		return query.getResultList();
+		
 	}
 
 	@Override
