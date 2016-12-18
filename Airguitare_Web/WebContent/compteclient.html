@@ -47,11 +47,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<th class="th">Prix</th>
 			
 			</tr>
-			<tr ng-repeat="commande in listCommand">
-				<td>{{commande.numero}} {{message}}</td>
-				<td>{{commande.date}} </td>
-				<td>commande.prix {{1+1}}</td>
+			<tr>
+				<td>{{message}}</td>
+				<td> </td>
+				<td> </td>
 			</tr>
+			<tr ng-repeat="commande in listCommand">
+				<td>{{commande.numero}}</td>
+				<td>{{commande.date}} </td>
+				<td>commande.prix </td>
+			</tr>
+			
 		</table>
 	</div>
 	<script> angular.bootstrap(compteClient, ['businessCommande']);</script>

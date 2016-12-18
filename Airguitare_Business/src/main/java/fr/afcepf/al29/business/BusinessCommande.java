@@ -35,7 +35,7 @@ public class BusinessCommande implements IBusinessCommande {
 	public List<DTOCommande> getCommandesByUser(int idUser) {
 		List<DTOCommande> commandesDTO = new ArrayList<>();
 		List<Commande> commandes = DAOCommande.getCommandeByClient(idUser);
-		if(commandes!=null){
+		if(!commandes.isEmpty()){
 		for (Commande commande :commandes ){
 			DTOCommande dto = new DTOCommande(commande, false);
 			commandesDTO.add(dto);

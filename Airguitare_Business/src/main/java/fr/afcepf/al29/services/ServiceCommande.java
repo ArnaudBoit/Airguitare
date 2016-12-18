@@ -42,8 +42,9 @@ public class ServiceCommande {
 		
 		if(commandesDTO!=null){
 			return Response.status(201).entity(commandesDTO).build();
+			
 			}else{
-			return Response.status(500).entity("Aucune Commande").build();
+			return Response.status(500).entity("Aucune commande").build();
 			}
 	}
 }
