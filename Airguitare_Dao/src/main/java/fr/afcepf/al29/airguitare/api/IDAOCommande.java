@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.afcepf.al29.airguitare.entities.Commande;
+import fr.afcepf.al29.airguitare.entities.LigneCommande;
 
 /**
  * 
@@ -29,5 +30,7 @@ public interface IDAOCommande {
      * @return
      */
     public Commande addCommande(Commande commande);
+
+	List<LigneCommande> getPrixByCommande(int idCommande);
 
 }

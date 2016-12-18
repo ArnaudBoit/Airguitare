@@ -11,18 +11,25 @@ import javax.faces.bean.ManagedBean;
 import fr.afcepf.al29.airguitare.api.IDAOBlog;
 import fr.afcepf.al29.airguitare.api.IDAOCB;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
+import fr.afcepf.al29.airguitare.api.IDAOCommande;
 import fr.afcepf.al29.airguitare.api.IDAOMarque;
 import fr.afcepf.al29.airguitare.api.IDAOPaypal;
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
 import fr.afcepf.al29.airguitare.api.IDAOSpecialisationProduit;
 import fr.afcepf.al29.airguitare.api.IDAOVille;
+import fr.afcepf.al29.airguitare.dto.DTOCommande;
+import fr.afcepf.al29.airguitare.dto.DTOLigneCommande;
+import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.airguitare.entities.CB;
+import fr.afcepf.al29.airguitare.entities.LigneCommande;
 import fr.afcepf.al29.airguitare.entities.Marque;
 import fr.afcepf.al29.airguitare.entities.Paypal;
 import fr.afcepf.al29.airguitare.entities.Pays;
 import fr.afcepf.al29.airguitare.entities.Personne;
 import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.airguitare.entities.Ville;
+import fr.afcepf.al29.business.BusinessCommande;
+import fr.afcepf.al29.ibusiness.IBusinessCommande;
 
 @ManagedBean(name="ville")
 @RequestScoped
@@ -43,7 +50,14 @@ public class VilleManagedBean {
 	private IDAOClient proxyClient;
 	@EJB
 	IDAOBlog proxyBlog;
+	@EJB
+	IDAOCommande proxyCommand;
+	@EJB
+	IBusinessCommande proxybu = new BusinessCommande();
 	
+	
+	
+	Double prix;
 	String login;
 	String password;
 	List<Pays> pays = new ArrayList<>();
@@ -53,57 +67,21 @@ public class VilleManagedBean {
 	Paypal paypal;
 	List<CB> cb = new ArrayList<>();
 	Personne pers = new Personne();
+	List<LigneCommande> ligne = new ArrayList<>();
+	List<DTOCommande> dtocommandes = new ArrayList<>();
+	double dtoligne = 0;
+	double taxe=0;
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
-		for (Pays pays2 : pays) {
-			System.out.println(pays2.getNom());
+		dtocommandes = proxybu.getCommandesByUser(4);
+		for (DTOCommande dtoCommande : dtocommandes) {
+			System.out.println(dtocommandes.size());
+			dtoligne += proxybu.getPrixByCommande(dtoCommande.getId());
+			System.out.println("dtolignes" + dtoligne);
+			dtoligne =0;
 		}
 		
-		villes= proxy.getVilleByPays(36);
-		System.out.println(villes.size());
-		
-		produits = proxyProduit.getArticlesByType("guitare");
-		
-		for (Produit produit : produits) {
-			
-			System.out.println(produit.getIntitule() + " " + produit.getPrix());
-		}
-		
-		produits = proxyProduit.getAllArticleBySpecialisation("guitares classiques");
-		
-		for (Produit produit : produits) {
-			
-			System.out.println(produit.getIntitule() + " " + produit.getPrix());
-		}
-		
-		paypal = proxyPaypal.getPaypalByCLient(10);
-		System.out.println(paypal.toString());
-		cb = proxyCB.getCBByClient(4);
-		for (CB cb2 : cb) {
-			System.out.println(cb2.toString());
-		}
-		marques = proxyMarque.getAll();
-		for (Marque marque : marques) {
-			System.out.println(marque.getIntitule());
-		}
-		
-		produits = proxyProduit.getProduitByPrix(2000);
-		for (Produit produit : produits) {
-			
-			System.out.println(produit.getIntitule() + " � " + produit.getPrix() + "�");
-			
-		}
-		
-		marques = proxyMarque.getMarqueBySpecialisationProduit("guitares classiques");
-		System.out.println("les marques tri�es");
-		for (Marque marque : marques) {
-			System.out.println(marque.getIntitule());
-		}
-		
-		System.out.println("nb de commentaires"+proxyBlog.nombreCommentaireByArticle(6));
-		
-		//proxyClient.connectClient("dfgfdg", "sfddsf");
 	}
 	
 	public String connection(){
