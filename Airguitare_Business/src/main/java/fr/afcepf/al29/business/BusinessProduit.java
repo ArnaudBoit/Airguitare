@@ -46,7 +46,7 @@ public class BusinessProduit implements IBusinessProduit {
 	
     public List<DTOProduit> getAllProduits() {   
     	List<DTOProduit> liste = new ArrayList<>();
-    	for (Produit produit : DAOProduit.getArticlesByType("guitare")) {
+    	for (Produit produit : DAOProduit.getArticlesByType("Guitares")) {
 			DTOProduit dto = new DTOProduit(produit, true);
 			liste.add(dto);
 		}    	

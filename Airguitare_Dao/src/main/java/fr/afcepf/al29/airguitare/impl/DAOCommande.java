@@ -1,5 +1,6 @@
 package fr.afcepf.al29.airguitare.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +9,10 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.al29.airguitare.api.IDAOCommande;
+import fr.afcepf.al29.airguitare.dto.DTOCommande;
+import fr.afcepf.al29.airguitare.dto.DTOLigneCommande;
 import fr.afcepf.al29.airguitare.entities.Commande;
+import fr.afcepf.al29.airguitare.entities.LigneCommande;
 import fr.afcepf.al29.airguitare.entities.Personne;
 
 /**
@@ -44,6 +48,12 @@ public class DAOCommande implements IDAOCommande {
 		return commande;
 	}
 
+	@Override
+	public List<LigneCommande> getPrixByCommande(int idCommande){
+		Query query = em.createQuery("SELECT l FROM LigneCommande l WHERE l.commande.id = :idCommande").setParameter("idCommande", idCommande);
+		return query.getResultList();
+		
+	}
 
 
 }

@@ -2,30 +2,40 @@ var app = angular.module('businessCommande', []);
 app.controller('BUCommand', function ($scope, $http, $window) {
 	console.log('dans le controller');
 	$scope.listCommand = [];
-	$scope.message;
-	
+	$scope.message = '';
+	$scope.prix = '';
+	$scope.listLigne= [];
+	$scope.command= {};
 	var isConnected = localStorage.getItem('IsConnected');
-	
-		if(isConnected != 'true'){
-		
-		console.log('dans le if');
+
+	if(isConnected != 'true'){
 		$window.location.href = 'account.html';
 	}
-	
-	
+
+
 	$scope.displayCommand = function myFunction(){
-		 var user = JSON.parse( localStorage.getItem('user'));
-		
+
+		var user = JSON.parse( localStorage.getItem('user'));
+
 		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byUserID',
 				{id: user.id })
 				.success(function(data){
-					$scope.listCommand = data;	
+					console.log(data);
+					$scope.listCommand = data;
 					
 				})
 				.error(function(data){
 					$scope.message=data;
-				})	
+				})
 				
+		
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:2})
+		.success(function(data){
+			$scope.prix=data;
+			console.log(data);
+		})
 	}
+	
+	
 });
 angular.bootstrap(document.getElementById("compteClient"), ['businessCommande']);

@@ -1,5 +1,6 @@
 package fr.afcepf.al29.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -13,7 +14,11 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import fr.afcepf.al29.airguitare.api.IDAOCommande;
 import fr.afcepf.al29.airguitare.dto.DTOCommande;
+import fr.afcepf.al29.airguitare.dto.DTOLigneCommande;
+import fr.afcepf.al29.airguitare.dto.DTOProduit;
+import fr.afcepf.al29.business.BusinessCommande;
 import fr.afcepf.al29.ibusiness.IBusinessCommande;
 
 @Stateless
@@ -21,6 +26,7 @@ import fr.afcepf.al29.ibusiness.IBusinessCommande;
 public class ServiceCommande {
 	
 	private IBusinessCommande buCommande;
+	private IDAOCommande daocommande;
 	
 	public ServiceCommande(){
 		try {
@@ -47,4 +53,30 @@ public class ServiceCommande {
 			return Response.status(500).entity("Aucune commande").build();
 			}
 	}
+	
+	@POST
+    @Path("byCommandeID")
+    @Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+    public double getPrixByCommande(IdParam param) {
+		double prix =0;
+		List<DTOLigneCommande> dtoligne = new ArrayList<>();
+			prix=buCommande.getPrixByCommande(Integer.parseInt(param.id));
+		List<DTOProduit> produits = new ArrayList<>();
+		if(dtoligne != null){
+			for (DTOLigneCommande dtoLigneCommande : dtoligne) {
+				produits.add(dtoLigneCommande.getProduit());
+				for (DTOProduit dtoProduit : produits) {
+					
+					prix += dtoProduit.getPrix();
+				}
+				
+			}
+		}
+		
+		return prix;
+		
+	}
+	
+	
 }
