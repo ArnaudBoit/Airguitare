@@ -64,7 +64,7 @@ app.controller('BUarticle', function ($scope, $http, $window) {
 			panier = JSON.parse(localStorage.getItem('panier'));
 		}
 //		console.log("qté:"+qte);
-		panier.push({id:produit.id, quantite:qte, nom:produit.intitule, prix : produit.prix});
+		panier.push({id:produit.id, quantite:qte, nom:produit.intitule, prix : produit.prix, photo : produit.photo});
 		localStorage.setItem('panier', JSON.stringify(panier));
 	//	console.log(panier);
 
