@@ -61,9 +61,7 @@ app.controller('BUCart', function ($scope, $http, $window) {
 				{idPers: idUser.id , Panier : panier })
 		.success(function(data){
 			
-			localStorage.removeItem('panier');
-			localStorage.setItem('nbArt',0);
-			localStorage.setItem('cost',0);
+			$scope.flush();
 		})
 		.error(function(data){
 			
