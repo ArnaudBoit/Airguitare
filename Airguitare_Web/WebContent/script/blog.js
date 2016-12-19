@@ -13,7 +13,6 @@ console.log($location.search().id);
 		.success(function(data){
 
 			$scope.liste = data;
-				
 
 		})
 		.error(function(data){
@@ -24,11 +23,16 @@ console.log($location.search().id);
 	}
 
 	
-	
+	$scope.getNBComment = function (nb) {
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:nb})
+		.success(function(data){
+			$scope.nbComment = data;
+		})
+	}
 //	$scope.getArticle = function(id,$scope) {
 //
 //		$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessBlog/singleArticle/',id : localeStorage['maCle']})
-//		.success(function(data){
+//		.success(functinbon(data){
 //			divArticle = data;
 //			//localeStorage.setItem('art',Json.stringify(data));
 //		})
