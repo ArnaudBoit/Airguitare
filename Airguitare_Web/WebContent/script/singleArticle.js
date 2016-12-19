@@ -11,16 +11,10 @@ app.controller('BUarticle', function ($scope, $http, $window) {
 		$http({method : 'GET', 
 			url : path
 		})
-		var id=localStorage.getItem('item');
-		console.log('id ' + id);
-		$http.post('http://localhost:8080/Airguitare_Web/resources/businessProduit/produit',
-				{id: id })
 		.success(function(data){
 			console.log("success: "+data)
 			$scope.article = data;
 		//	return $scope.post = data;
-			console.log('succes '+ data);
-			return $scope.post = data;
 			
 		})
 		.error(function(data){
