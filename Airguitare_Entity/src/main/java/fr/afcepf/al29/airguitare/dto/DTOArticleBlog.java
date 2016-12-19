@@ -17,6 +17,8 @@ public class DTOArticleBlog {
 	private String description;
 
 	private Date dateAjout;
+	
+	private String photo;
 
 	private List<DTOThemeArticle> themes = new ArrayList<>();
 
@@ -79,6 +81,14 @@ public class DTOArticleBlog {
 	}
 	public void setCommentaires(List<DTOCommentaireBlog> commentaires) {
 		this.commentaires = commentaires;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 

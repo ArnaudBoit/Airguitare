@@ -21,6 +21,7 @@ import fr.afcepf.al29.airguitare.dto.DTOCommande;
 import fr.afcepf.al29.airguitare.dto.DTOLigneCommande;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.airguitare.entities.CB;
+import fr.afcepf.al29.airguitare.entities.CommentaireBlog;
 import fr.afcepf.al29.airguitare.entities.LigneCommande;
 import fr.afcepf.al29.airguitare.entities.Marque;
 import fr.afcepf.al29.airguitare.entities.Paypal;
@@ -29,6 +30,7 @@ import fr.afcepf.al29.airguitare.entities.Personne;
 import fr.afcepf.al29.airguitare.entities.Produit;
 import fr.afcepf.al29.airguitare.entities.Ville;
 import fr.afcepf.al29.business.BusinessCommande;
+import fr.afcepf.al29.ibusiness.IBusinessBlog;
 import fr.afcepf.al29.ibusiness.IBusinessCommande;
 
 @ManagedBean(name="ville")
@@ -54,7 +56,8 @@ public class VilleManagedBean {
 	IDAOCommande proxyCommand;
 	@EJB
 	IBusinessCommande proxybu = new BusinessCommande();
-	
+	@EJB
+	IBusinessBlog proxyBuBlog;
 	
 	
 	Double prix;
@@ -74,13 +77,14 @@ public class VilleManagedBean {
 	@PostConstruct
 	public void init(){
 		pays = proxy.getAllPays();
-		dtocommandes = proxybu.getCommandesByUser(4);
-		for (DTOCommande dtoCommande : dtocommandes) {
-			System.out.println(dtocommandes.size());
-			dtoligne += proxybu.getPrixByCommande(dtoCommande.getId());
-			System.out.println("dtolignes" + dtoligne);
-			dtoligne =0;
+		List<CommentaireBlog> liste =proxyBlog.nombreCommentaireByArticle(4);
+		System.out.println(liste.size());
+		int result = 0;
+		for (CommentaireBlog commentaireBlog : liste) {
+			result++;
 		}
+		System.out.println(result);
+		System.out.println(proxyBuBlog.nombreCommentaireByArticle(4));
 		
 	}
 	

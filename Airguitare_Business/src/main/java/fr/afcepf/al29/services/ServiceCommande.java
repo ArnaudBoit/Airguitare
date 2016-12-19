@@ -59,11 +59,7 @@ public class ServiceCommande {
     @Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
     public double getPrixByCommande(IdParam param) {
-		double prix =0;
-		List<DTOLigneCommande> dtoligne = new ArrayList<>();
-			prix=buCommande.getPrixByCommande(Integer.parseInt(param.id));
-		
-		return prix;
+		return buCommande.getPrixByCommande(Integer.parseInt(param.id));
 		
 	}
 	

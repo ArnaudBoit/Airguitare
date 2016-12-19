@@ -44,6 +44,8 @@ public class ArticleBlog implements Serializable {
     private String description;
     
     private Date dateAjout;
+    
+    private String photo;
 
     /**
      * 
@@ -77,13 +79,15 @@ public class ArticleBlog implements Serializable {
 
 	
 
-	public ArticleBlog(int id, String intitule, String description, Date dateAjout, List<ThemeArticle> themes,
-			List<CommentaireBlog> commentaires) {
+	
+	public ArticleBlog(int id, String intitule, String description, Date dateAjout, String photo,
+			List<ThemeArticle> themes, List<CommentaireBlog> commentaires) {
 		super();
 		this.id = id;
 		this.intitule = intitule;
 		this.description = description;
 		this.dateAjout = dateAjout;
+		this.photo = photo;
 		this.themes = themes;
 		this.commentaires = commentaires;
 	}
@@ -176,6 +180,14 @@ public class ArticleBlog implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
 
