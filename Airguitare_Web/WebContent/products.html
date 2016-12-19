@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="col col-4"  ng-repeat="s in listeAllSpecs| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCbxSpec()" />
+										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCoches()" />
 										<i></i>{{s.intitule}}
 									</label>
 																	
@@ -90,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" />
+										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCoches()" />
 										<i></i>{{m.intitule}}
 									</label>
 																	

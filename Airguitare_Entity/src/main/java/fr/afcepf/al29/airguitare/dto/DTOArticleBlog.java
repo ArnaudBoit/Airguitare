@@ -33,6 +33,7 @@ public class DTOArticleBlog {
 		this.setIntitule(articleBlog.getIntitule());
 		this.setDescription(articleBlog.getDescription());
 		this.setDateAjout(articleBlog.getDateAjout());
+		this.setPhoto(articleBlog.getPhoto());
 
 		if(dependencies){
 

@@ -8,7 +8,6 @@ app.controller('BPlist', function ($scope, $http, $window) {
 		$scope.listeAllSpecs =[];	
 		
 		$scope.getlisteAllProduit = function (){
-			
 			$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessProduit/listeAllProduits'})
 			.success(function(data){
 				$scope.listeAllProduit = data;
@@ -35,7 +34,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 			if($scope.listeMarqueCochee != null) {
 				path += $scope.listeMarqueCochee;
 			}
-			console.log("path: "+path);		
+			//console.log("path: "+path);		
 			
 			
 			$http({method : 'GET', 
@@ -43,7 +42,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 				})
 				.success(function(data){
 					$scope.listeAllProduit = data;
-					console.log("AFFICHAGE PRODUITS "+data);
+					//console.log("AFFICHAGE PRODUITS "+data);
 				})
 				.error(function(data){
 					$scope.listeAllProduit = [];
@@ -78,7 +77,13 @@ app.controller('BPlist', function ($scope, $http, $window) {
 				alert("ErrorAllSpecs");
 			})
 		}
-
+		
+		//Update Categories
+		$scope.updateCoches = function() {
+			$scope.updateCbxMarque();
+			$scope.updateCbxSpec();
+			$scope.getProduitByOptions();
+		};
 		
 		//Update Marque pour les checkbox
 		$scope.cbxMarque = {};
@@ -87,14 +92,12 @@ app.controller('BPlist', function ($scope, $http, $window) {
 		$scope.updateCbxMarque = function() {
 			$scope.listeMarqueCochee = [];
 			
-          //  $scope.cbxMarqueAll = false;
 			
 			angular.forEach($scope.cbxMarque, function(value, id){
 				if(value) {
 					$scope.listeMarqueCochee.push(id);
 				}
 			});
-			$scope.getProduitByOptions();
 		};
 
 
@@ -105,15 +108,14 @@ app.controller('BPlist', function ($scope, $http, $window) {
 		$scope.updateCbxSpec = function() {
 			$scope.listeSpecCochee = [];
 			
-           // $scope.cbxSpecAll = false;
-			
 			angular.forEach($scope.cbxSpec, function(value, id){
 				if(value) {
 					$scope.listeSpecCochee.push(id);
 				}
 			});
-			$scope.getProduitByOptions();
 		};
+		
+		
 		
 
 		//Check/uncheck All Marques
@@ -126,8 +128,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 	        angular.forEach($scope.listeAllMarque, function (m) {
 	        	$scope.cbxMarque[m.intitule] = $scope.cbxMarqueAll;
 	        });
-			$scope.updateCbxSpec();
-			$scope.updateCbxMarque();
+	    	$scope.updateCoches();
         };
 		
 		//Check/uncheck All Specs
@@ -140,8 +141,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 	        angular.forEach($scope.listeAllSpecs, function (m) {
 	        	$scope.cbxSpec[m.intitule] = $scope.cbxSpecAll;
 	        });
-			$scope.updateCbxSpec();
-			$scope.updateCbxMarque();
+	    	$scope.updateCoches();
         };
     
         $scope.addOne = function myfunction(produit){
@@ -190,5 +190,6 @@ app.controller('BPlist', function ($scope, $http, $window) {
     		$window.location.href = 'single.html'
   
     	}
+    	
     	
 });
