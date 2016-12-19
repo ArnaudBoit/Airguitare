@@ -8,39 +8,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html ng-app="businessProduit">
 <head>
-	<title>AirBrass : Vos Meilleures Air Guitares</title>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<!--Custom-Theme-files-->
-	<!--theme-style-->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
-	<!--//theme-style-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+<title>AirBrass : Vos Meilleures Air Guitares</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords"
+	content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-	<!--start-menu-->
-	<script src="js/simpleCart.min.js"> </script>
-	<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-	<script type="text/javascript" src="js/memenu.js"></script>
-	<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
-	<!--dropdown-->
-	<script src="js/jquery.easydropdown.js"></script>	
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	    
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
-	<script src="js/angular.min.js"></script>
-	<script src="script/produit.js"></script>		
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--start-menu-->
+<script src="js/simpleCart.min.js"> </script>
+<link href="css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>
+<!--dropdown-->
+<script src="js/jquery.easydropdown.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="script/produit.js"></script>
 </head>
-<body> 
+<body>
 	<!--top-header-->
 	<div id="new-header">
-        <script>
+		<script>
             $("#new-header").load("header.html");
         </script>
-    </div>
+	</div>
 	<!--bottom-header-->
 	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
@@ -55,48 +59,50 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!--end-breadcrumbs-->
 	<!--prdt-starts-->
-	<div class="prdt"> 
-		<div class="container"  ng-controller="BPlist">
+	<div class="prdt">
+		<div class="container" ng-controller="BPlist">
 			<div class="prdt-top">
 				<div class="col-md-3 prdt-left">
 					<div class="w_sidebar">
-						<section  class="sky-form"  ng-init="getlisteAllSpecs()">
+						<section class="sky-form" ng-init="getlisteAllSpecs()">
 							<h4>Catégories</h4>
 							<div class="row1 scroll-pane">
 								<div class="col col-4">
 									<label class="checkbox"><input type="checkbox"
-										   ng-model="cbxSpecAll" ng-change="changeAllCbxSpec()"/>
-									<i></i>Tous les types</label>
+										ng-model="cbxSpecAll" ng-change="changeAllCbxSpec()" /> <i></i>Tous
+										les types</label>
 								</div>
-								<div class="col col-4"  ng-repeat="s in listeAllSpecs| orderBy:'-intitule':true">
-								
-									<label class="checkbox" >
-										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCbxSpec()" />
-										<i></i>{{s.intitule}}
+								<div class="col col-4"
+									ng-repeat="s in listeAllSpecs| orderBy:'-intitule':true">
+
+									<label class="checkbox"> <input type="checkbox"
+										value="{{s.id}}" ng-model="cbxSpec[s.intitule]"
+										ng-change="updateCbxSpec()" /> <i></i>{{s.intitule}}
 									</label>
-																	
+
 								</div>
 							</div>
 						</section>
-						<section  class="sky-form"  ng-init="getlisteAllMarque()">
+						<section class="sky-form" ng-init="getlisteAllMarque()">
 							<h4>Marques</h4>
 							<div class="row1 row2 scroll-pane">
 								<div class="col col-4">
-									<label class="checkbox"><input type="checkbox" 
-										   ng-model="cbxMarqueAll" ng-change="changeAllCbxMarque()"/>
-									<i></i>Toutes les marques</label>
+									<label class="checkbox"><input type="checkbox"
+										ng-model="cbxMarqueAll" ng-change="changeAllCbxMarque()" /> <i></i>Toutes
+										les marques</label>
 								</div>
-								<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
-								
-									<label class="checkbox" >
-										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" />
-										<i></i>{{m.intitule}}
+								<div class="col col-4"
+									ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
+
+									<label class="checkbox"> <input type="checkbox"
+										value="{{m.id}}" ng-model="cbxMarque[m.intitule]"
+										ng-change="updateCbxMarque()" /> <i></i>{{m.intitule}}
 									</label>
-																	
+
 								</div>
 							</div>
 						</section>
-						</div>
+					</div>
 					<!--<section class="sky-form">
 							<h4>Prix</h4>
 								<div class="row1 row2 scroll-pane">
@@ -109,44 +115,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 								</div>						
 						</section>
-						  -->	
-						
-					</div>
+						  -->
+
 				</div>
-				
-					<div class="col-md-9 prdt-right">
-					
-					<div class="product-one"  ng-init="getlisteAllProduit()">					
-					      
-							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
-								<div class="product-main simpleCart_shelfItem" >
-									<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
-									<div class="product-bottom">
-										<h3>{{x.intitule}}</h3>
-										<p>{{x.marque.intitule}}</p>
-										<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
-									</div>
-									<div class="srch srch1">
-										<span>{{x.specialisationProduit.id}}</span>
-									</div>
-								</div>
+			</div>
+
+			<div class="col-md-9 prdt-right">
+
+				<div class="product-one" ng-init="getlisteAllProduit()">
+
+					<div class="col-md-4 product-left p-left"
+						ng-repeat="x in listeAllProduit">
+						<div class="product-main simpleCart_shelfItem">
+							<a href="single.html" class="mask"><img
+								class="img-responsive zoom-img" src="{{x.photo}}" alt="" /></a>
+							<div class="product-bottom">
+								<h3>{{x.intitule}}</h3>
+								<p>{{x.marque.intitule}}</p>
+								<h4>
+									<a class="item_add" href="#"><i></i></a> <span
+										class=" item_price">€ {{x.prix}}</span>
+								</h4>
 							</div>
-						
-					</div>	
-					
+							<div class="srch srch1">
+								<span>{{x.specialisationProduit.id}}</span>
+							</div>
+						</div>
 					</div>
 
-				<div class="clearfix"></div>
+				</div>
+
 			</div>
+
+			<div class="clearfix"></div>
 		</div>
 	</div>
+	
 	<!--product-end-->
 	<!--information-starts-->
 	<div id="new-footer">
-        <script>
+		<script>
             $("#new-footer").load("footer.html");
         </script>
-    </div>
-	<!--footer-end-->	
+	</div>
+	<!--footer-end-->
 </body>
 </html>
