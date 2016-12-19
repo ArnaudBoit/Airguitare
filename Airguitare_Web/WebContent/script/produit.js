@@ -179,7 +179,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
     			panier = JSON.parse(localStorage.getItem('panier'));
     		}
     		
-    		panier.push({id:produit.id, quantite:1, nom:produit.intitule, prix : produit.prix});
+    		panier.push({id:produit.id, quantite:1, nom:produit.intitule, prix : produit.prix, photo: produit.photo});
     		localStorage.setItem('panier', JSON.stringify(panier));
     		console.log(panier);
     		

@@ -1,6 +1,6 @@
 var app = angular.module('businessCart', []);
 app.controller('BUCart', function ($scope, $http, $window) {
-	
+	$scope.Panier=[];
     $scope.addOne = function myfunction(produit){
     	var nbArticles ;
 		if("nbArt" in localStorage){
@@ -27,6 +27,8 @@ app.controller('BUCart', function ($scope, $http, $window) {
 	$scope.flush = function myfunction(){
 		
 		   localStorage.removeItem('nbArt');
+		   localStorage.removeItem('panier');
+		   localStorage.setItem('cost',0);
 		   
 	}
 	
@@ -41,5 +43,30 @@ app.controller('BUCart', function ($scope, $http, $window) {
 		console.log(panier);
 		
 	}
-
+	
+	$scope.displayPanier = function myfunction(){
+	
+	
+		$scope.Panier= JSON.parse(localStorage.getItem('panier'));
+		
+	}
+	
+	$scope.confirmer = function myfunction(){
+		var idUser= angular.fromJson(localStorage.getItem('user'));
+		var panier = angular.fromJson(localStorage.getItem('panier'));
+		
+		console.log(idUser);
+		
+		$http.put('http://localhost:8080/Airguitare_Web/resources/commandes/order',
+				{idPers: idUser.id , Panier : panier })
+		.success(function(data){
+			
+			
+		})
+		.error(function(data){
+			
+		})
+		}
+		
+	
 });

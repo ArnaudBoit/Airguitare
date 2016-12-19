@@ -54,13 +54,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--end-breadcrumbs-->
 	<!--start-ckeckout-->
 	<div id="panier" class="ckeckout" ng-app="businessCart" ng-controller="BUCart">
-		<div class="container">
+		<div class="container" ng-init=displayPanier()>
 			<div class="ckeck-top heading">
 				<h2>Gestion Panier</h2>
 			</div>
 			<div class="ckeckout-top">
 			<div class="cart-items">
-			 <h3>Mon Panier (3)</h3>
+			 <h3>Mon Panier ({{Panier.length}})</h3>
 				<script>$(document).ready(function(c) {
 					$('.close1').on('click', function(c){
 						$('.cart-header').fadeOut('slow', function(c){
@@ -91,45 +91,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><span>Produit</span></li>
 					<li><span>Désignation</span></li>		
 					<li><span>Prix Unitaires</span></li>
-					<li><span>Détails de Livraison</span></li>
+					<li><span>Quantité</span></li>
 					<li> </li>
 					<div class="clearfix"> </div>
 				</ul>
-				<ul class="cart-header">
+				<ul class="cart-header" ng-repeat="prod in Panier">
 					<div class="close1"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-1.jpg" class="img-responsive" alt=""></a>
+						<li class="ring-in"><a href="single.html" ><img src="{{prod.photo}}" class="img-responsive" height="100" width="100" alt=""></a>
 						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 290.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
+						<li><span class="name">{{prod.nom}}</span></li>
+						<li><span class="cost">{{prod.prix |currency:'€'}}</span></li>
+						<li><span class="cost">{{prod.quantite}}</span></li>
 					<div class="clearfix"> </div>
 				</ul>
-				<ul class=" cart-header1">
-					<div class="close2"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-2.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 300.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
-				<ul class="cart-header2">
-					<div class="close3"> </div>
-						<li class="ring-in"><a href="single.html" ><img src="images/c-3.jpg" class="img-responsive" alt=""></a>
-						</li>
-						<li><span class="name">Analog Watches</span></li>
-						<li><span class="cost">$ 360.00</span></li>
-						<li><span>Free</span>
-						<p>Delivered in 2-3 business days</p></li>
-						<div class="clearfix"> </div>
-				</ul>
+
 			</div>
-			</div>  
-			<input type="submit" value="test" ng-click="addOne()" >
-			<span id="prix">118</span>
-			<input type="submit" value="reset" ng-click="flush()" >
+			</div> 
+			<div class="row">
+			<div class="col-md-2"><h4 class="b4"><a href="checkout.html" ng-click="flush()"><span class="label label-default">Vider panier</span></a></h2></div>
+			<div class="col-md-8" ></div> 
+			<div class="col-md-2"><h2 class="b2"><a href="#" ng-click="confirmer()"><span class="label label-primary">Valider Panier</span></a></h2></div>
+			</div> 
 		 </div>
 		</div>
 		

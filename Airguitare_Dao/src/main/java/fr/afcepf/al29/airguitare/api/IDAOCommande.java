@@ -33,5 +33,6 @@ public interface IDAOCommande {
 
 	List<LigneCommande> getLignesByCommande(int idCommande);
 	public LigneCommande getLigneById(int idLigne);
-
+	
+	public void updateCommande(Commande com);
 }

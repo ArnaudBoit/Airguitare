@@ -64,6 +64,11 @@ public class DAOCommande implements IDAOCommande {
 		return null;
 		
 	}
+
+	@Override
+	public void updateCommande(Commande com) {
+		em.merge(com);
+	}
 	
 
 }
