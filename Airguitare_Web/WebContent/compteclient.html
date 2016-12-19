@@ -54,7 +54,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<tr ng-repeat="commande in listCommand ">
 				<td>{{commande.numero}}</td>
 				<td>{{commande.date | date:'mediumDate'}} </td>
-				<td ng-init="getPrice(commande.id)">   {{prix | currency:"€"}}</td>
+				<td ng-init="getPrice(commande)">   {{commande.prix | currency:"€"}}</td>
 			</tr>
 		</table>
 	</div>
