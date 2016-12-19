@@ -5,7 +5,6 @@ import java.util.List;
 import fr.afcepf.al29.airguitare.dto.DTOMarque;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.airguitare.dto.DTOSpecialisationProduit;
-import fr.afcepf.al29.airguitare.entities.Marque;
 
 /**
  * 
@@ -20,4 +19,6 @@ public interface IBusinessProduit {
 	List<DTOSpecialisationProduit> getAllSpecs();
 	
 	List<DTOProduit> getProduitParOptions(String specialisations, String marques);
+	
+	DTOProduit getProduitById (int idProduit);
 }

@@ -32,7 +32,7 @@
 	      <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<!-- default maven-compiler-plugin version -->
+<!-- 				default maven-compiler-plugin version -->
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>

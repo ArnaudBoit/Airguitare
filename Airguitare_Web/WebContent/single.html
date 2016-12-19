@@ -51,14 +51,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	});
 </script>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>
+<script src="script/singleArticle.js"></script>	
 </head>
 <body>
 	<!--top-header-->
-	<div id="new-header">
-		<script>
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
+        <script>
             $("#new-header").load("header.html");
         </script>
-	</div>
+    </div>
 	<!--bottom-header-->
 	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
@@ -74,8 +77,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--end-breadcrumbs-->
 	<!--start-single-->
 
-	<div class="single contact">
-		<div class="container">
+	<div id="article"  class="single contact" ng-app="businessArticle" ng-controller="BUarticle">
+		<div class="container" ng-init="loadArticle()">
 			<div class="single-main">
 				<div class="col-md-1"></div>
 
@@ -104,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="col-md-7 single-top-right">
 							<div class="single-para simpleCart_shelfItem">
-								<h2>Lorem Ipsum</h2>
+								<h2>{{post.intitule}}</h2>
 								<div class="star-on">
 									<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -131,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"></div>
 
 								</div>
-
+								<input type="number" id="nb" />
 								<a href="#" class="add-cart item_add">AJOUTER AU PANIER</a>
 
 							</div>
@@ -245,6 +248,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
+	
+	<script> angular.bootstrap(article, ['businessArticle']);</script>
 	<!--end-single-->
 	<!--information-starts-->
 	<div id="new-footer">

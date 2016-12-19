@@ -96,7 +96,13 @@ public class BusinessProduit implements IBusinessProduit {
 	}
 
 
-    
+
+	@Override
+	public DTOProduit getProduitById(int idProduit) {
+		DTOProduit dto = new DTOProduit(DAOProduit.getArticleById(idProduit), true);
+		return dto;
+	}
+  
     
     
     

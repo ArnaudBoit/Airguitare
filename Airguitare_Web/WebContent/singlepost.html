@@ -22,11 +22,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--dropdown-->
 <script src="js/jquery.easydropdown.js"></script>	
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>		
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>	
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>

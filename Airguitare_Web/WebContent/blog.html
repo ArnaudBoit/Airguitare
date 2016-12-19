@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="businessBlog">
+<html>
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -25,15 +25,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
+	<script src="script/utilisateur2.js"></script>
     <script src="script/blog.js"></script>
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+		<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>
-    </div>
+        </div>
 	<!--bottom-header-->
 	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">
@@ -48,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--end-breadcrumbs-->
 
-<div class="container">
+<div class="container" id="blog" ng-app="businessBlog">
     <div class="row">
         <div class="col-md-8">
  
@@ -57,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  			<div ng-controller="Bloglist" ng-init="getListe()">
  			<div ></div>
             <!-- list of posts -->
-            <article ng-repeat="x in liste">
+            <article ng-repeat="x in liste | orderBy:'-dateAjout':false">
                 <h2><a href="singlepost.html"> {{x.intitule}}</a>  </h2>
                 
                 <div class="row">
@@ -138,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 	
 </div>
-
+<script> angular.bootstrap(blog, ['businessBlog']);</script>
 	<!--information-starts-->
 	<div id="new-footer">
         <script>

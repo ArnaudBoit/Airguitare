@@ -25,6 +25,13 @@
             <scope>provided</scope>
         
         </dependency>
+                <dependency>
+        	<groupId>fr.afcepf.al29</groupId>
+        	<artifactId>Airguitare_Business</artifactId>
+        	<version>0.0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        
+        </dependency>
   </dependencies>
   <build>
   	<plugins>

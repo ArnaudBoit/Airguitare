@@ -6,10 +6,12 @@ import javax.ejb.Stateless;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import fr.afcepf.al29.airguitare.api.IDAOAvisClient;
 import fr.afcepf.al29.airguitare.api.IDAOClient;
@@ -67,6 +69,15 @@ public class ServiceProduit {
 		return BUProduit.getProduitParOptions(specialisations, marques);
     }
 
+	
+	@POST
+    @Path("produit")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getProduitById(IdParam param){
+		DTOProduit dto = BUProduit.getProduitById(Integer.parseInt(param.id));
+		 return Response.status(200).entity(dto).build();
+	}
+	
     /**
      * 
      */

@@ -27,11 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script src="js/jquery.easydropdown.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>		
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+		<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>
@@ -61,12 +63,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h5>Adresse</h5>
 							<p>Airbrass, 
 							<span>Lorem ipsum dolor,</span>
-							Montrouge Dr 40 Fe 72.</p>
+							23-25 Avenue du Dr Lannelongue</p>
 						</div>
 						<div class="address">
 							<h5>infos </h5>
 							<p>Tel:+331 759 278 93, 
-							<span>Fax:190-4509-494</span>
+							<span>Fax:+331 479 268 21</span>
 							Email: <a href="mailto:example@email.com">contact@airbrass.com</a></p>
 						</div>
 					</div>
