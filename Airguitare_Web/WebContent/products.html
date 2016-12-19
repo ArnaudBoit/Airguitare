@@ -72,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="col col-4"  ng-repeat="s in listeAllSpecs| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCbxSpec()" />
+										<input type="checkbox" value="{{s.id}}"  ng-model="cbxSpec[s.intitule]" ng-change="updateCoches()" />
 										<i></i>{{s.intitule}}
 									</label>
 																	
@@ -90,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 								<div class="col col-4"  ng-repeat="m in listeAllMarque| orderBy:'-intitule':true">
 								
 									<label class="checkbox" >
-										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCbxMarque()" />
+										<input type="checkbox" value="{{m.id}}"   ng-model="cbxMarque[m.intitule]" ng-change="updateCoches()" />
 										<i></i>{{m.intitule}}
 									</label>
 																	
@@ -121,14 +121,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					      
 							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
 								<div class="product-main simpleCart_shelfItem" >
-									<a href="" ng-click="openSingle(x)" class="mask"><img class="img-responsive zoom-img" src={{x.photo}} alt="" /></a>
+									<a href="" ng-click="openSingle(x.id)" class="mask"><img class="img-responsive zoom-img" src="{{x.photo}}" alt="" /></a>
 									<div class="product-bottom">
 										<h3>{{x.intitule}}</h3>
 										<p>{{x.marque.intitule}}</p>
 										<h4><a class="" ng-click="addOne(x)" href="#"><i></i></a> <span class=" item_price">€ {{x.prix}}</span></h4>
 									</div>
 									<div class="srch srch1">
-										<span>{{x.specialisationProduit.id}}</span>
+										<span>{{x.nbVues}}</span>
 									</div>
 								</div>
 							</div>

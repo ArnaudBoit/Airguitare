@@ -1,6 +1,6 @@
 var app = angular.module('businessProduit', []);
 
-app.controller('BPlist', function ($scope, $http,$window) {
+app.controller('BPlist', function ($scope, $http, $window) {
 		
 		//INIT PRODUCTS.HTML
 		$scope.listeAllProduit =[];	
@@ -8,13 +8,12 @@ app.controller('BPlist', function ($scope, $http,$window) {
 		$scope.listeAllSpecs =[];	
 		
 		$scope.getlisteAllProduit = function (){
-			
 			$http({method : 'GET', url : 'http://localhost:8080/Airguitare_Web/resources/businessProduit/listeAllProduits'})
 			.success(function(data){
 				$scope.listeAllProduit = data;
 			})
 			.error(function(data){
-				alert("ErrorListeAllProduit");
+				console.log("ErrorListeAllProduit");
 			})
 			
 	        $scope.cbxSpecAll = true;
@@ -35,7 +34,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
 			if($scope.listeMarqueCochee != null) {
 				path += $scope.listeMarqueCochee;
 			}
-			console.log("path: "+path);		
+			//console.log("path: "+path);		
 			
 			
 			$http({method : 'GET', 
@@ -43,7 +42,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
 				})
 				.success(function(data){
 					$scope.listeAllProduit = data;
-					console.log("AFFICHAGE PRODUITS "+data);
+					//console.log("AFFICHAGE PRODUITS "+data);
 				})
 				.error(function(data){
 					$scope.listeAllProduit = [];
@@ -61,7 +60,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
 		        });
 			})
 			.error(function(data){
-				alert("ErrorAllMarques");
+				console.log("ErrorAllMarques");
 			})
 		}
 		
@@ -78,7 +77,13 @@ app.controller('BPlist', function ($scope, $http,$window) {
 				alert("ErrorAllSpecs");
 			})
 		}
-
+		
+		//Update Categories
+		$scope.updateCoches = function() {
+			$scope.updateCbxMarque();
+			$scope.updateCbxSpec();
+			$scope.getProduitByOptions();
+		};
 		
 		//Update Marque pour les checkbox
 		$scope.cbxMarque = {};
@@ -87,14 +92,12 @@ app.controller('BPlist', function ($scope, $http,$window) {
 		$scope.updateCbxMarque = function() {
 			$scope.listeMarqueCochee = [];
 			
-          //  $scope.cbxMarqueAll = false;
 			
 			angular.forEach($scope.cbxMarque, function(value, id){
 				if(value) {
 					$scope.listeMarqueCochee.push(id);
 				}
 			});
-			$scope.getProduitByOptions();
 		};
 
 
@@ -105,15 +108,14 @@ app.controller('BPlist', function ($scope, $http,$window) {
 		$scope.updateCbxSpec = function() {
 			$scope.listeSpecCochee = [];
 			
-           // $scope.cbxSpecAll = false;
-			
 			angular.forEach($scope.cbxSpec, function(value, id){
 				if(value) {
 					$scope.listeSpecCochee.push(id);
 				}
 			});
-			$scope.getProduitByOptions();
 		};
+		
+		
 		
 
 		//Check/uncheck All Marques
@@ -126,8 +128,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
 	        angular.forEach($scope.listeAllMarque, function (m) {
 	        	$scope.cbxMarque[m.intitule] = $scope.cbxMarqueAll;
 	        });
-			$scope.updateCbxSpec();
-			$scope.updateCbxMarque();
+	    	$scope.updateCoches();
         };
 		
 		//Check/uncheck All Specs
@@ -140,20 +141,19 @@ app.controller('BPlist', function ($scope, $http,$window) {
 	        angular.forEach($scope.listeAllSpecs, function (m) {
 	        	$scope.cbxSpec[m.intitule] = $scope.cbxSpecAll;
 	        });
-			$scope.updateCbxSpec();
-			$scope.updateCbxMarque();
+	    	$scope.updateCoches();
         };
     
         $scope.addOne = function myfunction(produit){
         	var nbArticles ;
     		if("nbArt" in localStorage){
     		    nbArticles = localStorage.getItem('nbArt'); 
-    		    console.log(nbArticles);
+//    		    console.log(nbArticles);
     		    nbArticles++;
     		    var panier = document.getElementById('recapPanier').innerHTML;
     		     var add = produit.prix;
-    		     console.log(add);
-    		     console.log(panier);
+//    		     console.log(add);
+//    		     console.log(panier);
     		     var somme= parseInt(panier) + add;
     		     document.getElementById('recapPanier').innerHTML = somme;
     		     localStorage.setItem('cost',somme);
@@ -181,14 +181,15 @@ app.controller('BPlist', function ($scope, $http,$window) {
     		
     		panier.push({id:produit.id, quantite:1, nom:produit.intitule, prix : produit.prix, photo: produit.photo});
     		localStorage.setItem('panier', JSON.stringify(panier));
-    		console.log(panier);
+//    		console.log(panier);
     		
     	}
     	
     	$scope.openSingle = function myfunction(produit){
-    		localStorage.setItem('item', produit.id);
+    		localStorage.setItem('item', produit);
     		$window.location.href = 'single.html'
   
     	}
+    	
     	
 });

@@ -8,9 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.afcepf.al29.airguitare.api.IDAOProduit;
-import fr.afcepf.al29.airguitare.entities.Personne;
 import fr.afcepf.al29.airguitare.entities.Produit;
-import fr.afcepf.al29.airguitare.entities.SpecialisationProduit;
 import fr.afcepf.al29.airguitare.entities.TypeProduit;
 
 /**
@@ -61,7 +59,7 @@ public class DAOProduit implements IDAOProduit {
 
 	@Override
 	public Produit getArticleById(int idProduit) {
-		Query query = em.createQuery("FROM Produit WHERE id :idProduit").setParameter("idProduit", idProduit);
+		Query query = em.createQuery("FROM Produit WHERE id =:idProduit").setParameter("idProduit", idProduit);
 		List<Produit> produits = query.getResultList();
 		if(!produits.isEmpty()) {
 			return produits.get(0);

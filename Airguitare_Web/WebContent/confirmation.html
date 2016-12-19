@@ -38,30 +38,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </script>
     </div>
 	<!--bottom-header-->
-	<div id="compteClient" class="container" ng-app="businessCommande" >
-	<div class="row" ng-controller="BUCommand" ng-init="displayCommand()">
-		<table class="table">
-			<tr class="tr">
-				<th class="th">Numéro de commande</th>
-				<th class="th">Date de commande</th>
-				<th class="th">Prix</th>
-			</tr>
-			<tr>
-				<td>{{message}}</td>
-				<td> </td>
-				<td> </td>
-			</tr>
-			<tr ng-repeat="commande in listCommand ">
-				<td>{{commande.numero}}</td>
-				<td>{{commande.date | date:'mediumDate'}} </td>
-				<td ng-init="getPrice(commande)">   {{commande.prix | currency:"€"}}</td>
-			</tr>
-		</table>
+	<div style="margin: auto;text-align: center">
+	<h1>Votre commande est en cours de traitement</h1>
 	</div>
-	
-	</div>
-	<script> angular.bootstrap(compteClient, ['businessCommande']);</script>
-	
 	
 <!--information-starts-->
 	<div id="new-footer">

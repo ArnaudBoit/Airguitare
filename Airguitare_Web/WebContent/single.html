@@ -4,7 +4,7 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
-<!DOCTYPE html>
+<!DOCTYPE html >
 <html>
 <head>
 <title>AirBrass : Vos Meilleures Air Guitares</title>
@@ -53,7 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <script src="js/angular.min.js"></script>
 <script src="script/utilisateur2.js"></script>
-<script src="script/singleArticle.js"></script>	
+	<script src="script/singleArticle.js"></script>			
 </head>
 <body>
 	<!--top-header-->
@@ -77,16 +77,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--end-breadcrumbs-->
 	<!--start-single-->
 
-	<div id="article"  class="single contact" ng-app="businessArticle" ng-controller="BUarticle">
-		<div class="container" ng-init="loadArticle()">
-			<div class="single-main">
+	<div id="article" class="single contact"  ng-app="businessArticle" ng-controller="BUarticle">
+		<div class="container">
+			<div class="single-main" ng-init="loadArticle()" ng-model="article">
 				<div class="col-md-1"></div>
 
 				<div class="col-md-9 single-main-right">
 					<div class="sngl-top">
 						<div class="col-md-5 single-top-left">
 							<div class="flexslider">
-								<img src="images/image1.jpg" data-imagezoom="true"
+								<img src="{{article.photo}}" data-imagezoom="false"
 									class="img-responsive" alt="" />
 							</div>
 							<!-- FlexSlider -->
@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 						<div class="col-md-7 single-top-right">
 							<div class="single-para simpleCart_shelfItem">
-								<h2>{{post.intitule}}</h2>
+								<h2>{{article.intitule}}</h2>
 								<div class="star-on">
 									<ul class="star-footer">
 										<li><a href="#"><i> </i></a></li>
@@ -123,19 +123,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"></div>
 								</div>
 
-								<h5 class="item_price">$ 95.00</h5>
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
-									sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-									aliquam erat volutpat. Ut wisi enim ad minim veniam, quis
-									nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-									aliquip ex ea commodo consequat.</p>
+								<h5 class="item_price">€ {{article.prix}}</h5>
+								<p>{{article.description}}</p>
 								<div class="available">
-									<span>Stock:</span><span></span>
+									<span>Stock : </span><span>{{article.stock}}</span>
 									<div class="clearfix"></div>
 
 								</div>
-								<input type="number" id="nb" />
-								<a href="#" class="add-cart item_add">AJOUTER AU PANIER</a>
+								<input type="number" id="nb" ng-model="nbProduit" />
+								<a href="#" class="add-cart item_add"  ng-click="addOne(article)">AJOUTER AU PANIER</a>
 
 							</div>
 						</div>
@@ -146,48 +142,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li class="item1"><a href="#"><img
 									src="images/arrow.png" alt="">Description</a>
 								<ul>
-									<li class="subitem1"><a href="#">Lorem ipsum dolor sit
-											amet, consectetuer adipiscing elit, sed diam nonummy nibh
-											euismod tincidunt ut laoreet dolore magna aliquam erat
-											volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-											tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-											commodo consequat.</a></li>
-									<li class="subitem2"><a href="#"> Duis autem vel eum
-											iriure dolor in hendrerit in vulputate velit esse molestie
-											consequat, vel illum dolore eu feugiat nulla facilisis at
-											vero eros et accumsan et iusto odio dignissim qui blandit
-											praesent luptatum zzril delenit augue duis dolore</a></li>
-									<li class="subitem3"><a href="#">Mirum est notare quam
-											littera gothica, quam nunc putamus parum claram, anteposuerit
-											litterarum formas humanitatis per seacula quarta decima et
-											quinta decima. Eodem modo typi, qui nunc nobis videntur parum
-											clari, fiant sollemnes </a></li>
+									<li class="subitem1"><a>
+										{{article.description}}</a></li>
 								</ul></li>
 
 							<li class="item3"><a href="#"><img
-									src="images/arrow.png" alt="">Avis Clients (10)</a>
+									src="images/arrow.png" alt="">Avis Clients (1)</a>
 								<ul>
-									<li class="subitem1"><a href="#">Lorem ipsum dolor sit
-											amet, consectetuer adipiscing elit, sed diam nonummy nibh
-											euismod tincidunt ut laoreet dolore magna aliquam erat
-											volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci
-											tation ullamcorper suscipit lobortis nisl ut aliquip ex ea
-											commodo consequat.</a></li>
-									<li class="subitem2"><a href="#"> Duis autem vel eum
-											iriure dolor in hendrerit in vulputate velit esse molestie
-											consequat, vel illum dolore eu feugiat nulla facilisis at
-											vero eros et accumsan et iusto odio dignissim qui blandit
-											praesent luptatum zzril delenit augue duis dolore</a></li>
-									<li class="subitem3"><a href="#">Mirum est notare quam
-											littera gothica, quam nunc putamus parum claram, anteposuerit
-											litterarum formas humanitatis per seacula quarta decima et
-											quinta decima. Eodem modo typi, qui nunc nobis videntur parum
-											clari, fiant sollemnes </a></li>
+									<li class="subitem1"><a href="#">Franchement bien ! - Jean Jacques G.</a></li>
 								</ul></li>
 
 						</ul>
 					</div>
-					<div class="latestproducts">
+					<!--<div class="latestproducts">
 						<div class="product-one">
 							<div class="col-md-4 product-left p-left">
 								<div class="product-main simpleCart_shelfItem">
@@ -241,14 +208,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 							</div>
 							<div class="clearfix"></div>
-						</div>
+						</div>  -->
 					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div>
 		</div>
 	</div>
-	
 	<script> angular.bootstrap(article, ['businessArticle']);</script>
 	<!--end-single-->
 	<!--information-starts-->

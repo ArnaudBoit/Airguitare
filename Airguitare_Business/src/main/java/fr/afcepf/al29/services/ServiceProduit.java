@@ -6,7 +6,6 @@ import javax.ejb.Stateless;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -70,11 +69,11 @@ public class ServiceProduit {
     }
 
 	
-	@POST
-    @Path("produit")
+	@GET
+    @Path("produit/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getProduitById(IdParam param){
-		DTOProduit dto = BUProduit.getProduitById(Integer.parseInt(param.id));
+    public Response getProduitById(@PathParam("ids") String param){
+		DTOProduit dto = BUProduit.getProduitById(Integer.parseInt(param));
 		 return Response.status(200).entity(dto).build();
 	}
 	
