@@ -53,6 +53,9 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 			var y = document.getElementById('btnDeco');
 			y.style.display= 'none';
 			$window.location.href = 'index.html';
+			localStorage.removeItem('panier');
+			localStorage.setItem('nbArt',0);
+			localStorage.setItem('cost',0);
 		}
 		
 		

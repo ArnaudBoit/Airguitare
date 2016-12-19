@@ -26,6 +26,7 @@ import fr.afcepf.al29.airguitare.dto.DTOLigneCommande;
 import fr.afcepf.al29.airguitare.dto.DTOProduit;
 import fr.afcepf.al29.airguitare.entities.Commande;
 import fr.afcepf.al29.airguitare.entities.LigneCommande;
+import fr.afcepf.al29.airguitare.entities.ModeLivraison;
 import fr.afcepf.al29.business.BusinessCommande;
 import fr.afcepf.al29.ibusiness.IBusinessCommande;
 import fr.afcepf.al29.ibusiness.IBusinessProduit;
@@ -88,14 +89,20 @@ public class ServiceCommande {
     @Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response saveCommande(PanierParam panier){
-		try {
+	
 			Commande commande = new Commande();
+			System.out.println(panier.idPers);
 			commande.setPersonne(daoPersonne.getClientById(panier.idPers));
 			commande.setDate(new Date());
+			commande.setModeLivraison(null);
+			commande.setNumero("CMD" + panier.idPers +"Test");
+			commande.setLigneCommandes(new ArrayList<>());
 			Commande com = daocommande.addCommande(commande);
+			
 			for (LigneComParam ligne : panier.Panier) {
 				LigneCommande ligneCom = new LigneCommande();
 				ligneCom.setCommande(com);
+				
 				ligneCom.setProduit(daoProduit.getArticleById(ligne.id));
 				ligneCom.setQuantite(ligne.quantite);
 				LigneCommande ln = daoLigne.addLigne(ligneCom);
@@ -103,9 +110,7 @@ public class ServiceCommande {
 				daocommande.updateCommande(com);
 			}
 			return Response.status(200).build();
-		} catch (Exception e) {
-			return Response.status(500).entity("erreur dans  le processus").build();
-		}
+
 		
 	}
 	
