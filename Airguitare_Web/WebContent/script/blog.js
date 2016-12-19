@@ -23,10 +23,10 @@ console.log($location.search().id);
 	}
 
 	
-	$scope.getNBComment = function (nb) {
-		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:nb})
+	$scope.getNBComment = function (Command) {
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:Command.id})
 		.success(function(data){
-			$scope.nbComment = data;
+			Command.comment = data;
 		})
 	}
 //	$scope.getArticle = function(id,$scope) {
