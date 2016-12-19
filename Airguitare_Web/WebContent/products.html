@@ -121,7 +121,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					      
 							<div class="col-md-4 product-left p-left" ng-repeat="x in listeAllProduit">
 								<div class="product-main simpleCart_shelfItem" >
-									<a href="" ng-click="openSingle(x)" class="mask"><img class="img-responsive zoom-img" src="images/p-1.png" alt="" /></a>
+									<a href="" ng-click="openSingle(x.id)" class="mask"><img class="img-responsive zoom-img" src="{{x.photo}}" alt="" /></a>
 									<div class="product-bottom">
 										<h3>{{x.intitule}}</h3>
 										<p>{{x.marque.intitule}}</p>

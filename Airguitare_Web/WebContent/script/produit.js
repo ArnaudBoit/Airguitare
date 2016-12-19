@@ -1,6 +1,6 @@
 var app = angular.module('businessProduit', []);
 
-app.controller('BPlist', function ($scope, $http,$window) {
+app.controller('BPlist', function ($scope, $http, $window) {
 		
 		//INIT PRODUCTS.HTML
 		$scope.listeAllProduit =[];	
@@ -186,7 +186,7 @@ app.controller('BPlist', function ($scope, $http,$window) {
     	}
     	
     	$scope.openSingle = function myfunction(produit){
-    		localStorage.setItem('item', produit.id);
+    		localStorage.setItem('item', produit);
     		$window.location.href = 'single.html'
   
     	}
