@@ -61,7 +61,7 @@ public class DAOProduit implements IDAOProduit {
 
 	@Override
 	public Produit getArticleById(int idProduit) {
-		Query query = em.createQuery("FROM Produit WHERE id :idProduit").setParameter("idProduit", idProduit);
+		Query query = em.createQuery("FROM Produit WHERE id =:idProduit").setParameter("idProduit", idProduit);
 		List<Produit> produits = query.getResultList();
 		if(!produits.isEmpty()) {
 			return produits.get(0);
