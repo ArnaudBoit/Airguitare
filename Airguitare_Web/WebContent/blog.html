@@ -58,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  			<div ng-controller="Bloglist" ng-init="getListe()">
  			<div ></div>
             <!-- list of posts -->
-            <article ng-repeat="x in liste">
+            <article ng-repeat="x in liste | orderBy:'-dateAjout':false">
                 <h2><a href="singlepost.html"> {{x.intitule}}</a>  </h2>
                 
                 <div class="row">
