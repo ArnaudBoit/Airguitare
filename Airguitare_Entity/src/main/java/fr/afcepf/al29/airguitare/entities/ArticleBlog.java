@@ -40,6 +40,7 @@ public class ArticleBlog implements Serializable {
     /**
      * 
      */
+    @Column(length=25000)
     private String description;
     
     private Date dateAjout;

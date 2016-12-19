@@ -144,7 +144,42 @@ app.controller('BPlist', function ($scope, $http) {
 			$scope.updateCbxMarque();
         };
     
-
-        
-
+        $scope.addOne = function myfunction(produit){
+    		if("nbArt" in localStorage){
+    		    var nbArticles = localStorage.getItem('nbArt'); 
+    		    console.log(nbArticles);
+    		    nbArticles++;
+    		    var panier = document.getElementById('recapPanier').innerHTML;
+    		     var add = produit.prix;
+    		     console.log(add);
+    		     console.log(panier);
+    		     
+    		     document.getElementById('recapPanier').innerHTML = parseInt(panier) + add;
+    		     
+    		    
+    		    localStorage.setItem('nbArt',nbArticles)
+    		    
+    		} else {
+    		   localStorage.setItem('nbArt','1');
+    		}
+    		document.getElementById('nbArticle').innerHTML = nbArticles + "" + (nbArticles <=1? " article" : " articles");
+    		$scope.saveItem(produit);
+    	}
+    	$scope.flush = function myfunction(){
+    		
+    		   localStorage.removeItem('nbArt');
+    		
+    	}
+    	
+    	$scope.saveItem = function myfunction(produit){
+    		var panier =[];
+    		if("panier" in localStorage){
+    			panier = JSON.parse(localStorage.getItem('panier'));
+    		}
+    		
+    		panier.push({id:produit.id, quantite:1, nom:produit.intitule, prix : produit.prix});
+    		localStorage.setItem('panier', JSON.stringify(panier));
+    		console.log(panier);
+    		
+    	}
 });
