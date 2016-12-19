@@ -51,14 +51,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	});
 </script>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>	
 </head>
 <body>
 	<!--top-header-->
-	<div id="new-header">
-		<script>
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
+        <script>
             $("#new-header").load("header.html");
         </script>
-	</div>
+    </div>
 	<!--bottom-header-->
 	<!--start-breadcrumbs-->
 	<div class="breadcrumbs">

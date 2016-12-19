@@ -27,11 +27,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>	
 <!--dropdown-->
-<script src="js/jquery.easydropdown.js"></script>			
+<script src="js/jquery.easydropdown.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="script/utilisateur2.js"></script>		
 </head>
 <body> 
 	<!--top-header-->
-	<div id="new-header">
+	<div id="new-header" ng-app="businessUtilisateur" ng-controller="BUConnect">
         <script>
             $("#new-header").load("header.html");
         </script>

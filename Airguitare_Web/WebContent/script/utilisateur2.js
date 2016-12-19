@@ -65,5 +65,21 @@ app.controller('BUConnect', function ($scope, $http, $window) {
 			
 			document.getElementById('btnDeco').style.display="none";
 		}
+		
+		$scope.loadCost = function myFunction(){
+			if("cost" in localStorage){
+				var cost = localStorage.getItem('cost');
+				document.getElementById('recapPanier').innerHTML = cost;
+			}
+		}
+		
+		$scope.loadArt = function myFunction(){
+			
+    		if("panier" in localStorage){
+    			var art = localStorage.getItem('nbArt');
+    			document.getElementById('nbArticle').innerHTML = art + "" + (art <=1? " article" : " articles");
+    		}
+    		
+		}
 });
 angular.bootstrap(document.getElementById("new-header"), ['businessUtilisateur']);

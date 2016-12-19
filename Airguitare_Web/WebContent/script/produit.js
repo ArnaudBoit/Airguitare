@@ -1,6 +1,6 @@
 var app = angular.module('businessProduit', []);
 
-app.controller('BPlist', function ($scope, $http) {
+app.controller('BPlist', function ($scope, $http,$window) {
 		
 		//INIT PRODUCTS.HTML
 		$scope.listeAllProduit =[];	
@@ -145,22 +145,24 @@ app.controller('BPlist', function ($scope, $http) {
         };
     
         $scope.addOne = function myfunction(produit){
+        	var nbArticles ;
     		if("nbArt" in localStorage){
-    		    var nbArticles = localStorage.getItem('nbArt'); 
+    		    nbArticles = localStorage.getItem('nbArt'); 
     		    console.log(nbArticles);
     		    nbArticles++;
     		    var panier = document.getElementById('recapPanier').innerHTML;
     		     var add = produit.prix;
     		     console.log(add);
     		     console.log(panier);
-    		     
-    		     document.getElementById('recapPanier').innerHTML = parseInt(panier) + add;
-    		     
+    		     var somme= parseInt(panier) + add;
+    		     document.getElementById('recapPanier').innerHTML = somme;
+    		     localStorage.setItem('cost',somme);
     		    
     		    localStorage.setItem('nbArt',nbArticles)
     		    
     		} else {
     		   localStorage.setItem('nbArt','1');
+    		   nbArticles =1; 
     		}
     		document.getElementById('nbArticle').innerHTML = nbArticles + "" + (nbArticles <=1? " article" : " articles");
     		$scope.saveItem(produit);
@@ -168,7 +170,7 @@ app.controller('BPlist', function ($scope, $http) {
     	$scope.flush = function myfunction(){
     		
     		   localStorage.removeItem('nbArt');
-    		
+    		   
     	}
     	
     	$scope.saveItem = function myfunction(produit){
@@ -182,4 +184,11 @@ app.controller('BPlist', function ($scope, $http) {
     		console.log(panier);
     		
     	}
+    	
+    	$scope.openSingle = function myfunction(produit){
+    		localStorage.setItem('item', produit.id);
+    		$window.location.href = 'single.html'
+  
+    	}
+    	
 });
