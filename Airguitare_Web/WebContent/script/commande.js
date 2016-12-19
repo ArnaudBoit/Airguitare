@@ -31,12 +31,12 @@ app.controller('BUCommand', function ($scope, $http, $window) {
 		
 	
 	}
-	$scope.getPrice = function myfunction(idCommande){
-		console.log(idCommande);
+	$scope.getPrice = function myfunction(Commande){
+		console.log(Commande);
 		//alert('dans la methode');
-		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:idCommande})
+		$http.post('http://localhost:8080/Airguitare_Web/resources/commandes/byCommandeID',	{id:Commande.id})
 		.success(function(data){
-			$scope.prix=data;
+			Commande.prix=data;
 			console.log(data);
 			return data;
 		})
