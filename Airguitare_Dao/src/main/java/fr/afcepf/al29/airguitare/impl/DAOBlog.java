@@ -42,6 +42,7 @@ public class DAOBlog implements IDAOBlog {
 	public void removeArticleBlog(ArticleBlog article) {
 		em.remove(article);
 		
+		
 	}
 
 	@Override
