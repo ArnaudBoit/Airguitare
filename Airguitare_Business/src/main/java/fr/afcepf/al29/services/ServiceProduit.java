@@ -73,9 +73,7 @@ public class ServiceProduit {
     @Path("produit/{ids}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getProduitById(@PathParam("ids") String param){
-		System.out.println("id: "+param);
 		DTOProduit dto = BUProduit.getProduitById(Integer.parseInt(param));
-		System.out.println("article:"+dto.getIntitule());
 		 return Response.status(200).entity(dto).build();
 	}
 	

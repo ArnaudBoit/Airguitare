@@ -86,7 +86,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="sngl-top">
 						<div class="col-md-5 single-top-left">
 							<div class="flexslider">
-								<img src="{{article.photo}}" data-imagezoom="true"
+								<img src="{{article.photo}}" data-imagezoom="false"
 									class="img-responsive" alt="" />
 							</div>
 							<!-- FlexSlider -->
@@ -130,8 +130,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="clearfix"></div>
 
 								</div>
-								<input type="number" id="nb" />
-								<a href="#" class="add-cart item_add">AJOUTER AU PANIER</a>
+								<input type="number" id="nb" ng-model="nbProduit" />
+								<a href="#" class="add-cart item_add"  ng-click="addOne(article)">AJOUTER AU PANIER</a>
 
 							</div>
 						</div>

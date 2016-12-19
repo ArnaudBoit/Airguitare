@@ -14,7 +14,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 				$scope.listeAllProduit = data;
 			})
 			.error(function(data){
-				alert("ErrorListeAllProduit");
+				console.log("ErrorListeAllProduit");
 			})
 			
 	        $scope.cbxSpecAll = true;
@@ -61,7 +61,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
 		        });
 			})
 			.error(function(data){
-				alert("ErrorAllMarques");
+				console.log("ErrorAllMarques");
 			})
 		}
 		
@@ -148,12 +148,12 @@ app.controller('BPlist', function ($scope, $http, $window) {
         	var nbArticles ;
     		if("nbArt" in localStorage){
     		    nbArticles = localStorage.getItem('nbArt'); 
-    		    console.log(nbArticles);
+//    		    console.log(nbArticles);
     		    nbArticles++;
     		    var panier = document.getElementById('recapPanier').innerHTML;
     		     var add = produit.prix;
-    		     console.log(add);
-    		     console.log(panier);
+//    		     console.log(add);
+//    		     console.log(panier);
     		     var somme= parseInt(panier) + add;
     		     document.getElementById('recapPanier').innerHTML = somme;
     		     localStorage.setItem('cost',somme);
@@ -181,7 +181,7 @@ app.controller('BPlist', function ($scope, $http, $window) {
     		
     		panier.push({id:produit.id, quantite:1, nom:produit.intitule, prix : produit.prix});
     		localStorage.setItem('panier', JSON.stringify(panier));
-    		console.log(panier);
+//    		console.log(panier);
     		
     	}
     	
